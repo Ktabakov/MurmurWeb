@@ -3,8 +3,48 @@ import { SoundWaveBars } from "@/components/sound-wave-bars";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 
-// TODO: replace with the live App Store listing URL once published.
-const APP_STORE_URL = "https://apps.apple.com/app/murmur";
+const SITE_URL = "https://www.murmurapps.site";
+
+// Structured data for richer search results (SoftwareApplication / music).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: "Murmur",
+  applicationCategory: "MusicApplication",
+  operatingSystem: "iOS",
+  url: SITE_URL,
+  description:
+    "Private, on-device AI music generation for iPhone. Turn presets or your own words into original AI-generated instrumental music, composed entirely on-device with no cloud rendering. Powered by Magenta RT and accelerated by the Apple Neural Engine.",
+  featureList: [
+    "On-device AI music generation",
+    "170+ curated instrumental presets",
+    "Custom mood prompts via MusicCoCa style tokens",
+    "Private — no cloud rendering",
+    "Save, replay, and share generated audio",
+  ],
+  keywords:
+    "AI generated music, AI music generation, on-device AI music, private music generation, instrumental music generator, Magenta RT, Apple Neural Engine",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
+
+const techStrip = [
+  {
+    label: "Powered by Magenta RT",
+    detail: "Google's real-time music generation model, running locally.",
+  },
+  {
+    label: "Boosted by the Apple Neural Engine",
+    detail: "Core ML acceleration on the iPhone's ANE chip.",
+  },
+  {
+    label: "100% on-device & private",
+    detail: "Your prompts and audio never leave your phone.",
+  },
+];
 
 const steps = [
   {
@@ -83,6 +123,10 @@ const proPerks = [
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-murmur-base text-murmur-text">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-5%,rgba(34,16,60,0.85),transparent_42%),radial-gradient(circle_at_84%_24%,rgba(139,110,255,0.08),transparent_34%)]" />
 
       <nav className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(10,7,18,0.88)_0%,rgba(10,7,18,0)_100%)]">
@@ -108,14 +152,10 @@ export default function Home() {
               Pro
             </a>
           </div>
-          <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 rounded-full border border-lilac/30 bg-lilac/15 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(139,110,255,0.2)] transition-all duration-300 hover:bg-lilac/25 sm:px-6 sm:tracking-[0.2em]"
-          >
-            Get Murmur
-          </a>
+          <span className="flex shrink-0 items-center gap-2 rounded-full border border-lilac/30 bg-lilac/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(139,110,255,0.15)] sm:px-5 sm:tracking-[0.2em]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lilac shadow-[0_0_8px_rgba(197,154,255,0.9)]" />
+            Coming soon
+          </span>
         </div>
       </nav>
 
@@ -138,14 +178,10 @@ export default function Home() {
               loops and soundscapes — generated privately, right on your iPhone.
             </p>
             <div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
-              <a
-                href={APP_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-generate rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.03] active:scale-95 sm:px-10"
-              >
-                Download on the App Store
-              </a>
+              <span className="btn-generate flex cursor-default select-none items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white sm:px-10">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
+                Coming soon to the App Store
+              </span>
               <a
                 href="#how"
                 className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8 sm:px-10"
@@ -154,7 +190,7 @@ export default function Home() {
               </a>
             </div>
             <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-murmur-muted sm:text-[11px] sm:tracking-[0.24em]">
-              Free to download · For moments, focus, sleep &amp; play
+              Free on iPhone · For moments, focus, sleep &amp; play
             </p>
           </div>
         </section>
@@ -176,6 +212,26 @@ export default function Home() {
                 <p className="mt-4 text-sm leading-relaxed text-murmur-text-2">{card.description}</p>
               </article>
             ))}
+          </div>
+        </section>
+
+        {/* UNDER THE HOOD */}
+        <section className="mx-auto w-full max-w-screen-xl px-5 pb-4 sm:px-8">
+          <div className="glass-card rounded-2xl p-6 sm:p-8">
+            <p className="mb-6 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-murmur-muted sm:text-[11px]">
+              Under the hood
+            </p>
+            <div className="grid grid-cols-1 gap-7 sm:grid-cols-3 sm:gap-5 sm:divide-x sm:divide-lilac/10">
+              {techStrip.map((item) => (
+                <div key={item.label} className="flex flex-col items-center gap-2.5 px-2 text-center">
+                  <span className="h-2 w-2 rounded-full bg-gradient-to-br from-lilac-fixed to-gen-end shadow-[0_0_10px_rgba(197,154,255,0.9)]" />
+                  <span className="text-base font-bold leading-snug tracking-tight text-white">
+                    {item.label}
+                  </span>
+                  <span className="max-w-[20rem] text-sm leading-relaxed text-murmur-text-2">{item.detail}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -312,14 +368,10 @@ export default function Home() {
                   Murmur is free to start — Ambient, Lo-fi, Peaceful, Synthwave and
                   Acoustic Guitar with short previews and loops. Pro unlocks the full studio.
                 </p>
-                <a
-                  href={APP_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-generate mt-8 inline-flex w-full justify-center rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.03] active:scale-95 sm:w-auto"
-                >
-                  Get Murmur
-                </a>
+                <span className="btn-generate mt-8 inline-flex w-full cursor-default select-none items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white sm:w-auto">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
+                  Coming soon
+                </span>
               </div>
 
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
