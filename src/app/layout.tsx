@@ -9,8 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Murmur | Audio Intelligence",
-  description: "Cinematic, neon-dark audio intelligence for creators.",
+  title: "Murmur | Compose your mood",
+  description:
+    "On-device AI music generation for iPhone. Turn presets or your own words into original instrumental loops and soundscapes — private, calm, and yours.",
 };
 
 export default function RootLayout({
@@ -19,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

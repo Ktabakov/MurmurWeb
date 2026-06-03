@@ -1,22 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --background: #06060a;
-  --foreground: #f6f5f8;
+  --background: #0a0712;
+  --foreground: #e8e0e9;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
-  --color-murmur-base: #06060a;
-  --color-murmur-mid: #0a0712;
-  --color-murmur-top: #12101a;
-  --color-neon-ice: #f0fdff;
-  --color-neon-cyan: #7df9ff;
-  --color-neon-sky: #38bdf8;
-  --color-neon-blue: #0ea5e9;
-  --color-neon-deep: #082f49;
+
+  /* Stitch design system — deep space + lilac */
+  --color-murmur-base: #0a0712;
+  --color-murmur-top: #110d1e;
+  --color-murmur-surface: #151218;
+  --color-murmur-card: #0f0d1c;
+  --color-murmur-container: #2c292f;
+  --color-murmur-border: #1a1830;
+
+  --color-murmur-text: #e8e0e9;
+  --color-murmur-text-2: #cdc3d2;
+  --color-murmur-muted: #968e9c;
+
+  --color-lilac: #dabdff;
+  --color-lilac-fixed: #eddcff;
+  --color-lilac-glow: #c59aff;
+  --color-purple: #5706f1;
+  --color-gen-start: #a78bff;
+  --color-gen-end: #8b6eff;
+
+  --color-success: #4ade80;
+  --color-error: #ffb4ab;
 }
 
 body {
@@ -25,61 +39,153 @@ body {
   font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
 }
 
+/* Lilac gradient text for headline accents */
 .hero-gradient-text {
   background: linear-gradient(
-    90deg,
-    var(--color-neon-ice) 0%,
-    var(--color-neon-cyan) 18%,
-    var(--color-neon-sky) 45%,
-    var(--color-neon-blue) 78%,
-    var(--color-neon-deep) 100%
+    100deg,
+    var(--color-lilac-fixed) 0%,
+    var(--color-lilac) 38%,
+    var(--color-lilac-glow) 72%,
+    var(--color-gen-end) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 36px rgba(197, 154, 255, 0.25);
 }
 
+/* Glassy lilac-tinted card */
 .glass-card {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(218, 189, 255, 0.12);
   background: linear-gradient(
-    170deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.02) 55%,
-    rgba(255, 255, 255, 0.015) 100%
+    165deg,
+    rgba(197, 154, 255, 0.08) 0%,
+    rgba(15, 13, 28, 0.55) 55%,
+    rgba(10, 7, 18, 0.7) 100%
   );
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 20px 50px rgba(0, 0, 0, 0.45),
-    0 0 55px rgba(56, 189, 248, 0.09);
+    inset 0 1px 0 rgba(237, 220, 255, 0.1),
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(167, 139, 255, 0.06);
 }
 
 .glass-input {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(218, 189, 255, 0.14);
+  background: rgba(218, 189, 255, 0.05);
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-sky), #21a8ee);
-  box-shadow: 0 0 34px rgba(56, 189, 248, 0.35);
+/* Compose / Generate gradient button */
+.btn-generate {
+  background: linear-gradient(135deg, var(--color-gen-start), var(--color-gen-end));
+  box-shadow: 0 0 38px rgba(139, 110, 255, 0.45);
 }
 
 .btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(240, 248, 255, 0.95);
+  border: 1px solid rgba(218, 189, 255, 0.16);
+  background: rgba(218, 189, 255, 0.05);
+  color: var(--color-murmur-text);
 }
 
+/* Vertical waveform bars (logo + hero motif) */
 .wave-bar {
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    var(--color-neon-ice) 12%,
-    var(--color-neon-cyan) 36%,
-    var(--color-neon-sky) 60%,
-    var(--color-neon-blue) 82%,
-    var(--color-neon-deep) 100%
+    var(--color-lilac-fixed) 14%,
+    var(--color-lilac) 42%,
+    var(--color-lilac-glow) 70%,
+    var(--color-gen-end) 100%
   );
-  box-shadow: 0 0 14px rgba(125, 249, 255, 0.25);
+  box-shadow: 0 0 16px rgba(197, 154, 255, 0.3);
+}
+
+/* Pulsing plasma orb — the signature "mood becoming sound" element */
+@keyframes orb-pulse {
+  0%,
+  100% {
+    transform: scale(1) translateZ(0);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.06) translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes orb-wobble {
+  0%,
+  100% {
+    border-radius: 48% 52% 53% 47% / 50% 48% 52% 50%;
+  }
+  33% {
+    border-radius: 54% 46% 47% 53% / 46% 53% 47% 54%;
+  }
+  66% {
+    border-radius: 46% 54% 52% 48% / 54% 46% 53% 47%;
+  }
+}
+
+@keyframes haze-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.8;
+  }
+}
+
+/* Dim deep-violet atmosphere that bleeds outward and fades to nothing */
+.orb-atmosphere {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(124, 58, 255, 0.42) 0%,
+    rgba(87, 6, 241, 0.26) 28%,
+    rgba(87, 6, 241, 0) 64%
+  );
+  filter: blur(22px);
+  animation: haze-breathe 7s ease-in-out infinite;
+}
+
+/* Soft lilac plasma cloud surrounding the core */
+.orb-plasma {
+  background: radial-gradient(
+    circle at 50% 44%,
+    rgba(218, 189, 255, 0.95) 0%,
+    rgba(197, 154, 255, 0.65) 42%,
+    rgba(139, 110, 255, 0.25) 66%,
+    transparent 78%
+  );
+  filter: blur(12px);
+  animation: orb-pulse 4s ease-in-out infinite;
+}
+
+/* Small, bright core with heavily layered glow that dims as it spreads */
+.orb-core {
+  background: radial-gradient(
+    circle at 40% 34%,
+    #ffffff 0%,
+    var(--color-lilac-fixed) 28%,
+    var(--color-lilac-glow) 66%,
+    var(--color-gen-end) 100%
+  );
+  box-shadow:
+    0 0 32px 6px rgba(237, 220, 255, 0.7),
+    0 0 72px 22px rgba(197, 154, 255, 0.55),
+    0 0 140px 50px rgba(139, 110, 255, 0.38),
+    0 0 240px 96px rgba(87, 6, 241, 0.22);
+  animation:
+    orb-pulse 4s ease-in-out infinite,
+    orb-wobble 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-core,
+  .orb-plasma,
+  .orb-atmosphere {
+    animation: none;
+  }
 }

@@ -1,221 +1,371 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import { SoundWaveBars } from "@/components/sound-wave-bars";
+import { PlasmaOrb } from "@/components/plasma-orb";
+import { MurmurMark } from "@/components/murmur-mark";
 
-const architectureCards = [
+// TODO: replace with the live App Store listing URL once published.
+const APP_STORE_URL = "https://apps.apple.com/app/murmur";
+
+const steps = [
   {
-    title: "The Jam Buddy",
+    step: "01",
+    title: "Pick a mood",
     description:
-      "An AI collaborator that learns your cadence with evolving generation tuned to your current creative flow.",
-    footer: "Active Signal",
-    stat: "MIDI + DRUM",
+      "Choose a curated preset or describe a feeling in your own words — a genre, an instrument, a texture, a tempo.",
+    accent: "#c59aff",
   },
   {
-    title: "Ambient Presets",
+    step: "02",
+    title: "Compose on-device",
     description:
-      "Studio-grade, non-repeating soundscapes designed for deep focus and immersive background states.",
-    footer: "Deep Indigo State",
-    stat: "0.42 Hz",
+      "Murmur turns your words into musical style tokens and generates an original instrumental piece directly on your phone.",
+    accent: "#a78bff",
   },
   {
-    title: "The Sound Barrier",
+    step: "03",
+    title: "Keep what you love",
     description:
-      "Advanced phase-cancellation style controls to keep your workspace focused and distraction free.",
-    footer: "Isolation Vector",
-    stat: "-48dB SILENCE",
+      "Play, save to your Library, turn a prompt into a reusable preset, then replay, share, or trim and fade.",
+    accent: "#8b6eff",
   },
+];
+
+const categories = [
+  { label: "Ambient", color: "#c59aff" },
+  { label: "Focus", color: "#00e5ff" },
+  { label: "Sleep", color: "#4a90e2" },
+  { label: "Cinematic", color: "#ffb74d" },
+  { label: "Jazz & Soul", color: "#ff8a65" },
+  { label: "Electronic", color: "#e040fb" },
+  { label: "Acoustic", color: "#aed581" },
+  { label: "World", color: "#4db6ac" },
+];
+
+const examplePrompts = [
+  "warm dreamy synth pads with a slow pulse",
+  "lo-fi piano with soft vinyl crackle, no drums",
+  "spacious cinematic strings, slow and hopeful",
+  "gentle acoustic guitar fingerpicking for focus",
+];
+
+const features = [
+  {
+    title: "170+ curated styles",
+    description:
+      "From Ambient and Lo-fi to Synthwave, Jazz, and Acoustic Guitar — each preset is tuned with its own sound recipe.",
+  },
+  {
+    title: "Describe any mood",
+    description:
+      "Type a feeling, genre, or sonic texture. Murmur translates your description into musical style tokens.",
+  },
+  {
+    title: "Private by design",
+    description:
+      "The core generation flow runs entirely on your iPhone using the Apple Neural Engine. No cloud rendering.",
+  },
+  {
+    title: "Your sound, replayable",
+    description:
+      "Saved pieces become WAVs in your Library — rename, share, and pick up playback from the Lock Screen.",
+  },
+];
+
+const proPerks = [
+  "All 170+ presets",
+  "Custom mood prompts",
+  "Unlimited generation length",
+  "Edit, trim & fade",
+  "Advanced controls (CFG, temperature, top-K)",
+  "Model choice: Base or Large",
 ];
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-murmur-base text-slate-100">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(56,189,248,0.11),transparent_36%),radial-gradient(circle_at_82%_18%,rgba(99,102,241,0.14),transparent_32%),radial-gradient(circle_at_50%_85%,rgba(14,165,233,0.08),transparent_42%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-40 [background:linear-gradient(180deg,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0)_26%)]" />
+    <div className="relative min-h-screen overflow-x-hidden bg-murmur-base text-murmur-text">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-5%,rgba(34,16,60,0.85),transparent_42%),radial-gradient(circle_at_84%_24%,rgba(139,110,255,0.08),transparent_34%)]" />
 
-      <nav className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(10,7,18,0.84)_0%,rgba(10,7,18,0)_100%)]">
-        <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-6 py-6 sm:px-8">
-          <Link
-            href="/"
-            className="btn-secondary rounded-full px-5 py-2 text-xl font-black tracking-[0.26em] text-zinc-100 drop-shadow-[0_0_10px_rgba(89,13,242,0.4)] transition-all hover:bg-white/8 sm:text-2xl"
-          >
-            MURMUR
+      <nav className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(10,7,18,0.88)_0%,rgba(10,7,18,0)_100%)]">
+        <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3">
+            <MurmurMark size={30} className="sm:hidden" />
+            <MurmurMark size={34} className="hidden sm:inline-flex" />
+            <span className="text-base font-black tracking-[0.22em] text-lilac drop-shadow-[0_0_12px_rgba(197,154,255,0.35)] sm:text-2xl sm:tracking-[0.3em]">
+              MURMUR
+            </span>
           </Link>
-          <div className="hidden items-center gap-10 md:flex">
-            <a className="border-b-2 border-violet-500 pb-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-400" href="#intelligence">
-              Intelligence
+          <div className="hidden items-center gap-8 lg:flex">
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
+              How it works
             </a>
-            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-zinc-100" href="#architecture">
-              Architecture
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#presets">
+              Presets
             </a>
-            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-zinc-100" href="#signal">
-              Signal
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#library">
+              Library
             </a>
-            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-zinc-100" href="#archive">
-              Archive
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#pro">
+              Pro
             </a>
           </div>
-          <Link
-            href="/login"
-            className="rounded-full border border-violet-400/40 bg-violet-500/20 px-6 py-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-100 shadow-[0_0_20px_rgba(89,13,242,0.2)] transition-all duration-300 hover:bg-violet-500/30"
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 rounded-full border border-lilac/30 bg-lilac/15 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(139,110,255,0.2)] transition-all duration-300 hover:bg-lilac/25 sm:px-6 sm:tracking-[0.2em]"
           >
-            Tune In
-          </Link>
+            Get Murmur
+          </a>
         </div>
       </nav>
 
       <main className="relative z-10">
-        <section id="intelligence" className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-12 pt-28 sm:pt-32">
-          <div className="pointer-events-none absolute left-1/2 top-1/4 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[130px] sm:h-[700px] sm:w-[700px]" />
-          <div className="pointer-events-none absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full bg-cyan-400/10 blur-[120px] sm:h-[500px] sm:w-[500px]" />
-
-          <div className="relative mb-14 w-full">
+        {/* HERO */}
+        <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pt-36">
+          <div className="relative mb-8 w-full">
             <SoundWaveBars />
           </div>
 
-          <div className="relative mx-auto max-w-4xl text-center">
-            <p className="inline-flex rounded-full border border-cyan-100/15 bg-cyan-200/8 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
-              Creative Audio Intelligence
+          <div className="relative mx-auto max-w-3xl text-center">
+            <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 sm:text-[11px] sm:tracking-[0.24em]">
+              On-device AI music generation
             </p>
-            <h1 className="mt-6 text-5xl font-black uppercase leading-none tracking-tight text-white sm:text-6xl md:text-7xl">
-              Intelligence You <span className="hero-gradient-text">Can Hear.</span>
+            <h1 className="mt-6 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl">
+              Compose <span className="hero-gradient-text">your mood.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium tracking-tight text-slate-300/85 sm:text-xl">
-              Experience the future of generative audio. A cinematic ecosystem built for the next generation of sound architects.
+            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
+              Murmur transforms presets or your own words into original instrumental
+              loops and soundscapes — generated privately, right on your iPhone.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link
-                href="/login"
-                className="rounded-xl bg-violet-600 px-10 py-4 text-xs font-black uppercase tracking-[0.2em] text-white shadow-[0_0_30px_rgba(89,13,242,0.5)] transition-all hover:scale-105 active:scale-95"
-              >
-                Tune In
-              </Link>
+            <div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
               <a
-                href="#archive"
-                className="glass-card rounded-xl border border-white/10 px-10 py-4 text-xs font-black uppercase tracking-[0.2em] text-slate-100 transition-all hover:bg-white/5"
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-generate rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.03] active:scale-95 sm:px-10"
               >
-                View Manifesto
+                Download on the App Store
+              </a>
+              <a
+                href="#how"
+                className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8 sm:px-10"
+              >
+                See how it works
               </a>
             </div>
+            <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-murmur-muted sm:text-[11px] sm:tracking-[0.24em]">
+              Free to download · For moments, focus, sleep &amp; play
+            </p>
           </div>
         </section>
 
-        <section id="architecture" className="mx-auto w-full max-w-screen-2xl px-6 py-20 sm:px-8 sm:py-24">
-          <div className="mb-14 flex items-center gap-4">
-            <div className="h-8 w-1 bg-gradient-to-b from-violet-500 to-cyan-400" />
-            <h2 className="text-3xl font-extrabold uppercase tracking-tight text-white">The Architecture</h2>
+        {/* HOW IT WORKS */}
+        <section id="how" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+          <div className="mb-10 flex items-center gap-4 sm:mb-14">
+            <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From a feeling to a sound</h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {architectureCards.map((card) => (
-              <article key={card.title} className="glass-card relative flex h-[420px] flex-col overflow-hidden rounded-lg p-8">
-                <div className="absolute left-0 top-0 h-1 w-full bg-violet-500/25 transition-colors hover:bg-violet-500" />
-                <div className="mb-auto">
-                  <div className="mb-8 flex gap-4 text-4xl text-cyan-300/85">
-                    <span>~</span>
-                    <span>|</span>
-                  </div>
-                  <h3 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white">{card.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-300/85">{card.description}</p>
-                </div>
-                <div className="mt-8 border-l-2 border-violet-400/40 pl-4">
-                  <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300/75">{card.footer}</span>
-                  <span className="text-xl font-black uppercase tracking-tight text-white">{card.stat}</span>
-                </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {steps.map((card) => (
+              <article key={card.step} className="glass-card relative flex flex-col overflow-hidden rounded-2xl p-8">
+                <span className="text-4xl font-black tracking-tight" style={{ color: card.accent }}>
+                  {card.step}
+                </span>
+                <h3 className="mt-6 text-2xl font-bold tracking-tight text-white">{card.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-murmur-text-2">{card.description}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <div className="mx-auto my-12 h-px w-full max-w-screen-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent px-6 sm:px-8" />
-
-        <section id="signal" className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16">
+        {/* CUSTOM PROMPTS */}
+        <section className="mx-auto grid w-full max-w-screen-xl grid-cols-1 items-center gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-14 lg:py-28">
           <div>
-            <h2 className="mb-8 text-4xl font-black uppercase leading-tight tracking-tight text-white md:text-5xl">
-              Total Control. <br /> <span className="hero-gradient-text">No compromise.</span>
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              Describe a mood,{" "}
+              <span className="hero-gradient-text">hear it become sound.</span>
             </h2>
-            <div className="space-y-8">
-              <div className="flex gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-cyan-300">=</div>
-                <div>
-                  <h4 className="mb-2 text-lg font-bold uppercase tracking-tight text-white">Tactile Precision</h4>
-                  <p className="text-sm text-slate-300/85">
-                    Every control responds with near-zero latency, tuned for long sessions and precise decisions.
-                  </p>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-murmur-text-2 sm:text-lg">
+              Murmur turns your words into musical style tokens, then composes an
+              original instrumental on-device. It responds best to descriptions of
+              genre, instruments, rhythm, mood, tempo, and texture.
+            </p>
+            <div className="mt-8 space-y-3.5">
+              {examplePrompts.map((prompt) => (
+                <div
+                  key={prompt}
+                  className="group relative rounded-2xl bg-gradient-to-r from-lilac/40 via-gen-end/25 to-transparent p-px transition-all duration-300 hover:from-lilac/80 hover:via-gen-end/45 hover:shadow-[0_0_30px_rgba(139,110,255,0.25)]"
+                >
+                  <div className="flex items-center gap-4 rounded-2xl bg-murmur-card/85 px-5 py-4 backdrop-blur-xl">
+                    <span className="relative flex h-3 w-3 shrink-0">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-lilac/60 blur-[3px] transition group-hover:bg-lilac" />
+                      <span className="relative inline-flex h-3 w-3 rounded-full bg-gradient-to-br from-lilac-fixed to-gen-end shadow-[0_0_10px_rgba(197,154,255,0.9)]" />
+                    </span>
+                    <p className="flex-1 text-sm leading-snug text-murmur-text">
+                      <span className="text-lilac/70">&ldquo;</span>
+                      {prompt}
+                      <span className="text-lilac/70">&rdquo;</span>
+                    </p>
+                    <span className="flex h-7 items-end gap-[3px] opacity-60 transition-opacity group-hover:opacity-100">
+                      <span className="w-[3px] rounded-full bg-lilac" style={{ height: "40%" }} />
+                      <span className="w-[3px] rounded-full bg-lilac-fixed" style={{ height: "85%" }} />
+                      <span className="w-[3px] rounded-full bg-gen-end" style={{ height: "55%" }} />
+                      <span className="w-[3px] rounded-full bg-lilac" style={{ height: "70%" }} />
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-cyan-300">+</div>
-                <div>
-                  <h4 className="mb-2 text-lg font-bold uppercase tracking-tight text-white">Neural Patching</h4>
-                  <p className="text-sm text-slate-300/85">
-                    Route audio intelligence through modular paths and shape behavior for your own workflow.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="group relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-violet-500/20 to-cyan-400/20 opacity-50 blur-3xl transition-opacity group-hover:opacity-80" />
-            <div className="glass-card relative aspect-video overflow-hidden rounded-xl border border-white/10">
-              <Image
-                className="h-full w-full object-cover opacity-80"
-                src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1400&q=80"
-                alt="Dark audio studio with glowing controls"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                <div>
-                  <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.35em] text-violet-300">Signal Status</p>
-                  <p className="text-xl font-bold uppercase tracking-tight text-white">Stable 192kHz</p>
-                </div>
-                <div className="flex h-12 items-end gap-1">
-                  <div className="h-4 w-1 bg-violet-400/30" />
-                  <div className="h-10 w-1 bg-violet-400 shadow-[0_0_10px_rgba(89,13,242,1)]" />
-                  <div className="h-6 w-1 bg-cyan-400/30" />
-                  <div className="h-8 w-1 bg-cyan-400 shadow-[0_0_10px_rgba(0,240,255,1)]" />
-                </div>
-              </div>
+          <div className="relative flex items-center justify-center">
+            <PlasmaOrb size={260} className="sm:hidden" />
+            <PlasmaOrb size={400} className="hidden sm:block" />
+            <div className="absolute bottom-2 left-0 right-0 px-4 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lilac sm:text-sm sm:tracking-[0.22em]">
+                Converting your mood to sound…
+              </p>
+              <p className="mt-2 text-xs text-murmur-muted">
+                Translating your description into musical style
+              </p>
             </div>
           </div>
         </section>
 
-        <footer id="archive" className="w-full border-t border-white/5 bg-gradient-to-b from-transparent to-black/40 pb-12 pt-20">
-          <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-12 px-6 sm:px-8">
-            <div className="flex flex-col items-center">
-              <div className="mb-8 text-lg font-black tracking-[0.3em] text-zinc-300">MURMUR</div>
-              <div className="mb-12 flex flex-wrap justify-center gap-8 sm:gap-12">
-                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 transition-colors hover:text-violet-400" href="#">
-                  Hardware
-                </a>
-                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 transition-colors hover:text-violet-400" href="#">
-                  Manifesto
-                </a>
-                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 transition-colors hover:text-violet-400" href="#">
-                  Privacy
-                </a>
-                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 transition-colors hover:text-violet-400" href="#">
-                  Support
-                </a>
-              </div>
+        {/* PRESETS */}
+        <section id="presets" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+          <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
+              <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">170+ curated styles</h2>
             </div>
-            <div className="flex flex-col items-center gap-6">
-              <div className="flex items-center gap-1">
-                <div className="h-4 w-0.5 bg-zinc-800" />
-                <div className="h-6 w-0.5 bg-violet-400/40" />
-                <div className="h-3 w-0.5 bg-zinc-800" />
-                <div className="h-5 w-0.5 bg-cyan-400/40" />
-                <div className="h-4 w-0.5 bg-zinc-800" />
-              </div>
-              <p className="text-center text-[9px] font-medium uppercase tracking-[0.3em] text-zinc-600">
-                © 2026 Murmur Audio Intelligence. All Rights Reserved.
+            <p className="max-w-md text-sm text-murmur-text-2">
+              Browse by category, save favorites, and create your own presets from prompts you love.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+            {categories.map((cat) => (
+              <article
+                key={cat.label}
+                className="glass-card group relative flex h-28 flex-col justify-between overflow-hidden rounded-2xl p-4 sm:h-32 sm:p-5"
+              >
+                <span
+                  className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-80"
+                  style={{
+                    background: `radial-gradient(75% 75% at 100% 0%, ${cat.color}, transparent 68%)`,
+                  }}
+                />
+                <span
+                  className="relative z-10 h-2.5 w-2.5 rounded-full"
+                  style={{ background: cat.color, boxShadow: `0 0 12px ${cat.color}` }}
+                />
+                <h3 className="relative z-10 text-base font-bold tracking-tight text-white sm:text-lg">{cat.label}</h3>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* FEATURES + LIBRARY */}
+        <section id="library" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
+            {features.map((feature) => (
+              <article key={feature.title} className="glass-card rounded-2xl p-6 sm:p-8">
+                <h3 className="text-xl font-bold tracking-tight text-white">{feature.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-murmur-text-2">{feature.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="glass-card mt-4 flex flex-col items-start gap-6 rounded-2xl p-6 sm:mt-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div>
+              <h3 className="text-xl font-bold tracking-tight text-white">Your private collection of moments</h3>
+              <p className="mt-2 max-w-xl text-sm text-murmur-text-2">
+                Saved songs live in your Library with a mini player, waveform bars, and progress —
+                with playback that continues on the Lock Screen and Dynamic Island.
               </p>
             </div>
+            <div className="flex h-12 items-end gap-1.5">
+              <div className="h-5 w-1.5 rounded-full bg-lilac/30" />
+              <div className="h-10 w-1.5 rounded-full bg-lilac shadow-[0_0_10px_rgba(197,154,255,0.9)]" />
+              <div className="h-7 w-1.5 rounded-full bg-gen-end/40" />
+              <div className="h-9 w-1.5 rounded-full bg-gen-end shadow-[0_0_10px_rgba(139,110,255,0.9)]" />
+              <div className="h-4 w-1.5 rounded-full bg-lilac/30" />
+            </div>
+          </div>
+        </section>
+
+        {/* PRO */}
+        <section id="pro" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+          <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-12">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-lilac/15 blur-3xl" />
+            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
+              <div>
+                <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
+                  Murmur Pro
+                </p>
+                <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-white md:text-5xl">
+                  Compose <span className="hero-gradient-text">without limits.</span>
+                </h2>
+                <p className="mt-5 max-w-md text-base leading-relaxed text-murmur-text-2">
+                  Murmur is free to start — Ambient, Lo-fi, Peaceful, Synthwave and
+                  Acoustic Guitar with short previews and loops. Pro unlocks the full studio.
+                </p>
+                <a
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-generate mt-8 inline-flex w-full justify-center rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.03] active:scale-95 sm:w-auto"
+                >
+                  Get Murmur
+                </a>
+              </div>
+
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {proPerks.map((perk) => (
+                  <li
+                    key={perk}
+                    className="flex items-start gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
+                  >
+                    <span className="mt-0.5 text-success">✦</span>
+                    <span>{perk}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="w-full border-t border-murmur-border bg-gradient-to-b from-transparent to-black/40 pb-12 pt-20">
+          <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center gap-10 px-6 sm:px-8">
+            <div className="flex flex-col items-center">
+              <div className="mb-6 flex items-center gap-3">
+                <MurmurMark size={30} />
+                <span className="text-lg font-black tracking-[0.3em] text-lilac">MURMUR</span>
+              </div>
+              <p className="mb-10 max-w-md text-center text-sm text-murmur-muted">
+                A pocket mood composer. Pick a mood, generate sound, keep the pieces you love.
+              </p>
+              <div className="mb-2 flex flex-wrap justify-center gap-8 sm:gap-12">
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
+                  How it works
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#presets">
+                  Presets
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#pro">
+                  Pro
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#">
+                  Privacy
+                </a>
+              </div>
+            </div>
+            <p className="text-center text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
+              © 2026 Murmur. Compose your mood.
+            </p>
           </div>
         </footer>
       </main>
