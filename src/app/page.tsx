@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SoundWaveBars } from "@/components/sound-wave-bars";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
+import { StyleCategoryGrid } from "@/components/style-category-grid";
 
 const SITE_URL = "https://www.murmurapps.site";
 
@@ -71,14 +72,14 @@ const steps = [
 ];
 
 const categories = [
-  { label: "Ambient", color: "#c59aff" },
-  { label: "Focus", color: "#00e5ff" },
-  { label: "Sleep", color: "#4a90e2" },
-  { label: "Cinematic", color: "#ffb74d" },
-  { label: "Jazz & Soul", color: "#ff8a65" },
-  { label: "Electronic", color: "#e040fb" },
-  { label: "Acoustic", color: "#aed581" },
-  { label: "World", color: "#4db6ac" },
+  { label: "Ambient", color: "#c59aff", sample: "/audio/styles/ambient.mp3" },
+  { label: "Focus", color: "#00e5ff", sample: "/audio/styles/focus.mp3" },
+  { label: "Sleep", color: "#4a90e2", sample: "/audio/styles/sleep.mp3" },
+  { label: "Cinematic", color: "#ffb74d", sample: "/audio/styles/cinematic.mp3" },
+  { label: "Jazz & Soul", color: "#ff8a65", sample: "/audio/styles/jazz.mp3" },
+  { label: "Electronic", color: "#e040fb", sample: "/audio/styles/electronic.mp3" },
+  { label: "Acoustic", color: "#aed581", sample: "/audio/styles/acoustic.mp3" },
+  { label: "World", color: "#4db6ac", sample: "/audio/styles/world.mp3" },
 ];
 
 const examplePrompts = [
@@ -302,30 +303,11 @@ export default function Home() {
               <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">170+ curated styles</h2>
             </div>
             <p className="max-w-md text-sm text-murmur-text-2">
-              Browse by category, save favorites, and create your own presets from prompts you love.
+              Tap a category to hear a short preview. Save favorites and create your own presets from prompts you love.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-            {categories.map((cat) => (
-              <article
-                key={cat.label}
-                className="glass-card group relative flex h-28 flex-col justify-between overflow-hidden rounded-2xl p-4 sm:h-32 sm:p-5"
-              >
-                <span
-                  className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-80"
-                  style={{
-                    background: `radial-gradient(75% 75% at 100% 0%, ${cat.color}, transparent 68%)`,
-                  }}
-                />
-                <span
-                  className="relative z-10 h-2.5 w-2.5 rounded-full"
-                  style={{ background: cat.color, boxShadow: `0 0 12px ${cat.color}` }}
-                />
-                <h3 className="relative z-10 text-base font-bold tracking-tight text-white sm:text-lg">{cat.label}</h3>
-              </article>
-            ))}
-          </div>
+          <StyleCategoryGrid categories={categories} />
         </section>
 
         {/* FEATURES + LIBRARY */}

@@ -9,9 +9,10 @@ const inter = Inter({
 });
 
 const SITE_URL = "https://www.murmurapps.site";
+// Bump when favicon assets change — forces browsers to drop stale tab icons.
+const FAVICON_VERSION = "3";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
   title: {
     default: "Murmur — Private, On-Device AI Music Generation for iPhone",
     template: "%s | Murmur",
@@ -19,7 +20,6 @@ export const metadata: Metadata = {
   description:
     "Murmur is a private, on-device AI music generator for iPhone. Turn presets or your own words into original AI-generated instrumental music — composed entirely on your phone with no cloud rendering. Powered by Magenta RT and boosted by the Apple Neural Engine.",
   applicationName: "Murmur",
-  generator: "Next.js",
   category: "music",
   keywords: [
     "AI generated music",
@@ -44,7 +44,29 @@ export const metadata: Metadata = {
   creator: "Murmur",
   publisher: "Murmur",
   alternates: {
-    canonical: "/",
+    canonical: SITE_URL,
+  },
+  icons: {
+    icon: [
+      {
+        url: `/favicon.ico?v=${FAVICON_VERSION}`,
+        type: "image/x-icon",
+        sizes: "any",
+      },
+      {
+        url: `/favicon-32.png?v=${FAVICON_VERSION}`,
+        type: "image/png",
+        sizes: "32x32",
+      },
+    ],
+    apple: [
+      {
+        url: `/apple-icon.png?v=${FAVICON_VERSION}`,
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+    shortcut: `/favicon.ico?v=${FAVICON_VERSION}`,
   },
   openGraph: {
     type: "website",
@@ -54,13 +76,21 @@ export const metadata: Metadata = {
       "Compose your mood. Turn presets or your own words into original AI-generated instrumental music, privately on your iPhone. No cloud rendering — powered by Magenta RT on the Apple Neural Engine.",
     url: SITE_URL,
     locale: "en_US",
-    images: [{ url: "/MurmurLogo.webp", width: 1024, height: 1024, alt: "Murmur" }],
+    images: [
+      {
+        url: `${SITE_URL}/MurmurLogo.webp`,
+        width: 1024,
+        height: 1024,
+        alt: "Murmur",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Murmur — Private, On-Device AI Music Generation",
     description:
       "Compose your mood. Private, on-device AI music generation for iPhone — powered by Magenta RT, boosted by the Apple Neural Engine.",
+    images: [`${SITE_URL}/MurmurLogo.webp`],
   },
   robots: {
     index: true,
