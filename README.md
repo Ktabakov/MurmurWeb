@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Murmur — Marketing Website
 
-## Getting Started
+Landing site for **[Murmur](https://www.murmurapps.site)** — a private, on-device AI music generator for iPhone.
 
-First, run the development server:
+**Compose your mood.** Murmur turns presets or your own words into original instrumental loops and soundscapes, generated entirely on your phone with no cloud rendering.
+
+Live site: [www.murmurapps.site](https://www.murmurapps.site)
+
+## About the site
+
+This repo is the public marketing website (not the iOS app). It covers:
+
+- On-device AI music generation and privacy
+- How it works: pick a mood → compose on-device → keep what you love
+- 170+ curated style presets and custom mood prompts
+- **Under the hood:** Magenta RT, Apple Neural Engine, fully on-device
+- Murmur Pro features
+- Coming soon to the App Store (no account/login flow on the site)
+
+Design follows the app’s **Stitch** theme: dark glassy UI, lilac/purple glow, waveform motif, and the plasma orb on the “describe your mood” section.
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (App Router, static export)
+- React 19 + TypeScript
+- Tailwind CSS v4
+- Framer Motion (animated waveform bars)
+- Deployed via **GitHub Pages** (GitHub Actions)
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # static export → out/
+npm run lint
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/              # pages, layout, SEO (robots, sitemap), icons
+  assets/           # source MurmurLogo.webp
+  components/       # PlasmaOrb, SoundWaveBars, MurmurMark, etc.
+public/
+  MurmurLogo.webp   # logo copy for static hosting / OG
+  CNAME             # www.murmurapps.site
+.github/workflows/
+  deploy-pages.yml  # build + deploy to GitHub Pages
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment (GitHub Pages)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push to `main`.
+2. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions** (not “Deploy from branch / root”).
+3. The workflow builds a static site (`output: "export"`) and publishes the `out/` folder.
 
-## Deploy on Vercel
+Custom domain: `www.murmurapps.site` (see `public/CNAME`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Updating the site icon
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Replace `src/assets/MurmurLogo.webp`, then regenerate PNG icons:
+
+```bash
+sips -s format png -z 512 512 src/assets/MurmurLogo.webp --out src/app/icon.png
+sips -s format png -z 180 180 src/assets/MurmurLogo.webp --out src/app/apple-icon.png
+cp src/assets/MurmurLogo.webp public/MurmurLogo.webp
+```
+
+## When the App Store listing is live
+
+Search for `Coming soon` in `src/app/page.tsx` and swap the non-link CTAs for your real App Store URL.
+
+## Related
+
+The Murmur iOS app is a separate codebase. This website is the public face for discovery, SEO, and launch.
