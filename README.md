@@ -99,10 +99,12 @@ public/
 Replace `src/assets/MurmurLogo.webp`, then regenerate favicons:
 
 ```bash
-npx --yes png-to-ico public/favicon-32.png > public/favicon.ico
 sips -s format png -z 32 32 src/assets/MurmurLogo.webp --out public/favicon-32.png
 sips -s format png -z 180 180 src/assets/MurmurLogo.webp --out public/apple-icon.png
 cp src/assets/MurmurLogo.webp public/MurmurLogo.webp
+# Small .ico only (avoid huge multi-size files — browsers may show "M" instead)
+python3 -m venv .venv-favicon && .venv-favicon/bin/pip install pillow -q
+.venv-favicon/bin/python -c "from PIL import Image; Image.open('public/favicon-32.png').save('public/favicon.ico', format='ICO', sizes=[(32,32)])"
 ```
 
 Bump `FAVICON_VERSION` in `src/app/layout.tsx` if the browser still shows an old tab icon.

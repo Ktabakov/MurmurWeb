@@ -10,16 +10,15 @@ const inter = Inter({
 
 const SITE_URL = "https://www.murmurapps.site";
 // Bump when favicon assets change — forces browsers to drop stale tab icons.
-const FAVICON_VERSION = "3";
+const FAVICON_VERSION = "4";
 
-export const metadata: Metadata = {
+const siteMetadata = {
   title: {
     default: "Murmur — Private, On-Device AI Music Generation for iPhone",
     template: "%s | Murmur",
   },
   description:
     "Murmur is a private, on-device AI music generator for iPhone. Turn presets or your own words into original AI-generated instrumental music — composed entirely on your phone with no cloud rendering. Powered by Magenta RT and boosted by the Apple Neural Engine.",
-  applicationName: "Murmur",
   category: "music",
   keywords: [
     "AI generated music",
@@ -45,28 +44,6 @@ export const metadata: Metadata = {
   publisher: "Murmur",
   alternates: {
     canonical: SITE_URL,
-  },
-  icons: {
-    icon: [
-      {
-        url: `/favicon.ico?v=${FAVICON_VERSION}`,
-        type: "image/x-icon",
-        sizes: "any",
-      },
-      {
-        url: `/favicon-32.png?v=${FAVICON_VERSION}`,
-        type: "image/png",
-        sizes: "32x32",
-      },
-    ],
-    apple: [
-      {
-        url: `/apple-icon.png?v=${FAVICON_VERSION}`,
-        type: "image/png",
-        sizes: "180x180",
-      },
-    ],
-    shortcut: `/favicon.ico?v=${FAVICON_VERSION}`,
   },
   openGraph: {
     type: "website",
@@ -103,7 +80,41 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-};
+} satisfies Omit<Metadata, "metadataBase" | "icons">;
+
+export function generateMetadata(): Metadata {
+  const metadataBase =
+    process.env.NODE_ENV === "development"
+      ? new URL("http://localhost:3000")
+      : new URL(SITE_URL);
+
+  return {
+    ...siteMetadata,
+    metadataBase,
+    icons: {
+      icon: [
+        {
+          url: `/favicon-32.png?v=${FAVICON_VERSION}`,
+          type: "image/png",
+          sizes: "32x32",
+        },
+        {
+          url: `/favicon.ico?v=${FAVICON_VERSION}`,
+          type: "image/x-icon",
+          sizes: "32x32",
+        },
+      ],
+      apple: [
+        {
+          url: `/apple-icon.png?v=${FAVICON_VERSION}`,
+          type: "image/png",
+          sizes: "180x180",
+        },
+      ],
+      shortcut: `/favicon-32.png?v=${FAVICON_VERSION}`,
+    },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#0a0712",
