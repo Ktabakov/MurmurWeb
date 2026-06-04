@@ -4,7 +4,7 @@ import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
 
-const SITE_URL = "https://www.murmurapps.site";
+const SITE_URL = "https://murmurapps.site";
 
 // Structured data for richer search results (SoftwareApplication / music).
 const jsonLd = {

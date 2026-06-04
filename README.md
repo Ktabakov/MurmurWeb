@@ -2,7 +2,7 @@
 
 Official marketing site for **Murmur** — an iPhone app that uses on-device AI to generate original instrumental music from moods and presets.
 
-**Live site:** [www.murmurapps.site](https://www.murmurapps.site)
+**Live site:** [murmurapps.site](https://murmurapps.site)
 
 ---
 
@@ -96,18 +96,16 @@ public/
 
 ## Site icon
 
-Replace `src/assets/MurmurLogo.webp`, then regenerate favicons:
+Icons live in `public/` (`favicon-32.png`, `icon-192.png`, `favicon.ico`, `apple-icon.png`). After updating `src/assets/MurmurLogo.webp`:
 
 ```bash
-sips -s format png -z 32 32 src/assets/MurmurLogo.webp --out public/favicon-32.png
-sips -s format png -z 180 180 src/assets/MurmurLogo.webp --out public/apple-icon.png
+sips -z 32 32 src/assets/MurmurLogo.webp --out public/favicon-32.png
+sips -z 192 192 src/assets/MurmurLogo.webp --out public/icon-192.png
+sips -z 180 180 src/assets/MurmurLogo.webp --out public/apple-icon.png
 cp src/assets/MurmurLogo.webp public/MurmurLogo.webp
-# Small .ico only (avoid huge multi-size files — browsers may show "M" instead)
-python3 -m venv .venv-favicon && .venv-favicon/bin/pip install pillow -q
-.venv-favicon/bin/python -c "from PIL import Image; Image.open('public/favicon-32.png').save('public/favicon.ico', format='ICO', sizes=[(32,32)])"
 ```
 
-Bump `FAVICON_VERSION` in `src/app/layout.tsx` if the browser still shows an old tab icon.
+Keep `public/favicon.ico` small (~2 KB). Do not replace it with a huge multi-size ICO — browsers may ignore it and show “M” for Murmur. The committed file was generated once from the 32×32 PNG.
 
 ---
 

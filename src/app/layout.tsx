@@ -8,11 +8,13 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://www.murmurapps.site";
-// Bump when favicon assets change — forces browsers to drop stale tab icons.
-const FAVICON_VERSION = "4";
+/** Apex domain — matches where GitHub Pages serves the site (www redirects here). */
+const SITE_URL = "https://murmurapps.site";
+const ASSET_ORIGIN =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : SITE_URL;
 
-const siteMetadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Murmur — Private, On-Device AI Music Generation for iPhone",
     template: "%s | Murmur",
@@ -44,6 +46,33 @@ const siteMetadata = {
   publisher: "Murmur",
   alternates: {
     canonical: SITE_URL,
+  },
+  icons: {
+    icon: [
+      {
+        url: `${ASSET_ORIGIN}/icon-192.png`,
+        type: "image/png",
+        sizes: "192x192",
+      },
+      {
+        url: `${ASSET_ORIGIN}/favicon-32.png`,
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: `${ASSET_ORIGIN}/favicon.ico`,
+        type: "image/x-icon",
+        sizes: "32x32",
+      },
+    ],
+    apple: [
+      {
+        url: `${ASSET_ORIGIN}/apple-icon.png`,
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+    shortcut: `${ASSET_ORIGIN}/favicon-32.png`,
   },
   openGraph: {
     type: "website",
@@ -80,41 +109,7 @@ const siteMetadata = {
       "max-video-preview": -1,
     },
   },
-} satisfies Omit<Metadata, "metadataBase" | "icons">;
-
-export function generateMetadata(): Metadata {
-  const metadataBase =
-    process.env.NODE_ENV === "development"
-      ? new URL("http://localhost:3000")
-      : new URL(SITE_URL);
-
-  return {
-    ...siteMetadata,
-    metadataBase,
-    icons: {
-      icon: [
-        {
-          url: `/favicon-32.png?v=${FAVICON_VERSION}`,
-          type: "image/png",
-          sizes: "32x32",
-        },
-        {
-          url: `/favicon.ico?v=${FAVICON_VERSION}`,
-          type: "image/x-icon",
-          sizes: "32x32",
-        },
-      ],
-      apple: [
-        {
-          url: `/apple-icon.png?v=${FAVICON_VERSION}`,
-          type: "image/png",
-          sizes: "180x180",
-        },
-      ],
-      shortcut: `/favicon-32.png?v=${FAVICON_VERSION}`,
-    },
-  };
-}
+};
 
 export const viewport: Viewport = {
   themeColor: "#0a0712",
@@ -128,6 +123,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
+      <head>
+        <link rel="icon" href={`${ASSET_ORIGIN}/icon-192.png`} type="image/png" sizes="192x192" />
+        <link rel="icon" href={`${ASSET_ORIGIN}/favicon-32.png`} type="image/png" sizes="32x32" />
+        <link rel="icon" href={`${ASSET_ORIGIN}/favicon.ico`} sizes="32x32" />
+        <link rel="apple-touch-icon" href={`${ASSET_ORIGIN}/apple-icon.png`} sizes="180x180" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
