@@ -3,6 +3,7 @@ import { SoundWaveBars } from "@/components/sound-wave-bars";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
+import { MoodPromptList } from "@/components/mood-prompt-list";
 
 const SITE_URL = "https://murmurapps.site";
 
@@ -83,10 +84,36 @@ const categories = [
 ];
 
 const examplePrompts = [
-  "warm dreamy synth pads with a slow pulse",
-  "lo-fi piano with soft vinyl crackle, no drums",
-  "spacious cinematic strings, slow and hopeful",
-  "gentle acoustic guitar fingerpicking for focus",
+  {
+    label: "Calm and weightless",
+    prompt: "Calm and weightless — warm ambient pads drifting over a slow, deep sub bass",
+    sample: "/audio/moods/calm-weightless.mp3",
+  },
+  {
+    label: "Focused and steady",
+    prompt: "Focused and steady — mellow lo-fi beat with soft Rhodes keys and faint vinyl warmth",
+    sample: "/audio/moods/focused-steady.mp3",
+  },
+  {
+    label: "Hopeful and cinematic",
+    prompt: "Hopeful and cinematic — slow strings swelling with gentle piano and spacious reverb",
+    sample: "/audio/moods/hopeful-cinematic.mp3",
+  },
+  {
+    label: "Dreamy and nostalgic",
+    prompt: "Dreamy and nostalgic — shimmering synth pads, very slow tempo, gentle tape hiss",
+    sample: "/audio/moods/dreamy-nostalgic.mp3",
+  },
+  {
+    label: "Serene and sleepy",
+    prompt: "Serene and sleepy — soft drones and distant chimes, no drums, barely moving",
+    sample: "/audio/moods/serene-sleepy.mp3",
+  },
+  {
+    label: "Bright and uplifting",
+    prompt: "Bright and uplifting — lively acoustic guitar with light percussion and a warm groove",
+    sample: "/audio/moods/bright-uplifting.mp3",
+  },
 ];
 
 const features = [
@@ -253,32 +280,7 @@ export default function Home() {
               original instrumental on-device. It responds best to descriptions of
               genre, instruments, rhythm, mood, tempo, and texture.
             </p>
-            <div className="mt-8 space-y-3.5">
-              {examplePrompts.map((prompt) => (
-                <div
-                  key={prompt}
-                  className="group relative rounded-2xl bg-gradient-to-r from-lilac/40 via-gen-end/25 to-transparent p-px transition-all duration-300 hover:from-lilac/80 hover:via-gen-end/45 hover:shadow-[0_0_30px_rgba(173,99,255,0.25)]"
-                >
-                  <div className="flex items-center gap-4 rounded-2xl bg-murmur-card/85 px-5 py-4 backdrop-blur-xl">
-                    <span className="relative flex h-3 w-3 shrink-0">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-lilac/60 blur-[3px] transition group-hover:bg-lilac" />
-                      <span className="relative inline-flex h-3 w-3 rounded-full bg-gradient-to-br from-lilac-fixed to-gen-end shadow-[0_0_10px_rgba(197,154,255,0.9)]" />
-                    </span>
-                    <p className="flex-1 text-sm leading-snug text-murmur-text">
-                      <span className="text-lilac/70">&ldquo;</span>
-                      {prompt}
-                      <span className="text-lilac/70">&rdquo;</span>
-                    </p>
-                    <span className="flex h-7 items-end gap-[3px] opacity-60 transition-opacity group-hover:opacity-100">
-                      <span className="w-[3px] rounded-full bg-lilac" style={{ height: "40%" }} />
-                      <span className="w-[3px] rounded-full bg-lilac-fixed" style={{ height: "85%" }} />
-                      <span className="w-[3px] rounded-full bg-gen-end" style={{ height: "55%" }} />
-                      <span className="w-[3px] rounded-full bg-lilac" style={{ height: "70%" }} />
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <MoodPromptList prompts={examplePrompts} />
           </div>
 
           <div className="relative flex items-center justify-center">
