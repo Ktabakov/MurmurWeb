@@ -54,6 +54,7 @@ export const metadata: Metadata = {
       "Compose your mood. Turn presets or your own words into original AI-generated instrumental music, privately on your iPhone. No cloud rendering — powered by Magenta RT on the Apple Neural Engine.",
     url: SITE_URL,
     locale: "en_US",
+    images: [{ url: "/MurmurLogo.webp", width: 1024, height: 1024, alt: "Murmur" }],
   },
   twitter: {
     card: "summary_large_image",

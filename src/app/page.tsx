@@ -105,7 +105,7 @@ const features = [
       "The core generation flow runs entirely on your iPhone using the Apple Neural Engine. No cloud rendering.",
   },
   {
-    title: "Your sound, replayable",
+    title: "Your songs, replayable",
     description:
       "Saved pieces become WAVs in your Library — rename, share, and pick up playback from the Lock Screen.",
   },
@@ -132,8 +132,7 @@ export default function Home() {
       <nav className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(10,7,18,0.88)_0%,rgba(10,7,18,0)_100%)]">
         <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3">
-            <MurmurMark size={30} className="sm:hidden" />
-            <MurmurMark size={34} className="hidden sm:inline-flex" />
+            <MurmurMark size={32} />
             <span className="text-base font-black tracking-[0.22em] text-lilac drop-shadow-[0_0_12px_rgba(197,154,255,0.35)] sm:text-2xl sm:tracking-[0.3em]">
               MURMUR
             </span>
@@ -199,7 +198,7 @@ export default function Home() {
         <section id="how" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
           <div className="mb-10 flex items-center gap-4 sm:mb-14">
             <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From a feeling to a sound</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From a feeling to music</h2>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -216,22 +215,28 @@ export default function Home() {
         </section>
 
         {/* UNDER THE HOOD */}
-        <section className="mx-auto w-full max-w-screen-xl px-5 pb-4 sm:px-8">
-          <div className="glass-card rounded-2xl p-6 sm:p-8">
-            <p className="mb-6 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-murmur-muted sm:text-[11px]">
-              Under the hood
-            </p>
-            <div className="grid grid-cols-1 gap-7 sm:grid-cols-3 sm:gap-5 sm:divide-x sm:divide-lilac/10">
-              {techStrip.map((item) => (
-                <div key={item.label} className="flex flex-col items-center gap-2.5 px-2 text-center">
-                  <span className="h-2 w-2 rounded-full bg-gradient-to-br from-lilac-fixed to-gen-end shadow-[0_0_10px_rgba(197,154,255,0.9)]" />
-                  <span className="text-base font-bold leading-snug tracking-tight text-white">
-                    {item.label}
-                  </span>
-                  <span className="max-w-[20rem] text-sm leading-relaxed text-murmur-text-2">{item.detail}</span>
-                </div>
-              ))}
-            </div>
+        <section className="mx-auto w-full max-w-screen-xl px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+          <div className="mb-10 flex items-center gap-4 sm:mb-14">
+            <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Under the hood</h2>
+          </div>
+          <p className="mb-10 max-w-2xl text-base leading-relaxed text-murmur-text-2 sm:mb-14 sm:text-lg">
+            Murmur runs entirely on your iPhone — from style tokens to the final waveform, with no cloud in between.
+          </p>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {techStrip.map((item) => (
+              <article
+                key={item.label}
+                className="glass-card flex flex-col items-center gap-4 rounded-2xl p-8 text-center sm:items-start sm:text-left"
+              >
+                <span className="h-3 w-3 rounded-full bg-gradient-to-br from-lilac-fixed to-gen-end shadow-[0_0_14px_rgba(197,154,255,0.9)]" />
+                <h3 className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">
+                  {item.label}
+                </h3>
+                <p className="text-sm leading-relaxed text-murmur-text-2 sm:text-base">{item.detail}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -240,7 +245,7 @@ export default function Home() {
           <div>
             <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
               Describe a mood,{" "}
-              <span className="hero-gradient-text">hear it become sound.</span>
+              <span className="hero-gradient-text">hear it become music.</span>
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-murmur-text-2 sm:text-lg">
               Murmur turns your words into musical style tokens, then composes an
@@ -280,7 +285,7 @@ export default function Home() {
             <PlasmaOrb size={400} className="hidden sm:block" />
             <div className="absolute bottom-2 left-0 right-0 px-4 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lilac sm:text-sm sm:tracking-[0.22em]">
-                Converting your mood to sound…
+                Converting your mood to music…
               </p>
               <p className="mt-2 text-xs text-murmur-muted">
                 Translating your description into musical style
@@ -398,7 +403,7 @@ export default function Home() {
                 <span className="text-lg font-black tracking-[0.3em] text-lilac">MURMUR</span>
               </div>
               <p className="mb-10 max-w-md text-center text-sm text-murmur-muted">
-                A pocket mood composer. Pick a mood, generate sound, keep the pieces you love.
+                A pocket mood composer. Pick a mood, generate music, keep the pieces you love.
               </p>
               <div className="mb-2 flex flex-wrap justify-center gap-8 sm:gap-12">
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
