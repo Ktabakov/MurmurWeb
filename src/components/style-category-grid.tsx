@@ -78,7 +78,7 @@ export function StyleCategoryGrid({ categories }: StyleCategoryGridProps) {
               className={clsx(
                 "glass-card group relative flex h-28 w-full flex-col justify-between overflow-hidden rounded-2xl p-4 text-left transition-all duration-300 sm:h-32 sm:p-5",
                 "cursor-pointer hover:border-lilac/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac",
-                isPlaying && "border-lilac/40 shadow-[0_0_28px_rgba(139,110,255,0.35)]"
+                isPlaying && "border-lilac/40 shadow-[0_0_28px_rgba(173,99,255,0.35)]"
               )}
             >
               <span

@@ -60,14 +60,14 @@ const steps = [
     title: "Compose on-device",
     description:
       "Murmur turns your words into musical style tokens and generates an original instrumental piece directly on your phone.",
-    accent: "#a78bff",
+    accent: "#d4a8ff",
   },
   {
     step: "03",
     title: "Keep what you love",
     description:
       "Play, save to your Library, turn a prompt into a reusable preset, then replay, share, or trim and fade.",
-    accent: "#8b6eff",
+    accent: "#ad63ff",
   },
 ];
 
@@ -128,7 +128,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-5%,rgba(34,16,60,0.85),transparent_42%),radial-gradient(circle_at_84%_24%,rgba(139,110,255,0.08),transparent_34%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-5%,rgba(34,16,60,0.85),transparent_42%),radial-gradient(circle_at_84%_24%,rgba(173,99,255,0.08),transparent_34%)]" />
 
       <nav className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(10,7,18,0.88)_0%,rgba(10,7,18,0)_100%)]">
         <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
@@ -152,7 +152,7 @@ export default function Home() {
               Pro
             </a>
           </div>
-          <span className="flex shrink-0 items-center gap-2 rounded-full border border-lilac/30 bg-lilac/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(139,110,255,0.15)] sm:px-5 sm:tracking-[0.2em]">
+          <span className="flex shrink-0 items-center gap-2 rounded-full border border-lilac/30 bg-lilac/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(173,99,255,0.15)] sm:px-5 sm:tracking-[0.2em]">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lilac shadow-[0_0_8px_rgba(197,154,255,0.9)]" />
             Coming soon
           </span>
@@ -257,7 +257,7 @@ export default function Home() {
               {examplePrompts.map((prompt) => (
                 <div
                   key={prompt}
-                  className="group relative rounded-2xl bg-gradient-to-r from-lilac/40 via-gen-end/25 to-transparent p-px transition-all duration-300 hover:from-lilac/80 hover:via-gen-end/45 hover:shadow-[0_0_30px_rgba(139,110,255,0.25)]"
+                  className="group relative rounded-2xl bg-gradient-to-r from-lilac/40 via-gen-end/25 to-transparent p-px transition-all duration-300 hover:from-lilac/80 hover:via-gen-end/45 hover:shadow-[0_0_30px_rgba(173,99,255,0.25)]"
                 >
                   <div className="flex items-center gap-4 rounded-2xl bg-murmur-card/85 px-5 py-4 backdrop-blur-xl">
                     <span className="relative flex h-3 w-3 shrink-0">
@@ -333,7 +333,7 @@ export default function Home() {
               <div className="h-5 w-1.5 rounded-full bg-lilac/30" />
               <div className="h-10 w-1.5 rounded-full bg-lilac shadow-[0_0_10px_rgba(197,154,255,0.9)]" />
               <div className="h-7 w-1.5 rounded-full bg-gen-end/40" />
-              <div className="h-9 w-1.5 rounded-full bg-gen-end shadow-[0_0_10px_rgba(139,110,255,0.9)]" />
+              <div className="h-9 w-1.5 rounded-full bg-gen-end shadow-[0_0_10px_rgba(173,99,255,0.9)]" />
               <div className="h-4 w-1.5 rounded-full bg-lilac/30" />
             </div>
           </div>

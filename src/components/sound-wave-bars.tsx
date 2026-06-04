@@ -24,7 +24,7 @@ export function SoundWaveBars() {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <div className="pointer-events-none absolute inset-x-10 top-1/2 h-11 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,transparent,rgba(218,189,255,0.4),rgba(139,110,255,0.4),transparent)] blur-xl mix-blend-screen" />
+      <div className="pointer-events-none absolute inset-x-10 top-1/2 h-11 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,transparent,rgba(218,189,255,0.4),rgba(173,99,255,0.4),transparent)] blur-xl mix-blend-screen" />
 
       <div className="flex h-full w-full items-center justify-center gap-[6px] sm:gap-2">
         {bars.map((index) => {

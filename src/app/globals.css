@@ -25,9 +25,9 @@
   --color-lilac: #dabdff;
   --color-lilac-fixed: #eddcff;
   --color-lilac-glow: #c59aff;
-  --color-purple: #5706f1;
-  --color-gen-start: #a78bff;
-  --color-gen-end: #8b6eff;
+  --color-purple: #6d16d9;
+  --color-gen-start: #c59aff;
+  --color-gen-end: #ad63ff;
 
   --color-success: #4ade80;
   --color-error: #ffb4ab;
@@ -78,7 +78,7 @@ body {
 /* Compose / Generate gradient button */
 .btn-generate {
   background: linear-gradient(135deg, var(--color-gen-start), var(--color-gen-end));
-  box-shadow: 0 0 38px rgba(139, 110, 255, 0.45);
+  box-shadow: 0 0 38px rgba(173, 99, 255, 0.45);
 }
 
 .btn-secondary {
@@ -142,9 +142,9 @@ body {
 .orb-atmosphere {
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(124, 58, 255, 0.42) 0%,
-    rgba(87, 6, 241, 0.26) 28%,
-    rgba(87, 6, 241, 0) 64%
+    rgba(173, 99, 255, 0.42) 0%,
+    rgba(109, 22, 217, 0.26) 28%,
+    rgba(109, 22, 217, 0) 64%
   );
   filter: blur(22px);
   animation: haze-breathe 7s ease-in-out infinite;
@@ -156,7 +156,7 @@ body {
     circle at 50% 44%,
     rgba(218, 189, 255, 0.95) 0%,
     rgba(197, 154, 255, 0.65) 42%,
-    rgba(139, 110, 255, 0.25) 66%,
+    rgba(173, 99, 255, 0.25) 66%,
     transparent 78%
   );
   filter: blur(12px);
@@ -175,8 +175,8 @@ body {
   box-shadow:
     0 0 32px 6px rgba(237, 220, 255, 0.7),
     0 0 72px 22px rgba(197, 154, 255, 0.55),
-    0 0 140px 50px rgba(139, 110, 255, 0.38),
-    0 0 240px 96px rgba(87, 6, 241, 0.22);
+    0 0 140px 50px rgba(173, 99, 255, 0.38),
+    0 0 240px 96px rgba(109, 22, 217, 0.22);
   animation:
     orb-pulse 4s ease-in-out infinite,
     orb-wobble 8s ease-in-out infinite;

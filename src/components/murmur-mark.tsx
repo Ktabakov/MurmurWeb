@@ -22,7 +22,7 @@ export function MurmurMark({ className, size = 36 }: MurmurMarkProps) {
         width: size,
         height: size,
         background: "linear-gradient(155deg, #1a1830 0%, #0f0d1c 100%)",
-        boxShadow: "inset 0 0 0 1px rgba(218,189,255,0.16), 0 0 18px rgba(139,110,255,0.3)",
+        boxShadow: "inset 0 0 0 1px rgba(218,189,255,0.16), 0 0 18px rgba(173,99,255,0.3)",
       }}
       aria-hidden="true"
     >
