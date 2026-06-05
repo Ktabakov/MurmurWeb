@@ -10,8 +10,6 @@ const inter = Inter({
 
 /** Apex domain — matches where GitHub Pages serves the site (www redirects here). */
 const SITE_URL = "https://murmurapps.site";
-const ASSET_ORIGIN =
-  process.env.NODE_ENV === "development" ? "http://localhost:3000" : SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -46,43 +44,6 @@ export const metadata: Metadata = {
   publisher: "Murmur",
   alternates: {
     canonical: SITE_URL,
-  },
-  icons: {
-    icon: [
-      {
-        url: `${ASSET_ORIGIN}/favicon-48.png`,
-        type: "image/png",
-        sizes: "48x48",
-      },
-      {
-        url: `${ASSET_ORIGIN}/favicon-96.png`,
-        type: "image/png",
-        sizes: "96x96",
-      },
-      {
-        url: `${ASSET_ORIGIN}/icon-192.png`,
-        type: "image/png",
-        sizes: "192x192",
-      },
-      {
-        url: `${ASSET_ORIGIN}/favicon.ico`,
-        type: "image/x-icon",
-        sizes: "48x48",
-      },
-      {
-        url: `${ASSET_ORIGIN}/favicon-32.png`,
-        type: "image/png",
-        sizes: "32x32",
-      },
-    ],
-    apple: [
-      {
-        url: `${ASSET_ORIGIN}/apple-icon.png`,
-        type: "image/png",
-        sizes: "180x180",
-      },
-    ],
-    shortcut: `${ASSET_ORIGIN}/favicon-48.png`,
   },
   openGraph: {
     type: "website",
@@ -133,6 +94,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
+      <head>
+        <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96" />
+        <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
