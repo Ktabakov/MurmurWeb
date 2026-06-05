@@ -4,6 +4,7 @@ import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
 import { MoodPromptList } from "@/components/mood-prompt-list";
+import { FaqSection } from "@/components/faq-section";
 
 const SITE_URL = "https://murmurapps.site";
 
@@ -44,7 +45,7 @@ const techStrip = [
   },
   {
     label: "100% on-device & private",
-    detail: "Your prompts and audio never leave your phone.",
+    detail: "Your prompts and audio never leave your phone — with no expensive cloud data servers generating your music.",
   },
 ];
 
@@ -148,12 +149,62 @@ const proPerks = [
   "Model choice: Base or Large",
 ];
 
+const faqItems = [
+  {
+    question: "Can I generate AI music locally on my phone?",
+    answer:
+      "Yes. Murmur generates AI music entirely on your iPhone using Magenta RT and the Apple Neural Engine. Your prompts and generated audio are processed locally — not sent to a cloud server for rendering.",
+  },
+  {
+    question: "Is Murmur private? Does my music go to the cloud?",
+    answer:
+      "Murmur is built for privacy. The core music generation flow runs on-device, so your mood descriptions and generated instrumentals stay on your phone. We don't collect your prompts or audio, and there's no cloud rendering step.",
+  },
+  {
+    question: "What's the best offline AI music app for iPhone?",
+    answer:
+      "Murmur is designed for private, on-device AI music generation on iPhone. Once the AI models are downloaded, you can compose instrumental music from presets or your own mood descriptions without relying on cloud generation.",
+  },
+  {
+    question: "How does on-device AI music generation work?",
+    answer:
+      "You pick a preset or describe a mood in your own words. Murmur translates that text into musical style tokens, then Magenta RT composes an original instrumental piece directly on your iPhone — accelerated by the Apple Neural Engine.",
+  },
+  {
+    question: "Do I need an internet connection to make music?",
+    answer:
+      "You need a connection the first time to download the AI models. After that, generation runs locally on your phone. Murmur doesn't require cloud rendering for each new piece of music you create.",
+  },
+  {
+    question: "What makes Murmur different from other AI music generators?",
+    answer:
+      "Most AI music tools render in the cloud, which means expensive GPU servers and costly monthly subscriptions. Murmur generates music on your iPhone instead — no cloud rendering, no expensive data servers to run, and no pricey subscription just to cover infrastructure. You get private, local generation with instrumental output, 170+ curated presets, and custom mood prompts powered by on-device AI.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-murmur-base text-murmur-text">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-5%,rgba(34,16,60,0.85),transparent_42%),radial-gradient(circle_at_84%_24%,rgba(173,99,255,0.08),transparent_34%)]" />
 
@@ -177,6 +228,9 @@ export default function Home() {
             </a>
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#pro">
               Pro
+            </a>
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#faq">
+              FAQ
             </a>
           </div>
           <span className="flex shrink-0 items-center gap-2 rounded-full border border-lilac/30 bg-lilac/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(173,99,255,0.15)] sm:px-5 sm:tracking-[0.2em]">
@@ -378,6 +432,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section id="faq" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+          <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
+              <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                Frequently asked <span className="hero-gradient-text">questions</span>
+              </h2>
+            </div>
+            <p className="max-w-md text-sm text-murmur-text-2">
+              Private, on-device AI music generation — how Murmur works on your iPhone.
+            </p>
+          </div>
+
+          <FaqSection items={faqItems} />
+        </section>
+
         {/* FOOTER */}
         <footer className="w-full border-t border-murmur-border bg-gradient-to-b from-transparent to-black/40 pb-12 pt-20">
           <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center gap-10 px-6 sm:px-8">
@@ -398,6 +469,9 @@ export default function Home() {
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#pro">
                   Pro
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#faq">
+                  FAQ
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="/privacy/">
                   Privacy

@@ -50,18 +50,28 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: `${ASSET_ORIGIN}/favicon-48.png`,
+        type: "image/png",
+        sizes: "48x48",
+      },
+      {
+        url: `${ASSET_ORIGIN}/favicon-96.png`,
+        type: "image/png",
+        sizes: "96x96",
+      },
+      {
         url: `${ASSET_ORIGIN}/icon-192.png`,
         type: "image/png",
         sizes: "192x192",
       },
       {
-        url: `${ASSET_ORIGIN}/favicon-32.png`,
-        type: "image/png",
-        sizes: "32x32",
-      },
-      {
         url: `${ASSET_ORIGIN}/favicon.ico`,
         type: "image/x-icon",
+        sizes: "48x48",
+      },
+      {
+        url: `${ASSET_ORIGIN}/favicon-32.png`,
+        type: "image/png",
         sizes: "32x32",
       },
     ],
@@ -72,7 +82,7 @@ export const metadata: Metadata = {
         sizes: "180x180",
       },
     ],
-    shortcut: `${ASSET_ORIGIN}/favicon-32.png`,
+    shortcut: `${ASSET_ORIGIN}/favicon-48.png`,
   },
   openGraph: {
     type: "website",
@@ -123,12 +133,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
-      <head>
-        <link rel="icon" href={`${ASSET_ORIGIN}/icon-192.png`} type="image/png" sizes="192x192" />
-        <link rel="icon" href={`${ASSET_ORIGIN}/favicon-32.png`} type="image/png" sizes="32x32" />
-        <link rel="icon" href={`${ASSET_ORIGIN}/favicon.ico`} sizes="32x32" />
-        <link rel="apple-touch-icon" href={`${ASSET_ORIGIN}/apple-icon.png`} sizes="180x180" />
-      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

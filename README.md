@@ -96,16 +96,17 @@ public/
 
 ## Site icon
 
-Icons live in `public/` (`favicon-32.png`, `icon-192.png`, `favicon.ico`, `apple-icon.png`). After updating `src/assets/MurmurLogo.webp`:
+Icons live in `public/` (`favicon-48.png`, `favicon-96.png`, `icon-192.png`, `favicon.ico`, `apple-icon.png`). After updating `src/assets/MurmurLogo.webp`:
 
 ```bash
-sips -z 32 32 src/assets/MurmurLogo.webp --out public/favicon-32.png
-sips -z 192 192 src/assets/MurmurLogo.webp --out public/icon-192.png
-sips -z 180 180 src/assets/MurmurLogo.webp --out public/apple-icon.png
+sips -s format png -z 48 48 src/assets/MurmurLogo.webp --out public/favicon-48.png
+sips -s format png -z 96 96 src/assets/MurmurLogo.webp --out public/favicon-96.png
+sips -s format png -z 192 192 src/assets/MurmurLogo.webp --out public/icon-192.png
+sips -s format png -z 180 180 src/assets/MurmurLogo.webp --out public/apple-icon.png
 cp src/assets/MurmurLogo.webp public/MurmurLogo.webp
 ```
 
-Keep `public/favicon.ico` small (~2 KB). Do not replace it with a huge multi-size ICO — browsers may ignore it and show “M” for Murmur. The committed file was generated once from the 32×32 PNG.
+Google Search requires a **48×48 minimum** favicon — `favicon-48.png` is listed first in site metadata. Keep `public/favicon.ico` small (~2 KB). Do not replace it with a huge multi-size ICO.
 
 ---
 
