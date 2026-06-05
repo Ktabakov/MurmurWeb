@@ -399,7 +399,7 @@ export default function Home() {
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#pro">
                   Pro
                 </a>
-                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#">
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="/privacy/">
                   Privacy
                 </a>
               </div>
