@@ -14,30 +14,26 @@ const SITE_URL = "https://murmurapps.site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Murmur — Private, On-Device AI Music Generation for iPhone",
+    default: "Murmur — Royalty-Free AI Music for Creators on iPhone",
     template: "%s | Murmur",
   },
   description:
-    "Murmur is a private, on-device AI music generator for iPhone. Turn presets or your own words into original AI-generated instrumental music — composed entirely on your phone with no cloud rendering. Powered by Magenta RT and boosted by the Apple Neural Engine.",
+    "Generate 100% original, copyright-free instrumental music on iPhone. Murmur creates royalty-free background tracks for YouTube, TikTok, indie games, and podcasts — on-device, no subscription.",
   category: "music",
   keywords: [
-    "AI generated music",
-    "AI music generation",
-    "AI music generator",
+    "royalty-free AI music",
+    "copyright-free background music",
+    "AI music for YouTube",
+    "AI music for TikTok",
+    "indie game music generator",
+    "content creator music app",
     "on-device AI music",
-    "private music generation",
     "offline music generator",
-    "no cloud AI music",
-    "instrumental music generator",
-    "text to music AI",
-    "mood to music",
-    "ambient music generator",
-    "lo-fi music generator",
+    "no subscription AI music",
+    "WAV export music app",
     "Magenta RT",
     "Apple Neural Engine",
-    "Core ML music",
     "iPhone music app",
-    "privacy-first AI",
   ],
   authors: [{ name: "Murmur" }],
   creator: "Murmur",
@@ -48,9 +44,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Murmur",
-    title: "Murmur — Private, On-Device AI Music Generation",
+    title: "Murmur — Royalty-Free AI Music for Creators",
     description:
-      "Compose your mood. Turn presets or your own words into original AI-generated instrumental music, privately on your iPhone. No cloud rendering — powered by Magenta RT on the Apple Neural Engine.",
+      "Generate copyright-free instrumental music on iPhone. Perfect for YouTube, TikTok, indie games, and podcasts — on-device, no subscription.",
     url: SITE_URL,
     locale: "en_US",
     images: [
@@ -64,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Murmur — Private, On-Device AI Music Generation",
+    title: "Murmur — Royalty-Free AI Music for Creators",
     description:
-      "Compose your mood. Private, on-device AI music generation for iPhone — powered by Magenta RT, boosted by the Apple Neural Engine.",
+      "Original, copyright-free AI music on iPhone — for YouTube, TikTok, games, and podcasts. On-device generation, no subscription.",
     images: [`${SITE_URL}/MurmurLogo.webp`],
   },
   robots: {

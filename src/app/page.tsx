@@ -17,16 +17,17 @@ const jsonLd = {
   operatingSystem: "iOS",
   url: SITE_URL,
   description:
-    "Private, on-device AI music generation for iPhone. Turn presets or your own words into original AI-generated instrumental music, composed entirely on-device with no cloud rendering. Powered by Magenta RT and accelerated by the Apple Neural Engine.",
+    "Generate royalty-free, copyright-free instrumental music on iPhone. Murmur creates original AI music locally for YouTube, TikTok, indie games, and podcasts — no cloud, no subscription.",
   featureList: [
+    "Royalty-free commercial use with Murmur Pro",
     "On-device AI music generation",
+    "Export high-quality WAV files",
     "170+ curated instrumental presets",
-    "Custom mood prompts via MusicCoCa style tokens",
+    "Custom scene prompts via MusicCoCa style tokens",
     "Private — no cloud rendering",
-    "Save, replay, and share generated audio",
   ],
   keywords:
-    "AI generated music, AI music generation, on-device AI music, private music generation, instrumental music generator, Magenta RT, Apple Neural Engine",
+    "royalty-free AI music, copyright-free background music, on-device AI music, content creator music app, YouTube background music, indie game music generator, Magenta RT, Apple Neural Engine",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -52,23 +53,44 @@ const techStrip = [
 const steps = [
   {
     step: "01",
-    title: "Pick a mood",
+    title: "Define the scene",
     description:
-      "Choose a curated preset or describe a feeling in your own words — a genre, an instrument, a texture, a tempo.",
+      "Choose a curated preset or describe the scene in your own words — genre, instrument, texture, or tempo.",
     accent: "#c59aff",
   },
   {
     step: "02",
-    title: "Compose on-device",
+    title: "Generate the soundtrack",
     description:
-      "Murmur turns your words into musical style tokens and generates an original instrumental piece directly on your phone.",
+      "Murmur turns your prompt into musical style tokens and composes an original instrumental track directly on your phone.",
     accent: "#d4a8ff",
   },
   {
     step: "03",
-    title: "Keep what you love",
+    title: "Export to your edit",
     description:
-      "Play, save to your Library, turn a prompt into a reusable preset, then replay, share, or trim and fade.",
+      "Save as high-quality WAV, then AirDrop to Final Cut Pro, Premiere, or Unity — or share straight to TikTok and Instagram Reels.",
+    accent: "#ad63ff",
+  },
+];
+
+const useCases = [
+  {
+    title: "Vloggers & YouTubers",
+    description:
+      "Generate seamless background tracks that never trigger Content ID strikes. Every loop is original to you.",
+    accent: "#c59aff",
+  },
+  {
+    title: "Indie game devs",
+    description:
+      "Create dynamic ambient soundscapes and looping menu music on the fly — without hunting for stock audio.",
+    accent: "#d4a8ff",
+  },
+  {
+    title: "Travel creators",
+    description:
+      "Need a track for a reel while editing on a plane? Generate offline, anywhere in the world.",
     accent: "#ad63ff",
   },
 ];
@@ -121,35 +143,42 @@ const features = [
   {
     title: "170+ curated styles",
     description:
-      "From Ambient and Lo-fi to Synthwave, Jazz, and Acoustic Guitar — each preset is tuned with its own sound recipe.",
+      "From Cinematic and Electronic to Jazz and Ambient — each preset is tuned for background loops, menus, and reels.",
   },
   {
-    title: "Describe any mood",
+    title: "Prompt any style",
     description:
-      "Type a feeling, genre, or sonic texture. Murmur translates your description into musical style tokens.",
+      "Type a genre, tempo, or sonic texture for your scene. Murmur translates your prompt into musical style tokens on-device.",
   },
   {
     title: "Private by design",
     description:
-      "The core generation flow runs entirely on your iPhone using the Apple Neural Engine. No cloud rendering.",
+      "Generation runs entirely on your iPhone using the Apple Neural Engine. No cloud rendering, no upload wait.",
   },
   {
-    title: "Your songs, replayable",
+    title: "Your library, organized",
     description:
-      "Saved pieces become WAVs in your Library — rename, share, and pick up playback from the Lock Screen.",
+      "Saved tracks live in your Library with waveform playback, rename, trim, fade — ready when your edit needs them.",
   },
 ];
 
 const proPerks = [
+  "100% royalty-free commercial use",
   "All 170+ presets",
-  "Custom mood prompts",
+  "Custom scene prompts",
   "Unlimited generation length",
+  "Export high-quality WAV files",
   "Edit, trim & fade",
   "Advanced controls (CFG, temperature, top-K)",
   "Model choice: Base or Large",
 ];
 
 const faqItems = [
+  {
+    question: "Can I use the music on YouTube or in my commercial game?",
+    answer:
+      "Yes. All music generated with Murmur Pro is 100% royalty-free and cleared for commercial use. Because the AI generates raw audio locally on your device, every track is completely unique to you — meaning zero copyright claims or Content ID strikes.",
+  },
   {
     question: "Can I generate AI music locally on my phone?",
     answer:
@@ -158,17 +187,17 @@ const faqItems = [
   {
     question: "Is Murmur private? Does my music go to the cloud?",
     answer:
-      "Murmur is built for privacy. The core music generation flow runs on-device, so your mood descriptions and generated instrumentals stay on your phone. We don't collect your prompts or audio, and there's no cloud rendering step.",
+      "Murmur is built for privacy. The core music generation flow runs on-device, so your prompts and generated instrumentals stay on your phone. We don't collect your audio, and there's no cloud rendering step.",
   },
   {
     question: "What's the best offline AI music app for iPhone?",
     answer:
-      "Murmur is designed for private, on-device AI music generation on iPhone. Once the AI models are downloaded, you can compose instrumental music from presets or your own mood descriptions without relying on cloud generation.",
+      "Murmur is designed for private, on-device AI music generation on iPhone. Once the AI models are downloaded, you can compose instrumental tracks from presets or your own scene prompts without relying on cloud generation.",
   },
   {
     question: "How does on-device AI music generation work?",
     answer:
-      "You pick a preset or describe a mood in your own words. Murmur translates that text into musical style tokens, then Magenta RT composes an original instrumental piece directly on your iPhone — accelerated by the Apple Neural Engine.",
+      "You pick a preset or describe a scene in your own words. Murmur translates that text into musical style tokens, then Magenta RT composes an original instrumental track directly on your iPhone — accelerated by the Apple Neural Engine.",
   },
   {
     question: "Do I need an internet connection to make music?",
@@ -178,7 +207,7 @@ const faqItems = [
   {
     question: "What makes Murmur different from other AI music generators?",
     answer:
-      "Most AI music tools render in the cloud, which means expensive GPU servers and costly monthly subscriptions. Murmur generates music on your iPhone instead — no cloud rendering, no expensive data servers to run, and no pricey subscription just to cover infrastructure. You get private, local generation with instrumental output, 170+ curated presets, and custom mood prompts powered by on-device AI.",
+      "Most AI music tools render in the cloud, which means expensive GPU servers and costly monthly subscriptions. Murmur generates music on your iPhone instead — no cloud rendering, no expensive data servers to run, and no pricey subscription just to cover infrastructure. You get private, local generation with instrumental output, 170+ curated presets, and custom scene prompts powered by on-device AI.",
   },
 ];
 
@@ -209,7 +238,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-5%,rgba(34,16,60,0.85),transparent_42%),radial-gradient(circle_at_84%_24%,rgba(173,99,255,0.08),transparent_34%)]" />
 
       <nav className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(10,7,18,0.88)_0%,rgba(10,7,18,0)_100%)]">
-        <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+        <div className="page-shell flex items-center justify-between py-4 sm:py-5">
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3">
             <MurmurMark size={32} />
             <span className="text-base font-black tracking-[0.22em] text-lilac drop-shadow-[0_0_12px_rgba(197,154,255,0.35)] sm:text-2xl sm:tracking-[0.3em]">
@@ -222,6 +251,9 @@ export default function Home() {
             </a>
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#presets">
               Presets
+            </a>
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#use-cases">
+              Use cases
             </a>
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#library">
               Library
@@ -247,16 +279,17 @@ export default function Home() {
             <SoundWaveBars />
           </div>
 
-          <div className="relative mx-auto max-w-3xl text-center">
+          <div className="relative mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
             <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 sm:text-[11px] sm:tracking-[0.24em]">
-              On-device AI music generation
+              Royalty-free AI music for creators
             </p>
             <h1 className="mt-6 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl">
-              Compose <span className="hero-gradient-text">your mood.</span>
+              Compose <span className="hero-gradient-text">your scene.</span>
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
-              Murmur transforms presets or your own words into original instrumental
-              loops and soundscapes — generated privately, right on your iPhone.
+            <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
+              Generate 100% original, copyright-free instrumental loops directly on your iPhone.
+              Perfect for YouTube, TikTok, indie games, and podcasts. No cloud, no internet
+              required, and no subscription fees.
             </p>
             <div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
               <span className="btn-generate flex cursor-default select-none items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white sm:px-10">
@@ -271,16 +304,16 @@ export default function Home() {
               </a>
             </div>
             <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-murmur-muted sm:text-[11px] sm:tracking-[0.24em]">
-              Free on iPhone · For moments, focus, sleep &amp; play
+              Free on iPhone · Royalty-free background music for creators, editors, and devs
             </p>
           </div>
         </section>
 
         {/* HOW IT WORKS */}
-        <section id="how" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+        <section id="how" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="mb-10 flex items-center gap-4 sm:mb-14">
             <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From a feeling to music</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From idea to export-ready audio</h2>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -297,7 +330,7 @@ export default function Home() {
         </section>
 
         {/* UNDER THE HOOD */}
-        <section className="mx-auto w-full max-w-screen-xl px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+        <section className="page-shell py-16 sm:py-24 lg:py-28">
           <div className="mb-10 flex items-center gap-4 sm:mb-14">
             <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Under the hood</h2>
@@ -323,16 +356,16 @@ export default function Home() {
         </section>
 
         {/* CUSTOM PROMPTS */}
-        <section className="mx-auto grid w-full max-w-screen-xl grid-cols-1 items-center gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-14 lg:py-28">
+        <section className="page-shell grid grid-cols-1 items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-14 lg:py-28">
           <div>
             <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-              Describe a mood,{" "}
-              <span className="hero-gradient-text">hear it become music.</span>
+              Define the scene.{" "}
+              <span className="hero-gradient-text">Score the project.</span>
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-murmur-text-2 sm:text-lg">
-              Murmur turns your words into musical style tokens, then composes an
-              original instrumental on-device. It responds best to descriptions of
-              genre, instruments, rhythm, mood, tempo, and texture.
+              Describe the vibe of your B-roll, menu screen, or reel. Murmur turns your prompt
+              into musical style tokens and composes an original instrumental soundtrack on-device —
+              genre, instruments, rhythm, tempo, and texture.
             </p>
             <MoodPromptList prompts={examplePrompts} />
           </div>
@@ -342,32 +375,101 @@ export default function Home() {
             <PlasmaOrb size={400} className="hidden sm:block" />
             <div className="absolute bottom-2 left-0 right-0 px-4 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lilac sm:text-sm sm:tracking-[0.22em]">
-                Converting your mood to music…
+                Scoring your project…
               </p>
               <p className="mt-2 text-xs text-murmur-muted">
-                Translating your description into musical style
+                Turning your scene prompt into a soundtrack
               </p>
             </div>
           </div>
         </section>
 
         {/* PRESETS */}
-        <section id="presets" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+        <section id="presets" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex items-center gap-4">
               <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
               <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">170+ curated styles</h2>
             </div>
             <p className="max-w-md text-sm text-murmur-text-2">
-              Tap a category to hear a short preview. Save favorites and create your own presets from prompts you love.
+              Tap a category to hear a short preview. Cinematic, electronic, jazz, and more — built for background loops and edits.
             </p>
           </div>
 
           <StyleCategoryGrid categories={categories} />
         </section>
 
+        {/* USE CASES */}
+        <section id="use-cases" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
+          <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
+              <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                Built for <span className="hero-gradient-text">creators</span>
+              </h2>
+            </div>
+            <p className="max-w-md text-sm text-murmur-text-2">
+              Original background music for the workflows that actually need it.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {useCases.map((item) => (
+              <article key={item.title} className="glass-card flex flex-col rounded-2xl p-8">
+                <span
+                  className="h-3 w-3 rounded-full shadow-[0_0_14px_rgba(197,154,255,0.9)]"
+                  style={{ background: item.accent }}
+                />
+                <h3 className="mt-6 text-xl font-bold tracking-tight text-white sm:text-2xl">{item.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-murmur-text-2 sm:text-base">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* EXPORT */}
+        <section id="export" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
+          <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -left-16 top-0 h-56 w-56 rounded-full bg-gen-end/15 blur-3xl" />
+            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-12">
+              <div>
+                <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
+                  Export ready
+                </p>
+                <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                  High-quality WAVs,{" "}
+                  <span className="hero-gradient-text">straight into your edit.</span>
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
+                  Export high-quality WAV files instantly. AirDrop straight to Final Cut Pro,
+                  Premiere, or Unity — or share directly to TikTok and Instagram Reels. No
+                  re-encoding, no upload queue, no stock-site licensing maze.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                {["Final Cut Pro & Premiere", "Unity & game engines", "TikTok & Instagram Reels", "Podcasts & vlogs"].map(
+                  (target) => (
+                    <div
+                      key={target}
+                      className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
+                    >
+                      <span className="text-lilac">→</span>
+                      <span>{target}</span>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FEATURES + LIBRARY */}
-        <section id="library" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+        <section id="library" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
+          <div className="mb-10 flex items-center gap-4 sm:mb-12">
+            <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Everything in one pocket studio</h2>
+          </div>
+
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
             {features.map((feature) => (
               <article key={feature.title} className="glass-card rounded-2xl p-6 sm:p-8">
@@ -379,10 +481,10 @@ export default function Home() {
 
           <div className="glass-card mt-4 flex flex-col items-start gap-6 rounded-2xl p-6 sm:mt-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div>
-              <h3 className="text-xl font-bold tracking-tight text-white">Your private collection of moments</h3>
+              <h3 className="text-xl font-bold tracking-tight text-white">Library built for production</h3>
               <p className="mt-2 max-w-xl text-sm text-murmur-text-2">
-                Saved songs live in your Library with a mini player, waveform bars, and progress —
-                with playback that continues on the Lock Screen and Dynamic Island.
+                Organize generated tracks with waveform playback, rename for your project,
+                trim and fade — then export when the cut is ready.
               </p>
             </div>
             <div className="flex h-12 items-end gap-1.5">
@@ -396,20 +498,21 @@ export default function Home() {
         </section>
 
         {/* PRO */}
-        <section id="pro" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+        <section id="pro" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-12">
             <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-lilac/15 blur-3xl" />
             <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
               <div>
                 <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
-                  Murmur Pro
+                  Murmur Pro · One-time purchase
                 </p>
                 <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-white md:text-5xl">
-                  Compose <span className="hero-gradient-text">without limits.</span>
+                  Zero subscriptions.{" "}
+                  <span className="hero-gradient-text">Full commercial rights.</span>
                 </h2>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-murmur-text-2">
-                  Murmur is free to start — Ambient, Lo-fi, Peaceful, Synthwave and
-                  Acoustic Guitar with short previews and loops. Pro unlocks the full studio.
+                  Murmur is free to start with core presets and short previews. Pro unlocks
+                  the full studio — one-time purchase, no monthly fees to cover cloud GPU costs.
                 </p>
                 <span className="btn-generate mt-8 inline-flex w-full cursor-default select-none items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white sm:w-auto">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
@@ -433,7 +536,7 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="mx-auto w-full max-w-screen-xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+        <section id="faq" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex items-center gap-4">
               <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
@@ -442,7 +545,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="max-w-md text-sm text-murmur-text-2">
-              Private, on-device AI music generation — how Murmur works on your iPhone.
+              Royalty-free AI music, on-device generation, and commercial use — answered.
             </p>
           </div>
 
@@ -451,14 +554,14 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer className="w-full border-t border-murmur-border bg-gradient-to-b from-transparent to-black/40 pb-12 pt-20">
-          <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center gap-10 px-6 sm:px-8">
+          <div className="page-shell flex flex-col items-center gap-10">
             <div className="flex flex-col items-center">
               <div className="mb-6 flex items-center gap-3">
                 <MurmurMark size={30} />
                 <span className="text-lg font-black tracking-[0.3em] text-lilac">MURMUR</span>
               </div>
               <p className="mb-10 max-w-md text-center text-sm text-murmur-muted">
-                A pocket mood composer. Pick a mood, generate music, keep the pieces you love.
+                Royalty-free AI music for creators. Generate on iPhone, export to your edit.
               </p>
               <div className="mb-2 flex flex-wrap justify-center gap-8 sm:gap-12">
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
@@ -466,6 +569,9 @@ export default function Home() {
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#presets">
                   Presets
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#use-cases">
+                  Use cases
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#pro">
                   Pro
@@ -479,7 +585,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-center text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
-              © 2026 Murmur. Compose your mood.
+              © 2026 Murmur. Original music for creators.
             </p>
           </div>
         </footer>

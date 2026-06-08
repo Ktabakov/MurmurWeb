@@ -39,6 +39,40 @@ body {
   font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
 }
 
+/* Responsive page width — grows on large screens instead of staying at 1280px */
+.page-shell {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .page-shell {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-shell {
+    max-width: 1440px;
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .page-shell {
+    max-width: 1600px;
+    padding-inline: 3rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .page-shell {
+    max-width: 1728px;
+  }
+}
+
 /* Lilac gradient text for headline accents */
 .hero-gradient-text {
   background: linear-gradient(

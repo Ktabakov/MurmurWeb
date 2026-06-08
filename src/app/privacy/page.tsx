@@ -29,7 +29,7 @@ export default function PrivacyPage() {
     <div className="relative flex min-h-screen flex-col">
       {/* Top bar */}
       <header className="border-b border-murmur-border">
-        <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+        <div className="page-shell flex items-center justify-between py-4 sm:py-5">
           <Link href="/" className="flex items-center gap-3">
             <MurmurMark size={32} />
             <span className="text-base font-black tracking-[0.3em] text-lilac">MURMUR</span>
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14 sm:px-8 sm:py-20">
+      <main className="page-shell max-w-3xl flex-1 py-14 sm:max-w-4xl sm:py-20 xl:max-w-5xl">
         <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
           <span className="hero-gradient-text">Privacy Policy</span>
         </h1>
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
       </main>
 
       <footer className="border-t border-murmur-border bg-gradient-to-b from-transparent to-black/40">
-        <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-6 py-8 sm:px-8">
+        <div className="page-shell flex items-center justify-between py-8">
           <Link href="/" className="flex items-center gap-2">
             <MurmurMark size={24} />
             <span className="text-xs font-black tracking-[0.3em] text-lilac">MURMUR</span>
