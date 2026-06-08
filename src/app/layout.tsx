@@ -14,26 +14,28 @@ const SITE_URL = "https://murmurapps.site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Murmur — Royalty-Free AI Music for Creators on iPhone",
+    default: "Murmur — Compose Your Scene | Royalty-Free AI Music for Creators",
     template: "%s | Murmur",
   },
   description:
-    "Generate 100% original, copyright-free instrumental music on iPhone. Murmur creates royalty-free background tracks for YouTube, TikTok, indie games, and podcasts — on-device, no subscription.",
+    "Compose your scene on iPhone. Generate original, copyright-free soundtracks for YouTube, TikTok, indie games, and podcasts — on-device, export-ready WAV, no subscription.",
   category: "music",
   keywords: [
     "royalty-free AI music",
     "copyright-free background music",
+    "AI soundtrack generator",
     "AI music for YouTube",
     "AI music for TikTok",
+    "video editor background music",
     "indie game music generator",
     "content creator music app",
-    "on-device AI music",
-    "offline music generator",
-    "no subscription AI music",
     "WAV export music app",
+    "offline AI music iPhone",
+    "on-device AI music",
+    "no subscription AI music",
+    "one-time purchase music app",
     "Magenta RT",
     "Apple Neural Engine",
-    "iPhone music app",
   ],
   authors: [{ name: "Murmur" }],
   creator: "Murmur",
@@ -44,9 +46,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Murmur",
-    title: "Murmur — Royalty-Free AI Music for Creators",
+    title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
     description:
-      "Generate copyright-free instrumental music on iPhone. Perfect for YouTube, TikTok, indie games, and podcasts — on-device, no subscription.",
+      "Generate copyright-free soundtracks on iPhone. Export WAV for YouTube, TikTok, games, and podcasts — on-device, no subscription.",
     url: SITE_URL,
     locale: "en_US",
     images: [
@@ -54,15 +56,15 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/MurmurLogo.webp`,
         width: 1024,
         height: 1024,
-        alt: "Murmur",
+        alt: "Murmur — royalty-free AI music app for creators",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Murmur — Royalty-Free AI Music for Creators",
+    title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
     description:
-      "Original, copyright-free AI music on iPhone — for YouTube, TikTok, games, and podcasts. On-device generation, no subscription.",
+      "Original, copyright-free soundtracks on iPhone — for YouTube, TikTok, games, and podcasts. On-device generation, WAV export, no subscription.",
     images: [`${SITE_URL}/MurmurLogo.webp`],
   },
   robots: {

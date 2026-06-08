@@ -17,17 +17,22 @@ const jsonLd = {
   operatingSystem: "iOS",
   url: SITE_URL,
   description:
-    "Generate royalty-free, copyright-free instrumental music on iPhone. Murmur creates original AI music locally for YouTube, TikTok, indie games, and podcasts — no cloud, no subscription.",
+    "Compose your scene on iPhone. Murmur generates royalty-free, copyright-free instrumental soundtracks locally for YouTube, TikTok, indie games, and podcasts — export-ready WAV, no cloud, no subscription.",
+  audience: {
+    "@type": "Audience",
+    audienceType: "Content creators, video editors, and indie game developers",
+  },
   featureList: [
-    "Royalty-free commercial use with Murmur Pro",
-    "On-device AI music generation",
+    "100% royalty-free commercial use with Murmur Pro",
+    "On-device AI soundtrack generation",
     "Export high-quality WAV files",
     "170+ curated instrumental presets",
     "Custom scene prompts via MusicCoCa style tokens",
+    "One-time purchase — no subscription",
     "Private — no cloud rendering",
   ],
   keywords:
-    "royalty-free AI music, copyright-free background music, on-device AI music, content creator music app, YouTube background music, indie game music generator, Magenta RT, Apple Neural Engine",
+    "royalty-free AI music, copyright-free soundtrack, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, content creator music app, Magenta RT, Apple Neural Engine",
   offers: {
     "@type": "Offer",
     price: "0",
