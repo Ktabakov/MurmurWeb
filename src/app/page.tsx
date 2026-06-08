@@ -343,7 +343,7 @@ export default function Home() {
             {techStrip.map((item) => (
               <article
                 key={item.label}
-                className="glass-card flex flex-col items-center gap-4 rounded-2xl p-8 text-center sm:items-start sm:text-left"
+                className="glass-card flex flex-col items-center gap-4 rounded-2xl p-8 text-center"
               >
                 <span className="h-3 w-3 rounded-full bg-gradient-to-br from-lilac-fixed to-gen-end shadow-[0_0_14px_rgba(197,154,255,0.9)]" />
                 <h3 className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">
@@ -415,12 +415,12 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {useCases.map((item) => (
-              <article key={item.title} className="glass-card flex flex-col rounded-2xl p-8">
+              <article key={item.title} className="glass-card flex flex-col items-center rounded-2xl p-8 text-center">
                 <span
                   className="h-3 w-3 rounded-full shadow-[0_0_14px_rgba(197,154,255,0.9)]"
                   style={{ background: item.accent }}
                 />
-                <h3 className="mt-6 text-xl font-bold tracking-tight text-white sm:text-2xl">{item.title}</h3>
+                <h3 className="mt-4 text-xl font-bold tracking-tight text-white sm:text-2xl">{item.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-murmur-text-2 sm:text-base">{item.description}</p>
               </article>
             ))}
