@@ -17,14 +17,17 @@ const jsonLd = {
   operatingSystem: "iOS",
   url: SITE_URL,
   description:
-    "Compose your scene on iPhone. Murmur generates royalty-free, copyright-free instrumental soundtracks locally for YouTube, TikTok, indie games, and podcasts — export-ready WAV, no cloud, no subscription.",
+    "Compose your scene on iPhone — or go Live and stream instrumental music in real time with the knob deck. Royalty-free, copyright-free soundtracks for YouTube, TikTok, indie games, and podcasts. Export-ready WAV, fully on-device, no subscription.",
   audience: {
     "@type": "Audience",
     audienceType: "Content creators, video editors, and indie game developers",
   },
   featureList: [
     "100% royalty-free commercial use with Murmur Pro",
+    "Pure instrumental — no vocals or lyrics",
     "On-device AI soundtrack generation",
+    "Live mode — continuous instrumental music streamed in real time",
+    "Live knob deck — DJ the mix with layer knobs while the music plays",
     "Export high-quality WAV files",
     "170+ curated instrumental presets",
     "Custom scene prompts via MusicCoCa style tokens",
@@ -32,7 +35,7 @@ const jsonLd = {
     "Private — no cloud rendering",
   ],
   keywords:
-    "royalty-free AI music, copyright-free soundtrack, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, content creator music app, Magenta RT, Apple Neural Engine",
+    "royalty-free AI music, copyright-free soundtrack, instrumental AI music, live AI music, real-time AI music generator, AI DJ, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, no vocals AI music, content creator music app, Magenta RT, Apple Neural Engine",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -170,6 +173,7 @@ const features = [
 const proPerks = [
   "100% royalty-free commercial use",
   "All 170+ presets",
+  "Extended Live sessions",
   "Custom scene prompts",
   "Unlimited generation length",
   "Export high-quality WAV files",
@@ -179,6 +183,21 @@ const proPerks = [
 ];
 
 const faqItems = [
+  {
+    question: "Can Murmur play music live, as it's being generated?",
+    answer:
+      "Yes. Live mode streams a continuous instrumental set, composed second-by-second on your iPhone by a dedicated fast on-device engine. Pick a starting instrument, tap Go Live, and the music starts within seconds — then steer it like a DJ with the knob deck, fading layers like beat, bass, keys, pads, guitar, synth, strings, brass, and arps in and out while it plays. You can save the jam to your Library when you're done.",
+  },
+  {
+    question: "How long can Live mode run?",
+    answer:
+      "Live sessions are limited to a few minutes at a time. Real-time generation is intensive — as your iPhone warms up, thermals can slow the engine to protect the chip. Murmur is built for jamming and capturing a take, not hour-long sets. Save your session to the Library before it ends. As future iPhones get faster and more efficient, Live mode will only get better.",
+  },
+  {
+    question: "Does Murmur generate vocals or lyrics?",
+    answer:
+      "No. Murmur is a pure instrumental music generator. It is designed specifically to create high-quality background soundscapes, lo-fi beats, and cinematic loops that fit seamlessly under video production and indie games without vocal clutter.",
+  },
   {
     question: "Can I use the music on YouTube or in my commercial game?",
     answer:
@@ -254,6 +273,9 @@ export default function Home() {
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
               How it works
             </a>
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#live">
+              Live
+            </a>
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#presets">
               Presets
             </a>
@@ -309,7 +331,7 @@ export default function Home() {
               </a>
             </div>
             <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-murmur-muted sm:text-[11px] sm:tracking-[0.24em]">
-              Free on iPhone · Royalty-free background music for creators, editors, and devs
+              Free on iPhone · Royalty-free instrumental music for creators, editors, and devs
             </p>
           </div>
         </section>
@@ -331,6 +353,53 @@ export default function Home() {
                 <p className="mt-4 text-sm leading-relaxed text-murmur-text-2">{card.description}</p>
               </article>
             ))}
+          </div>
+        </section>
+
+        {/* LIVE MODE */}
+        <section id="live" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
+          <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-lilac/15 blur-3xl" />
+            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-12">
+              <div>
+                <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lilac shadow-[0_0_8px_rgba(197,154,255,0.9)]" />
+                  Live mode
+                </p>
+                <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                  Go live.{" "}
+                  <span className="hero-gradient-text">Shape the mix.</span>
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
+                  Pick a starting instrument, tap Go Live, and Murmur streams an instrumental
+                  set composed second-by-second on your iPhone. Then DJ the mix in real time:
+                  turn the knobs to bring layers like beat, bass, keys, pads, guitar, synth,
+                  strings, brass, and arps in and out — the music morphs without ever stopping.
+                  Like the jam? Save it straight to your Library.
+                </p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-murmur-muted">
+                  Live sessions run for a few minutes — real-time generation heats up your
+                  iPhone, and thermals can slow the engine to protect the chip. As future
+                  iPhones get faster, Live mode will only improve.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                {[
+                  "Instrument knobs — fade layers in and out as it plays",
+                  "Wild knob: dial in surprise when the jam gets too safe",
+                  "Generated in real time, fully on-device",
+                  "Keep the jam: save the session as a track",
+                ].map((point) => (
+                  <div
+                    key={point}
+                    className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
+                  >
+                    <span className="text-lilac">●</span>
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -571,6 +640,9 @@ export default function Home() {
               <div className="mb-2 flex flex-wrap justify-center gap-8 sm:gap-12">
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
                   How it works
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#live">
+                  Live
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="#presets">
                   Presets

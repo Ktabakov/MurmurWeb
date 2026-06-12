@@ -18,12 +18,16 @@ export const metadata: Metadata = {
     template: "%s | Murmur",
   },
   description:
-    "Compose your scene on iPhone. Generate original, copyright-free soundtracks for YouTube, TikTok, indie games, and podcasts — on-device, export-ready WAV, no subscription.",
+    "Compose your scene on iPhone. Generate original, copyright-free soundtracks for YouTube, TikTok, indie games, and podcasts — or go Live and stream continuous music in real time. On-device, export-ready WAV, no subscription.",
   category: "music",
   keywords: [
     "royalty-free AI music",
     "copyright-free background music",
     "AI soundtrack generator",
+    "live AI music",
+    "real-time AI music generator",
+    "instrumental AI music",
+    "no vocals AI music",
     "AI music for YouTube",
     "AI music for TikTok",
     "video editor background music",
@@ -48,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Murmur",
     title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
     description:
-      "Generate copyright-free soundtracks on iPhone. Export WAV for YouTube, TikTok, games, and podcasts — on-device, no subscription.",
+      "Generate copyright-free soundtracks on iPhone — or go Live and DJ instrumental music in real time. Export WAV for YouTube, TikTok, games, and podcasts. On-device, no subscription.",
     url: SITE_URL,
     locale: "en_US",
     images: [
@@ -64,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
     description:
-      "Original, copyright-free soundtracks on iPhone — for YouTube, TikTok, games, and podcasts. On-device generation, WAV export, no subscription.",
+      "Original, copyright-free soundtracks on iPhone — plus Live mode for real-time instrumental music. For YouTube, TikTok, games, and podcasts. On-device, WAV export, no subscription.",
     images: [`${SITE_URL}/MurmurLogo.webp`],
   },
   robots: {
