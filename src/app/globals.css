@@ -216,10 +216,38 @@ body {
     orb-wobble 8s ease-in-out infinite;
 }
 
+/* Broadcast-style pulse for Live mode badge */
+@keyframes live-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 0 rgba(255, 69, 58, 0.55),
+      0 0 8px rgba(255, 69, 58, 0.85);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow:
+      0 0 0 5px rgba(255, 69, 58, 0.2),
+      0 0 14px rgba(255, 69, 58, 0.95);
+  }
+}
+
+.live-pulse-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #ff453a;
+  animation: live-dot-pulse 1.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .orb-core,
   .orb-plasma,
-  .orb-atmosphere {
+  .orb-atmosphere,
+  .live-pulse-dot {
     animation: none;
   }
 }

@@ -173,13 +173,14 @@ const features = [
 const proPerks = [
   "100% royalty-free commercial use",
   "All 170+ presets",
+  "Live mode — Go Live & DJ with the knob deck",
   "Extended Live sessions",
   "Custom scene prompts",
   "Unlimited generation length",
   "Export high-quality WAV files",
   "Edit, trim & fade",
   "Advanced controls (CFG, temperature, top-K)",
-  "Model choice: Base or Large",
+  "Model choice: Small, Base, and Large",
 ];
 
 const faqItems = [
@@ -363,7 +364,7 @@ export default function Home() {
             <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-12">
               <div>
                 <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lilac shadow-[0_0_8px_rgba(197,154,255,0.9)]" />
+                  <span className="live-pulse-dot" aria-hidden="true" />
                   Live mode
                 </p>
                 <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
