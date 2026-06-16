@@ -25,7 +25,7 @@ The site includes:
 - **170+ style categories** with tap-to-play audio previews
 - Under the hood (Magenta RT, Neural Engine, privacy)
 - Murmur Pro highlights
-- Coming soon to the App Store
+- Download on the App Store
 
 Visual design matches the app’s **Stitch** theme: dark glass UI, lilac glow, waveform bars, and the plasma orb.
 
@@ -110,9 +110,11 @@ Google Search requires a **48×48 minimum** favicon — `favicon-48.png` is list
 
 ---
 
-## App Store link
+## App Store
 
-When the app is live, search for `Coming soon` in `src/app/page.tsx` and replace those CTAs with the real App Store URL.
+Live on the App Store: [Murmur: On-Device AI Music](https://apps.apple.com/app/id6776807467)
+
+CTAs in `src/app/page.tsx` use `APP_STORE_URL` — update there if the listing moves.
 
 ---
 

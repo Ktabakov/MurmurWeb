@@ -7,15 +7,18 @@ import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
 
 const SITE_URL = "https://murmurapps.site";
+const APP_STORE_URL = "https://apps.apple.com/app/id6776807467";
+const APP_STORE_NAME = "Murmur: On-Device AI Music";
 
 // Structured data for richer search results (SoftwareApplication / music).
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
-  name: "Murmur",
+  name: APP_STORE_NAME,
   applicationCategory: "MusicApplication",
   operatingSystem: "iOS",
   url: SITE_URL,
+  downloadUrl: APP_STORE_URL,
   description:
     "Compose your scene on iPhone — or go Live and stream instrumental music in real time with the knob deck. Royalty-free, copyright-free soundtracks for YouTube, TikTok, indie games, and podcasts. Export-ready WAV, fully on-device, no subscription.",
   audience: {
@@ -293,10 +296,15 @@ export default function Home() {
               FAQ
             </a>
           </div>
-          <span className="flex shrink-0 items-center gap-2 rounded-full border border-lilac/30 bg-lilac/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(173,99,255,0.15)] sm:px-5 sm:tracking-[0.2em]">
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex shrink-0 items-center gap-2 rounded-full border border-lilac/30 bg-lilac/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-murmur-text shadow-[0_0_22px_rgba(173,99,255,0.15)] transition-colors hover:border-lilac/50 hover:bg-lilac/15 sm:px-5 sm:tracking-[0.2em]"
+          >
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lilac shadow-[0_0_8px_rgba(197,154,255,0.9)]" />
-            Coming soon
-          </span>
+            Get the app
+          </a>
         </div>
       </nav>
 
@@ -320,10 +328,15 @@ export default function Home() {
               required, and no subscription fees.
             </p>
             <div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
-              <span className="btn-generate flex cursor-default select-none items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white sm:px-10">
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-generate flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:px-10"
+              >
                 <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
-                Coming soon to the App Store
-              </span>
+                Download on the App Store
+              </a>
               <a
                 href="#how"
                 className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8 sm:px-10"
@@ -589,10 +602,15 @@ export default function Home() {
                   Murmur is free to start with core presets and short previews. Pro unlocks
                   the full studio — one-time purchase, no monthly fees to cover cloud GPU costs.
                 </p>
-                <span className="btn-generate mt-8 inline-flex w-full cursor-default select-none items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white sm:w-auto">
+                <a
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-generate mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:w-auto"
+                >
                   <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
-                  Coming soon
-                </span>
+                  Download on the App Store
+                </a>
               </div>
 
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
