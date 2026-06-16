@@ -117,6 +117,13 @@ const categories = [
   { label: "World", color: "#4db6ac", sample: "/audio/styles/world.mp3" },
 ];
 
+const liveModePoints = [
+  "Instrument knobs — fade layers in and out as it plays",
+  "Wild knob: dial in surprise when the jam gets too safe",
+  "Generated in real time, fully on-device",
+  "Keep the jam: save the session as a track",
+];
+
 const examplePrompts = [
   {
     label: "Calm and weightless",
@@ -374,22 +381,24 @@ export default function Home() {
         <section id="live" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-lilac/15 blur-3xl" />
-            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-12">
+            <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,340px)] lg:items-center lg:gap-14">
               <div>
                 <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
                   <span className="live-pulse-dot" aria-hidden="true" />
                   Live mode
                 </p>
                 <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-                  Go live.{" "}
-                  <span className="hero-gradient-text">Shape the mix.</span>
+                  Go live.
                 </h2>
+                <p className="mt-4 max-w-2xl text-lg font-medium leading-snug text-murmur-text-2 sm:text-xl">
+                  DJ the mix in real time.{" "}
+                  <span className="text-murmur-muted">Composed second-by-second on-device.</span>
+                </p>
                 <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
                   Pick a starting instrument, tap Go Live, and Murmur streams an instrumental
-                  set composed second-by-second on your iPhone. Then DJ the mix in real time:
-                  turn the knobs to bring layers like beat, bass, keys, pads, guitar, synth,
-                  strings, brass, and arps in and out — the music morphs without ever stopping.
-                  Like the jam? Save it straight to your Library.
+                  set on your iPhone. Turn the knobs to bring layers like beat, bass, keys, pads,
+                  guitar, synth, strings, brass, and arps in and out — the music morphs without
+                  ever stopping. Like the jam? Save it straight to your Library.
                 </p>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-murmur-muted">
                   Live sessions run for a few minutes — real-time generation heats up your
@@ -397,22 +406,28 @@ export default function Home() {
                   iPhones get faster, Live mode will only improve.
                 </p>
               </div>
-              <div className="flex flex-col gap-3">
-                {[
-                  "Instrument knobs — fade layers in and out as it plays",
-                  "Wild knob: dial in surprise when the jam gets too safe",
-                  "Generated in real time, fully on-device",
-                  "Keep the jam: save the session as a track",
-                ].map((point) => (
-                  <div
-                    key={point}
-                    className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
-                  >
-                    <span className="text-lilac">●</span>
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
+              <figure className="mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:mx-0 lg:max-w-none">
+                <img
+                  src="/images/live-mode.webp"
+                  alt="Murmur Live mode on iPhone — knob deck for beat, bass, keys, synth, and more with End and End & keep controls"
+                  width={1242}
+                  height={2688}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-full rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/10"
+                />
+              </figure>
+            </div>
+            <div className="relative mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {liveModePoints.map((point) => (
+                <div
+                  key={point}
+                  className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
+                >
+                  <span className="text-lilac">●</span>
+                  <span>{point}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
