@@ -9,6 +9,7 @@ import { FaqSection } from "@/components/faq-section";
 const SITE_URL = "https://murmurapps.site";
 const APP_STORE_URL = "https://apps.apple.com/app/id6776807467";
 const APP_STORE_NAME = "Murmur: On-Device AI Music";
+const YOUTUBE_DEMO_URL = "https://youtube.com/shorts/6yVzCr-LWgo?si=XNPmg6FgI9V3HBCs";
 
 // Structured data for richer search results (SoftwareApplication / music).
 const jsonLd = {
@@ -122,6 +123,13 @@ const liveModePoints = [
   "Wild knob: dial in surprise when the jam gets too safe",
   "Generated in real time, fully on-device",
   "Keep the jam: save the session as a track",
+];
+
+const demoHighlights = [
+  "Describe your scene — genre, texture, or instrument",
+  "Generate copyright-free instrumentals on-device",
+  "Preview tracks with waveform playback in your Library",
+  "100% royalty-free for commercial edits",
 ];
 
 const examplePrompts = [
@@ -374,6 +382,66 @@ export default function Home() {
                 <p className="mt-4 text-sm leading-relaxed text-murmur-text-2">{card.description}</p>
               </article>
             ))}
+          </div>
+        </section>
+
+        {/* SEE IT IN ACTION */}
+        <section id="demo" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
+          <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-gen-end/15 blur-3xl" />
+            <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,340px)] lg:items-start lg:gap-14">
+              <div className="order-1 lg:col-start-1 lg:row-start-1">
+                <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
+                  <span className="text-[10px] text-lilac" aria-hidden="true">
+                    ▶
+                  </span>
+                  App demo
+                </p>
+                <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                  See it in action.
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg font-medium leading-snug text-murmur-text-2 sm:text-xl">
+                  From scene prompt to edit-ready WAV.{" "}
+                  <span className="text-murmur-muted">Built for editors on the go.</span>
+                </p>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
+                  Watch Murmur score your cut — describe the scene and generate an original
+                  instrumental track on your iPhone.
+                </p>
+                <a
+                  href={YOUTUBE_DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 rounded-xl border border-lilac/20 bg-lilac/10 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-lilac transition-all hover:bg-lilac/20 hover:text-white"
+                >
+                  Watch on YouTube
+                </a>
+              </div>
+              <figure className="order-2 mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none">
+                <div className="overflow-hidden rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
+                  <div className="relative aspect-[9/16] w-full">
+                    <iframe
+                      src="https://www.youtube.com/embed/6yVzCr-LWgo"
+                      title="Murmur app demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  </div>
+                </div>
+              </figure>
+              <div className="order-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
+                {demoHighlights.map((point) => (
+                  <div
+                    key={point}
+                    className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
+                  >
+                    <span className="text-lilac">●</span>
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
