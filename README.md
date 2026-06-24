@@ -1,102 +1,54 @@
 # Murmur Website
 
-Official marketing site for **Murmur** — an iPhone app that uses on-device AI to generate original instrumental music from moods and presets.
+Marketing site for [Murmur](https://murmurapps.site) — the iOS app for on-device AI instrumental music.
 
-**Live site:** [murmurapps.site](https://murmurapps.site)
+Live: **https://murmurapps.site**  
+App Store: [Murmur: On-Device AI Music](https://apps.apple.com/de/app/murmur-on-device-ai-music/id6776807467?l=en-GB)
 
----
+This repo is the website only. The iOS app lives elsewhere.
 
-## What is Murmur?
-
-Murmur is a pocket mood composer. Pick a curated style or describe how you want the music to feel — warm pads, lo-fi piano, cinematic strings — and Murmur generates a short instrumental piece **entirely on your iPhone**. No cloud rendering for the core flow; your prompts and audio stay on the device.
-
-Powered by **Magenta RT** and accelerated on the **Apple Neural Engine**.
-
----
-
-## What this repository is
-
-This repo is the **public website** for the app (landing page, SEO, previews). It is **not** the iOS app source code.
-
-The site includes:
-
-- Product overview and “Compose your mood” positioning
-- How it works (pick a mood → compose on-device → keep what you love)
-- **170+ style categories** with tap-to-play audio previews
-- Under the hood (Magenta RT, Neural Engine, privacy)
-- Murmur Pro highlights
-- Download on the App Store
-
-Visual design matches the app’s **Stitch** theme: dark glass UI, lilac glow, waveform bars, and the plasma orb.
-
----
-
-## Tech stack
-
-| | |
-|---|---|
-| Framework | [Next.js 16](https://nextjs.org) (App Router, static export) |
-| UI | React 19, TypeScript, Tailwind CSS v4 |
-| Motion | Framer Motion (hero waveform) |
-| Hosting | GitHub Pages via GitHub Actions |
-| Domain | `www.murmurapps.site` |
-
----
-
-## Local development
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000.
 
 ```bash
-npm run build   # outputs static site to out/
+npm run build   # static export → out/
 npm run lint
 ```
 
-### Style preview audio
+## Deploy
 
-Category samples live in `public/audio/styles/` (e.g. `ambient.mp3`, `focus.mp3`). Source files can be kept in `src/assets/styles/`. After adding or replacing MP3s, copy them into `public/audio/styles/` before deploy.
+Pushes to `main` build and deploy via GitHub Actions (`.github/workflows/deploy-pages.yml`).
 
----
+In **Settings → Pages**, set the source to **GitHub Actions** — not “Deploy from branch”. If you point Pages at the repo root you’ll just get this README, not the site.
 
-## Deployment (GitHub Pages)
+Custom domain is in `public/CNAME` (`www.murmurapps.site`).
 
-The site **must** deploy with **GitHub Actions**, not “Deploy from a branch / root”. Serving `/` from the repo root only shows this README — not the built site.
+## Stack
 
-1. Push to `main`.
-2. **Settings → Pages → Build and deployment**
-3. Set **Source** to **GitHub Actions** (not `main` / `/root`).
-4. Confirm the workflow **Deploy to GitHub Pages** succeeds under the **Actions** tab.
+Next.js 16 (App Router, static export), React 19, TypeScript, Tailwind v4, Framer Motion.
 
-The workflow runs `npm run build` and publishes the `out/` folder. Custom domain is configured in `public/CNAME`.
-
----
-
-## Project layout
+## Layout
 
 ```
-src/
-  app/                 # pages, layout, SEO, robots, sitemap
-  assets/              # MurmurLogo.webp, style MP3 sources
-  components/          # PlasmaOrb, SoundWaveBars, StyleCategoryGrid, …
-public/
-  audio/styles/        # category preview MP3s (served on the site)
-  favicon.ico          # tab icon
-  MurmurLogo.webp
-  CNAME                # www.murmurapps.site
-.github/workflows/
-  deploy-pages.yml
+src/app/           pages (home, privacy), layout, sitemap, robots
+src/components/    SoundWaveBars, PlasmaOrb, StyleCategoryGrid, …
+public/            CNAME, favicons, audio previews (public/audio/styles/)
+.github/workflows/ deploy-pages.yml
 ```
 
----
+Style preview MP3s go in `public/audio/styles/`. Source copies can live in `src/assets/styles/`.
 
-## Site icon
+App Store links use `APP_STORE_URL` in `src/app/page.tsx`.
 
-Icons live in `public/` (`favicon-48.png`, `favicon-96.png`, `icon-192.png`, `favicon.ico`, `apple-icon.png`). After updating `src/assets/MurmurLogo.webp`:
+## Favicons
+
+Icons are in `public/`. After updating `src/assets/MurmurLogo.webp`:
 
 ```bash
 sips -s format png -z 48 48 src/assets/MurmurLogo.webp --out public/favicon-48.png
@@ -106,18 +58,4 @@ sips -s format png -z 180 180 src/assets/MurmurLogo.webp --out public/apple-icon
 cp src/assets/MurmurLogo.webp public/MurmurLogo.webp
 ```
 
-Google Search requires a **48×48 minimum** favicon — `favicon-48.png` is listed first in site metadata. Keep `public/favicon.ico` small (~2 KB). Do not replace it with a huge multi-size ICO.
-
----
-
-## App Store
-
-Live on the App Store: [Murmur: On-Device AI Music](https://apps.apple.com/app/id6776807467)
-
-CTAs in `src/app/page.tsx` use `APP_STORE_URL` — update there if the listing moves.
-
----
-
-## Related
-
-The Murmur iOS app is maintained in a separate repository. This project is the web presence for discovery, sharing, and launch.
+Keep `public/favicon.ico` small. Google wants at least a 48×48 favicon — `favicon-48.png` is listed first in metadata.
