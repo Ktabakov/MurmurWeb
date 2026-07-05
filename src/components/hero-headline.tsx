@@ -36,12 +36,16 @@ export function HeroHeadline() {
     >
       <span aria-hidden="true">
         {segments.map((segment, segmentIndex) => (
-          <span key={segmentIndex} className={segment.gradient ? "hero-gradient-text" : undefined}>
+          <span key={segmentIndex}>
             {segmentIndex > 0 ? " " : ""}
             {segment.chars.map(({ char, delay }, charIndex) => (
               <motion.span
                 key={charIndex}
-                className="inline-block whitespace-pre"
+                className={
+                  segment.gradient
+                    ? "hero-gradient-text inline-block whitespace-pre"
+                    : "inline-block whitespace-pre"
+                }
                 initial={shouldReduceMotion ? false : { opacity: 0, y: "0.35em" }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
