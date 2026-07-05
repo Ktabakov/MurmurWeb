@@ -1,8 +1,8 @@
 # Murmur Website
 
-Marketing site for [Murmur](https://murmurapps.site) — the iOS app for on-device AI instrumental music.
+Marketing site for [Murmur](https://murmurapps.com) — the iOS app for on-device AI instrumental music.
 
-Live: **https://murmurapps.site**  
+Live: **https://murmurapps.com**  
 App Store: [Murmur: On-Device AI Music](https://apps.apple.com/de/app/murmur-on-device-ai-music/id6776807467?l=en-GB)
 
 This repo is the website only. The iOS app lives elsewhere.
@@ -27,7 +27,7 @@ Pushes to `main` build and deploy via GitHub Actions (`.github/workflows/deploy-
 
 In **Settings → Pages**, set the source to **GitHub Actions** — not “Deploy from branch”. If you point Pages at the repo root you’ll just get this README, not the site.
 
-Custom domain is in `public/CNAME` (`www.murmurapps.site`).
+Custom domain is in `public/CNAME` (`murmurapps.com`).
 
 ## Stack
 

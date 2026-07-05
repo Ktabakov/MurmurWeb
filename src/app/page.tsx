@@ -6,7 +6,7 @@ import { StyleCategoryGrid } from "@/components/style-category-grid";
 import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
 
-const SITE_URL = "https://murmurapps.site";
+const SITE_URL = "https://murmurapps.com";
 // Geo-neutral App Store link: Apple redirects each visitor to their own country's
 // storefront. Do NOT hardcode a country segment (e.g. /de/) — that forced every
 // visitor onto the German store regardless of where they live.

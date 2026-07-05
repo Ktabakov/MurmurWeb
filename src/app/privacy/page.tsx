@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How Murmur handles your data. Music generation runs entirely on your device; we collect only what is needed to deliver your purchase and protect our models.",
-  alternates: { canonical: "https://murmurapps.site/privacy/" },
+  alternates: { canonical: "https://murmurapps.com/privacy/" },
   robots: { index: true, follow: true },
 };
 

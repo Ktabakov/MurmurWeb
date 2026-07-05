@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://murmurapps.site";
+const SITE_URL = "https://murmurapps.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Real content dates, not build time — a lastmod that changes on every

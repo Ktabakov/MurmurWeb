@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 /** Apex domain — matches where GitHub Pages serves the site (www redirects here). */
-const SITE_URL = "https://murmurapps.site";
+const SITE_URL = "https://murmurapps.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
