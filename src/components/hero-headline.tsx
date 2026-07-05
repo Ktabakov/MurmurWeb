@@ -11,7 +11,7 @@ const SEGMENTS = [
 const EASE = [0.16, 1, 0.3, 1] as const;
 // Both words stagger across this same window so a longer phrase doesn't
 // trail on after a shorter one finishes — they reveal and settle together.
-const STAGGER_WINDOW = 0.18;
+const STAGGER_WINDOW = 0.28;
 
 export function HeroHeadline() {
   const shouldReduceMotion = useReducedMotion();
@@ -49,7 +49,7 @@ export function HeroHeadline() {
                 initial={shouldReduceMotion ? false : { opacity: 0, y: "0.35em" }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.35,
+                  duration: 0.45,
                   ease: EASE,
                   delay: shouldReduceMotion ? 0 : delay,
                 }}
