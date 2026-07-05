@@ -57,9 +57,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: `${SITE_URL}/MurmurLogo.webp`,
-        width: 1024,
-        height: 1024,
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
         alt: "Murmur — royalty-free AI music app for creators",
       },
     ],
@@ -69,7 +69,11 @@ export const metadata: Metadata = {
     title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
     description:
       "Original, copyright-free soundtracks on iPhone — plus Live mode for real-time instrumental music. For YouTube, TikTok, games, and podcasts. On-device, WAV export, no subscription.",
-    images: [`${SITE_URL}/MurmurLogo.webp`],
+    images: [`${SITE_URL}/og-image.png`],
+  },
+  // Smart App Banner — Safari on iOS shows a native "open in App Store" banner.
+  itunes: {
+    appId: "6776807467",
   },
   robots: {
     index: true,

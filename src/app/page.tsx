@@ -7,8 +7,10 @@ import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
 
 const SITE_URL = "https://murmurapps.site";
-const APP_STORE_URL =
-  "https://apps.apple.com/de/app/murmur-on-device-ai-music/id6776807467?l=en-GB";
+// Geo-neutral App Store link: Apple redirects each visitor to their own country's
+// storefront. Do NOT hardcode a country segment (e.g. /de/) — that forced every
+// visitor onto the German store regardless of where they live.
+const APP_STORE_URL = "https://apps.apple.com/app/id6776807467";
 const APP_STORE_NAME = "Murmur: On-Device AI Music";
 const YOUTUBE_DEMO_URL = "https://youtube.com/shorts/6yVzCr-LWgo?si=XNPmg6FgI9V3HBCs";
 
