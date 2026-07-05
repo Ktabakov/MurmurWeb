@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroHeadline } from "@/components/hero-headline";
 import { SoundWaveBars } from "@/components/sound-wave-bars";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
@@ -337,9 +338,7 @@ export default function Home() {
             <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 sm:text-[11px] sm:tracking-[0.24em]">
               Royalty-free AI music for creators
             </p>
-            <h1 className="mt-6 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl">
-              Compose <span className="hero-gradient-text">your scene.</span>
-            </h1>
+            <HeroHeadline />
             <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
               Generate 100% original, copyright-free instrumental loops directly on your iPhone.
               Perfect for YouTube, TikTok, indie games, and podcasts. No cloud, no internet
