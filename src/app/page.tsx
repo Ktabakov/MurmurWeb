@@ -207,6 +207,11 @@ const proPerks = [
 
 const faqItems = [
   {
+    question: "How much does Murmur cost? Is there a free version?",
+    answer:
+      "Murmur is free to download — you can generate from the core presets at no cost, with no cap on how many tracks you make. Murmur Pro is a one-time purchase (a lifetime unlock, not a subscription) that opens the full studio: unlimited track length, all 170+ presets, custom scene prompts, 100% royalty-free commercial use, Live mode, WAV export, and advanced controls. No monthly fees, ever — check the current price on the App Store.",
+  },
+  {
     question: "Can Murmur play music live, as it's being generated?",
     answer:
       "Yes. Live mode streams a continuous instrumental set, composed second-by-second on your iPhone by a dedicated fast on-device engine. Pick a starting instrument, tap Go Live, and the music starts within seconds — then steer it like a DJ with the knob deck, fading layers like beat, bass, keys, pads, guitar, synth, strings, brass, and arps in and out while it plays. You can save the jam to your Library when you're done.",
@@ -684,9 +689,40 @@ export default function Home() {
                   <span className="hero-gradient-text">Full commercial rights.</span>
                 </h2>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-murmur-text-2">
-                  Murmur is free to start with core presets and short previews. Pro unlocks
-                  the full studio — one-time purchase, no monthly fees to cover cloud GPU costs.
+                  Download Murmur free and start creating with the core presets.
+                  One Pro unlock opens the full studio — a single one-time purchase, with no
+                  monthly fees to cover cloud GPU costs.
                 </p>
+
+                <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:gap-8">
+                  <div className="flex flex-1 flex-col gap-1.5">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-murmur-muted">
+                      Free to start
+                    </span>
+                    <p className="text-sm leading-relaxed text-murmur-text-2">
+                      Core presets with{" "}
+                      <span className="font-semibold text-white">unlimited generations</span>{" "}
+                      at a fixed track length.
+                    </p>
+                  </div>
+                  <div className="hidden w-px self-stretch bg-murmur-border sm:block" />
+                  <div className="flex flex-1 flex-col gap-1.5">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
+                      Murmur Pro · one-time
+                    </span>
+                    <p className="flex items-baseline gap-1.5">
+                      <span className="text-2xl font-black tracking-tight text-white">€14.99</span>
+                      <span className="text-xs font-medium uppercase tracking-[0.12em] text-murmur-muted">
+                        once
+                      </span>
+                    </p>
+                    <p className="text-sm leading-relaxed text-murmur-text-2">
+                      <span className="font-semibold text-white">Unlimited length</span>, all 170+
+                      presets, and custom scene prompts — no subscription.
+                    </p>
+                  </div>
+                </div>
+
                 <a
                   href={APP_STORE_URL}
                   target="_blank"
