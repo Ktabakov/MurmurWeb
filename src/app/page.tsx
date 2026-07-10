@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HeroHeadline } from "@/components/hero-headline";
-import { SoundWaveBars } from "@/components/sound-wave-bars";
+import { NoiseWaveformHero } from "@/components/noise-waveform-hero";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
@@ -335,8 +335,8 @@ export default function Home() {
       <main className="relative z-10">
         {/* HERO */}
         <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pt-36">
-          <div className="relative mb-8 w-full">
-            <SoundWaveBars />
+          <div className="relative mx-auto mb-8 w-full max-w-2xl xl:max-w-3xl 2xl:max-w-4xl">
+            <NoiseWaveformHero />
           </div>
 
           <div className="relative mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
