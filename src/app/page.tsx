@@ -31,7 +31,7 @@ const jsonLd = {
     audienceType: "Content creators, video editors, and indie game developers",
   },
   featureList: [
-    "100% royalty-free commercial use with Murmur Pro",
+    "100% royalty-free — every track, free or Pro",
     "Pure instrumental — no vocals or lyrics",
     "On-device AI soundtrack generation",
     "Live mode — continuous instrumental music streamed in real time",
@@ -94,7 +94,7 @@ const useCases = [
   {
     title: "Vloggers & YouTubers",
     description:
-      "Generate seamless background tracks that never trigger Content ID strikes. Every loop is original to you.",
+      "Generate background tracks with no royalties owed — nothing to license.",
     accent: "#c59aff",
   },
   {
@@ -193,7 +193,6 @@ const features = [
 ];
 
 const proPerks = [
-  "100% royalty-free commercial use",
   "All 170+ presets",
   "Live mode — Go Live & DJ with the knob deck",
   "Extended Live sessions",
@@ -209,7 +208,7 @@ const faqItems = [
   {
     question: "How much does Murmur cost? Is there a free version?",
     answer:
-      "Murmur is free to download — you can generate from the core presets at no cost, with no cap on how many tracks you make. Murmur Pro is a one-time purchase (a lifetime unlock, not a subscription) that opens the full studio: unlimited track length, all 170+ presets, custom scene prompts, 100% royalty-free commercial use, Live mode, WAV export, and advanced controls. No monthly fees, ever — check the current price on the App Store.",
+      "Murmur is free to download — you can generate from the core presets at no cost, with no cap on how many tracks you make, and every track is royalty-free, free tier or Pro. Murmur Pro is a one-time purchase (a lifetime unlock, not a subscription) that opens the full studio: unlimited track length, all 170+ presets, custom scene prompts, Live mode, WAV export, and advanced controls. No monthly fees, ever — check the current price on the App Store.",
   },
   {
     question: "Can Murmur play music live, as it's being generated?",
@@ -229,7 +228,7 @@ const faqItems = [
   {
     question: "Can I use the music on YouTube or in my commercial game?",
     answer:
-      "Yes. All music generated with Murmur Pro is 100% royalty-free and cleared for commercial use. Because the AI generates raw audio locally on your device, every track is completely unique to you — meaning zero copyright claims or Content ID strikes.",
+      "Yes. Music generated with Murmur Pro is royalty-free and cleared for commercial use — nothing to license, no rights held over what you generate. As with any AI-generated audio, an automated system like YouTube's Content ID could in rare cases flag a false match; that's a third-party detection issue, not a rights issue, and is disputable.",
   },
   {
     question: "Can I generate AI music locally on my phone?",
@@ -686,7 +685,7 @@ export default function Home() {
                 </p>
                 <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-white md:text-5xl">
                   Zero subscriptions.{" "}
-                  <span className="hero-gradient-text">Full commercial rights.</span>
+                  <span className="hero-gradient-text">Royalty-free, no strings.</span>
                 </h2>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-murmur-text-2">
                   Download Murmur free and start creating with the core presets.
@@ -798,6 +797,9 @@ export default function Home() {
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="/privacy/">
                   Privacy
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="/terms/">
+                  Terms
                 </a>
               </div>
             </div>
