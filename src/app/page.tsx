@@ -43,7 +43,7 @@ const jsonLd = {
     "Private — no cloud rendering",
   ],
   keywords:
-    "royalty-free AI music, copyright-free soundtrack, instrumental AI music, live AI music, real-time AI music generator, AI DJ, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, no vocals AI music, content creator music app, Magenta RT, Apple Neural Engine",
+    "royalty-free AI music, copyright-free soundtrack, instrumental AI music, live AI music, real-time AI music generator, AI DJ, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, no vocals AI music, content creator music app, Orpheus engine, Stability AI, Magenta RT, Apple Neural Engine",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -53,12 +53,12 @@ const jsonLd = {
 
 const techStrip = [
   {
-    label: "Powered by Magenta RT",
-    detail: "Google's real-time music generation model, running locally.",
+    label: "Orpheus engine · Powered by Stability AI",
+    detail: "Full tracks in seconds — up to 6 minutes — composed right on your iPhone.",
   },
   {
-    label: "Boosted by the Apple Neural Engine",
-    detail: "Core ML acceleration on the iPhone's ANE chip.",
+    label: "Built for Apple silicon",
+    detail: "Core ML on the iPhone's GPU and Neural Engine. Live mode runs Google's Magenta RT.",
   },
   {
     label: "100% on-device & private",
@@ -178,12 +178,12 @@ const features = [
   {
     title: "Prompt any style",
     description:
-      "Type a genre, tempo, or sonic texture for your scene. Murmur translates your prompt into musical style tokens on-device.",
+      "Type a genre, tempo, instruments, or a mood for your scene. Orpheus turns your words into music, on-device.",
   },
   {
     title: "Private by design",
     description:
-      "Generation runs entirely on your iPhone using the Apple Neural Engine. No cloud rendering, no upload wait.",
+      "Generation runs entirely on your iPhone. No cloud rendering, no upload wait, no internet needed after setup.",
   },
   {
     title: "Your library, organized",
@@ -197,7 +197,7 @@ const proPerks = [
   "Live mode — Go Live & DJ with the knob deck",
   "Extended Live sessions",
   "Custom scene prompts",
-  "Unlimited generation length",
+  "Unlimited tracks, up to 6 minutes each",
   "Export high-quality WAV files",
   "Edit, trim & fade",
   "Advanced controls (CFG, temperature, top-K)",
@@ -206,9 +206,14 @@ const proPerks = [
 
 const faqItems = [
   {
+    question: "What is the Orpheus engine?",
+    answer:
+      "Orpheus is Murmur's newest music engine, powered by Stability AI. It composes a full 30-second track in seconds on recent iPhones and goes up to about 6 minutes per track — right on your iPhone, with no internet needed after a one-time download. Its model was trained on licensed and Creative Commons audio. Murmur's original Magenta RT engines are still there: they power Live mode and stay selectable as the Classic engine in Settings. Orpheus needs iOS 18 or later.",
+  },
+  {
     question: "How much does Murmur cost? Is there a free version?",
     answer:
-      "Murmur is free to download — you can generate from the core presets at no cost, with no cap on how many tracks you make, and every track is royalty-free, free tier or Pro. Murmur Pro is a one-time purchase (a lifetime unlock, not a subscription) that opens the full studio: unlimited track length, all 170+ presets, custom scene prompts, Live mode, WAV export, and advanced controls. No monthly fees, ever — check the current price on the App Store.",
+      "Murmur is free to download, and you get free tracks every day: with the Orpheus engine, three tracks a day up to 30 seconds, plus one free long track. Every track is royalty-free, free tier or Pro. Murmur Pro is a one-time purchase (a lifetime unlock, not a subscription) that opens the full studio: unlimited tracks up to 6 minutes each, all 170+ presets, custom scene prompts, Live mode, WAV export, and advanced controls. No monthly fees, ever — check the current price on the App Store.",
   },
   {
     question: "Can Murmur play music live, as it's being generated?",
@@ -233,7 +238,7 @@ const faqItems = [
   {
     question: "Can I generate AI music locally on my phone?",
     answer:
-      "Yes. Murmur generates AI music entirely on your iPhone using Magenta RT and the Apple Neural Engine. Your prompts and generated audio are processed locally — not sent to a cloud server for rendering.",
+      "Yes. Murmur generates AI music entirely on your iPhone — with the Orpheus engine (powered by Stability AI) and Google's Magenta RT models, accelerated by Apple silicon. Your prompts and generated audio are processed locally — not sent to a cloud server for rendering.",
   },
   {
     question: "Is Murmur private? Does my music go to the cloud?",
