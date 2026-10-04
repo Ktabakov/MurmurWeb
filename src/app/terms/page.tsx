@@ -64,7 +64,7 @@ export default function TermsPage() {
             happens locally on your iPhone; we don&rsquo;t render your music on a server.
           </p>
           <p>
-            Murmur&rsquo;s HD engine is Powered by Stability AI: it runs Stable Audio 3 Medium, licensed
+            Murmur&rsquo;s Orpheus engine is Powered by Stability AI: it runs Stable Audio 3 Medium, licensed
             under the Stability AI Community License (Copyright © Stability AI Ltd.), with Google&rsquo;s
             T5Gemma text encoder, provided under the{" "}
             <a
@@ -144,7 +144,7 @@ export default function TermsPage() {
             </li>
             <li>
               <span className="font-semibold text-murmur-text">Model use policies.</span> Your use of the
-              HD engine must also comply with the{" "}
+              Orpheus engine must also comply with the{" "}
               <a
                 href="https://stability.ai/use-policy"
                 className="text-lilac underline-offset-2 hover:underline"
