@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "July 10, 2026";
+const LAST_UPDATED = "October 4, 2026";
 const CONTACT_EMAIL = "murmurapps@gmail.com";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -62,6 +62,19 @@ export default function TermsPage() {
             Google LLC and used here under their published license terms (CC-BY-4.0 for model weights;
             full attribution is listed in the app under Settings → Open Source Licenses). Generation
             happens locally on your iPhone; we don&rsquo;t render your music on a server.
+          </p>
+          <p>
+            Murmur&rsquo;s HD engine is Powered by Stability AI: it runs Stable Audio 3 Medium, licensed
+            under the Stability AI Community License (Copyright © Stability AI Ltd.), with Google&rsquo;s
+            T5Gemma text encoder, provided under the{" "}
+            <a
+              href="https://ai.google.dev/gemma/terms"
+              className="text-lilac underline-offset-2 hover:underline"
+            >
+              Gemma Terms of Use
+            </a>
+            . Both are converted and optimized to run on-device; their full license texts are included
+            in the app under Settings → Open Source Licenses.
           </p>
         </Section>
 
@@ -123,6 +136,35 @@ export default function TermsPage() {
             rights of others, and don&rsquo;t attempt to circumvent, reverse-engineer, or abuse the app,
             its models, or its purchase system.
           </p>
+          <ul className="list-disc space-y-2 pl-5 marker:text-lilac/60">
+            <li>
+              <span className="font-semibold text-murmur-text">No AI training.</span> You may not use
+              the music you generate with Murmur, or the models included in the app, to train, fine-tune,
+              or otherwise create or improve any artificial-intelligence or machine-learning model.
+            </li>
+            <li>
+              <span className="font-semibold text-murmur-text">Model use policies.</span> Your use of the
+              HD engine must also comply with the{" "}
+              <a
+                href="https://stability.ai/use-policy"
+                className="text-lilac underline-offset-2 hover:underline"
+              >
+                Stability AI Acceptable Use Policy
+              </a>{" "}
+              and the{" "}
+              <a
+                href="https://ai.google.dev/gemma/prohibited_use_policy"
+                className="text-lilac underline-offset-2 hover:underline"
+              >
+                Gemma Prohibited Use Policy
+              </a>
+              , and with applicable law, including export-control and sanctions laws.
+            </li>
+            <li>
+              <span className="font-semibold text-murmur-text">No model extraction.</span> Don&rsquo;t
+              extract, copy, or redistribute the models or model files included with Murmur.
+            </li>
+          </ul>
         </Section>
 
         <Section title="No warranty">
