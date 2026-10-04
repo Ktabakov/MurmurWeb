@@ -2,11 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { clsx } from "clsx";
+import { useSampleEngine } from "@/components/engine-samples";
 
 export type MoodPrompt = {
   label: string;
   prompt: string;
   sample: string;
+  /** Orpheus render of the same prompt (default engine on the page). */
+  sampleOrpheus?: string;
+  /** Prompt actually used for the Orpheus render, when it was refined. */
+  promptOrpheus?: string;
 };
 
 type MoodPromptListProps = {
@@ -16,6 +21,8 @@ type MoodPromptListProps = {
 export function MoodPromptList({ prompts }: MoodPromptListProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playingLabel, setPlayingLabel] = useState<string | null>(null);
+  const engine = useSampleEngine();
+  const orpheus = engine === "orpheus";
 
   const stopPlayback = useCallback(() => {
     const audio = audioRef.current;
@@ -37,7 +44,7 @@ export function MoodPromptList({ prompts }: MoodPromptListProps) {
       }
 
       audio.pause();
-      audio.src = prompt.sample;
+      audio.src = orpheus && prompt.sampleOrpheus ? prompt.sampleOrpheus : prompt.sample;
       audio.currentTime = 0;
 
       try {
@@ -47,8 +54,13 @@ export function MoodPromptList({ prompts }: MoodPromptListProps) {
         setPlayingLabel(null);
       }
     },
-    [playingLabel, stopPlayback]
+    [orpheus, playingLabel, stopPlayback]
   );
+
+  // Switching engines stops whatever is playing (it's the other engine's render).
+  useEffect(() => {
+    stopPlayback();
+  }, [engine, stopPlayback]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -96,7 +108,7 @@ export function MoodPromptList({ prompts }: MoodPromptListProps) {
 
                 <span className="flex-1 text-sm leading-snug text-murmur-text">
                   <span className="text-lilac/70">&ldquo;</span>
-                  {prompt.prompt}
+                  {orpheus && prompt.promptOrpheus ? prompt.promptOrpheus : prompt.prompt}
                   <span className="text-lilac/70">&rdquo;</span>
                 </span>
 

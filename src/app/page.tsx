@@ -6,6 +6,7 @@ import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
 import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
+import { EngineSampleProvider, EngineToggle } from "@/components/engine-samples";
 
 const SITE_URL = "https://murmurapps.com";
 // Geo-neutral App Store link: Apple redirects each visitor to their own country's
@@ -112,14 +113,14 @@ const useCases = [
 ];
 
 const categories = [
-  { label: "Ambient", color: "#c59aff", sample: "/audio/styles/ambient.mp3" },
-  { label: "Focus", color: "#00e5ff", sample: "/audio/styles/focus.mp3" },
-  { label: "Sleep", color: "#4a90e2", sample: "/audio/styles/sleep.mp3" },
-  { label: "Cinematic", color: "#ffb74d", sample: "/audio/styles/cinematic.mp3" },
-  { label: "Jazz & Soul", color: "#ff8a65", sample: "/audio/styles/jazz.mp3" },
-  { label: "Electronic", color: "#e040fb", sample: "/audio/styles/electronic.mp3" },
-  { label: "Acoustic", color: "#aed581", sample: "/audio/styles/acoustic.mp3" },
-  { label: "World", color: "#4db6ac", sample: "/audio/styles/world.mp3" },
+  { label: "Ambient", color: "#c59aff", sample: "/audio/styles/ambient.mp3", sampleOrpheus: "/audio/orpheus/style-ambient.m4a" },
+  { label: "Focus", color: "#00e5ff", sample: "/audio/styles/focus.mp3", sampleOrpheus: "/audio/orpheus/style-focus.m4a" },
+  { label: "Sleep", color: "#4a90e2", sample: "/audio/styles/sleep.mp3", sampleOrpheus: "/audio/orpheus/style-sleep.m4a" },
+  { label: "Cinematic", color: "#ffb74d", sample: "/audio/styles/cinematic.mp3", sampleOrpheus: "/audio/orpheus/style-cinematic.m4a" },
+  { label: "Jazz & Soul", color: "#ff8a65", sample: "/audio/styles/jazz.mp3", sampleOrpheus: "/audio/orpheus/style-jazz.m4a" },
+  { label: "Electronic", color: "#e040fb", sample: "/audio/styles/electronic.mp3", sampleOrpheus: "/audio/orpheus/style-electronic.m4a" },
+  { label: "Acoustic", color: "#aed581", sample: "/audio/styles/acoustic.mp3", sampleOrpheus: "/audio/orpheus/style-acoustic.m4a" },
+  { label: "World", color: "#4db6ac", sample: "/audio/styles/world.mp3", sampleOrpheus: "/audio/orpheus/style-world.m4a" },
 ];
 
 const liveModePoints = [
@@ -141,31 +142,38 @@ const examplePrompts = [
     label: "Calm and weightless",
     prompt: "Calm and weightless — warm ambient pads drifting over a slow, deep sub bass",
     sample: "/audio/moods/calm-weightless.mp3",
+    sampleOrpheus: "/audio/orpheus/calm-weightless.m4a",
   },
   {
     label: "Focused and steady",
     prompt: "Focused and steady — mellow lo-fi beat with soft Rhodes keys and faint vinyl warmth",
     sample: "/audio/moods/focused-steady.mp3",
+    sampleOrpheus: "/audio/orpheus/focused-steady.m4a",
   },
   {
     label: "Hopeful and cinematic",
     prompt: "Hopeful and cinematic — slow strings swelling with gentle piano and spacious reverb",
     sample: "/audio/moods/hopeful-cinematic.mp3",
+    sampleOrpheus: "/audio/orpheus/hopeful-cinematic.m4a",
   },
   {
     label: "Dreamy and nostalgic",
     prompt: "Dreamy and nostalgic — shimmering synth pads, very slow tempo, gentle tape hiss",
     sample: "/audio/moods/dreamy-nostalgic.mp3",
+    sampleOrpheus: "/audio/orpheus/dreamy-nostalgic.m4a",
+    promptOrpheus: "Dreamy and nostalgic — shimmering dreamy synth pads, very slow tempo, warm nostalgic chords",
   },
   {
     label: "Serene and sleepy",
     prompt: "Serene and sleepy — soft drones and distant chimes, no drums, barely moving",
     sample: "/audio/moods/serene-sleepy.mp3",
+    sampleOrpheus: "/audio/orpheus/serene-sleepy.m4a",
   },
   {
     label: "Bright and uplifting",
     prompt: "Bright and uplifting — lively acoustic guitar with light percussion and a warm groove",
     sample: "/audio/moods/bright-uplifting.mp3",
+    sampleOrpheus: "/audio/orpheus/bright-uplifting.m4a",
   },
 ];
 
@@ -511,6 +519,8 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Engine switch (Under the hood) drives every example player below it. */}
+        <EngineSampleProvider>
         {/* UNDER THE HOOD */}
         <section className="page-shell py-16 sm:py-24 lg:py-28">
           <div className="mb-10 flex items-center gap-4 sm:mb-14">
@@ -518,7 +528,7 @@ export default function Home() {
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Under the hood</h2>
           </div>
           <p className="mb-10 max-w-2xl text-base leading-relaxed text-murmur-text-2 sm:mb-14 sm:text-lg">
-            Murmur runs entirely on your iPhone — from style tokens to the final waveform, with no cloud in between.
+            Murmur runs entirely on your iPhone — from your prompt to the final waveform, with no cloud in between.
           </p>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -535,6 +545,7 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <EngineToggle />
         </section>
 
         {/* CUSTOM PROMPTS */}
@@ -546,8 +557,8 @@ export default function Home() {
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-murmur-text-2 sm:text-lg">
               Describe the vibe of your B-roll, menu screen, or reel. Murmur turns your prompt
-              into musical style tokens and composes an original instrumental soundtrack on-device —
-              genre, instruments, rhythm, tempo, and texture.
+              into an original instrumental soundtrack on-device — genre, instruments, rhythm,
+              tempo, and texture.
             </p>
             <MoodPromptList prompts={examplePrompts} />
           </div>
@@ -580,6 +591,7 @@ export default function Home() {
 
           <StyleCategoryGrid categories={categories} />
         </section>
+        </EngineSampleProvider>
 
         {/* USE CASES */}
         <section id="use-cases" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">

@@ -2,11 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { clsx } from "clsx";
+import { useSampleEngine } from "@/components/engine-samples";
 
 export type StyleCategory = {
   label: string;
   color: string;
   sample: string;
+  /** Orpheus render of the same style (default engine on the page). */
+  sampleOrpheus?: string;
 };
 
 type StyleCategoryGridProps = {
@@ -15,6 +18,7 @@ type StyleCategoryGridProps = {
 
 export function StyleCategoryGrid({ categories }: StyleCategoryGridProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const engine = useSampleEngine();
   const [playingLabel, setPlayingLabel] = useState<string | null>(null);
 
   const stopPlayback = useCallback(() => {
@@ -36,7 +40,7 @@ export function StyleCategoryGrid({ categories }: StyleCategoryGridProps) {
       }
 
       audio.pause();
-      audio.src = category.sample;
+      audio.src = engine === "orpheus" && category.sampleOrpheus ? category.sampleOrpheus : category.sample;
       audio.currentTime = 0;
 
       try {
@@ -46,8 +50,13 @@ export function StyleCategoryGrid({ categories }: StyleCategoryGridProps) {
         setPlayingLabel(null);
       }
     },
-    [playingLabel, stopPlayback]
+    [engine, playingLabel, stopPlayback]
   );
+
+  // Switching engines stops whatever is playing (it's the other engine's render).
+  useEffect(() => {
+    stopPlayback();
+  }, [engine, stopPlayback]);
 
   useEffect(() => {
     const audio = audioRef.current;
