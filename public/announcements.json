@@ -4,8 +4,8 @@
     {
       "id": "2026-10-hd-engine",
       "style": "modal",
-      "title": "New: the Orpheus engine",
-      "body": "Meet Orpheus, Murmur's new engine: full tracks in seconds, up to 6 minutes, with a richer sound. Still made entirely on your iPhone. Powered by Stability AI.\n\nOne-time 2.1 GB download. Your tracks and the Classic engine stay.",
+      "title": "Murmur 2.0: meet Orpheus",
+      "body": "Murmur's new engine makes full tracks in seconds, up to 6 minutes long, with a richer sound. Still made entirely on your iPhone. Powered by Stability AI.\n\nOne-time 2.1 GB download that runs in the background. Your tracks and the Classic engine stay.",
       "cta": {
         "label": "Try Orpheus",
         "url": "murmur://settings/engine"
