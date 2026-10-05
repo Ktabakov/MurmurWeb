@@ -12,9 +12,19 @@
       },
       "expires": "2027-03-31T23:59:59Z",
       "match": {
-        "minApp": "2.0.0",
+        "minApp": "2.0.1",
         "minIos": "18.0",
         "createEngine": "classic"
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-0-1",
+      "style": "modal",
+      "title": "What's new in Murmur",
+      "body": "• Live jams keep going for minutes instead of stopping after a few seconds\n• Fixed a freeze when switching to Live\n• The Live engine download now starts right away, with progress\n• Orpheus installs without waiting for the Classic engine\n• Delete any downloaded engine in Settings to free up space",
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.0.1"
       }
     },
     {
