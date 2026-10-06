@@ -2,6 +2,21 @@
   "version": 1,
   "announcements": [
     {
+      "id": "2026-10-update-2-0-1",
+      "style": "banner",
+      "title": "Update to Murmur 2.0.1",
+      "body": "Fixes Live freezing and stopping after a few seconds, and Orpheus getting stuck while installing.",
+      "cta": {
+        "label": "Update",
+        "url": "https://apps.apple.com/app/id6776807467"
+      },
+      "expires": "2026-12-31T23:59:59Z",
+      "match": {
+        "minApp": "2.0.0",
+        "maxApp": "2.0.0"
+      }
+    },
+    {
       "id": "2026-10-hd-engine",
       "style": "modal",
       "title": "Murmur 2.0: meet Orpheus",
@@ -14,7 +29,35 @@
       "match": {
         "minApp": "2.0.1",
         "minIos": "18.0",
+        "createEngine": "classic",
+        "maxApp": "2.0.1"
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-0-2-classic",
+      "style": "modal",
+      "title": "New: Story Worlds",
+      "body": "37 cinematic film & game moods — pick a scene and Murmur scores it. They're made with Orpheus, Murmur's new engine: full tracks in seconds, up to 6 minutes, a much richer sound.\n\nOne-time 2.1 GB download that runs in the background. Your tracks and the Classic engine stay.",
+      "cta": {
+        "label": "Try Orpheus",
+        "url": "murmur://settings/engine"
+      },
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.0.2",
+        "minIos": "18.0",
         "createEngine": "classic"
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-0-2",
+      "style": "modal",
+      "title": "New: Story Worlds",
+      "body": "• 37 cinematic film & game moods — pick a scene and Murmur scores it\n• Find them on the Create screen, under Story Worlds\n• A cleaner Create screen: length sits right above Generate\n• Better-sounding presets, tuned for the Orpheus engine",
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.0.2",
+        "createEngine": "sa3"
       }
     },
     {
@@ -24,7 +67,8 @@
       "body": "• Live jams keep going for minutes instead of stopping after a few seconds\n• Fixed a freeze when switching to Live\n• The Live engine download now starts right away, with progress\n• Orpheus installs without waiting for the Classic engine\n• Delete any downloaded engine in Settings to free up space",
       "expires": "2027-01-31T23:59:59Z",
       "match": {
-        "minApp": "2.0.1"
+        "minApp": "2.0.1",
+        "maxApp": "2.0.1"
       }
     },
     {
