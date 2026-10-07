@@ -5,12 +5,12 @@ import { MurmurMark } from "@/components/murmur-mark";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Murmur handles your data. Music generation runs entirely on your device. We collect anonymous usage analytics and crash reports — never your prompts or your audio — and never for advertising.",
+    "How Murmur handles your data. Music generation runs entirely on your device. We collect pseudonymous usage analytics and crash reports — never your prompts or your audio — and never for advertising.",
   alternates: { canonical: "https://murmurapps.com/privacy/" },
   robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "July 29, 2026";
+const LAST_UPDATED = "October 7, 2026";
 const CONTACT_EMAIL = "murmurapps@gmail.com";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -51,8 +51,24 @@ export default function PrivacyPage() {
 
         <p className="mt-8 text-sm leading-relaxed text-murmur-text-2 sm:text-base">
           Murmur (“the app,” “we,” “us”) is an on-device AI music generation app, built to keep your
-          creativity on your device. This policy explains what data the app handles.
+          creativity on your device. This policy explains what data the app and this website
+          handle.
         </p>
+
+        <Section title="Who is responsible">
+          <p>
+            The controller under the EU General Data Protection Regulation (GDPR) is Konstantin
+            Tabakov, the independent developer of Murmur. Postal address: see the{" "}
+            <Link href="/impressum/" className="text-lilac underline-offset-2 hover:underline">
+              Impressum
+            </Link>
+            . Email:{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-lilac underline-offset-2 hover:underline">
+              {CONTACT_EMAIL}
+            </a>
+            .
+          </p>
+        </Section>
 
         <Section title="The short version">
           <p>
@@ -61,8 +77,8 @@ export default function PrivacyPage() {
             anywhere.
           </p>
           <p>
-            Murmur <em>is</em> a normal app in one respect: it collects anonymous usage analytics
-            and crash reports, so a one-person developer can see which features get used and what is
+            Murmur <em>is</em> a normal app in one respect: it collects pseudonymous usage
+            analytics and crash reports, so a one-person developer can see which features get used and what is
             breaking. That data is about <em>how the app is used</em>, never about{" "}
             <em>what you make</em>. There is no advertising, no ad tracking, and nothing is sold or
             shared with data brokers.
@@ -76,19 +92,25 @@ export default function PrivacyPage() {
             your device. We don’t collect, transmit, or store your prompts or generated audio on our
             servers. Deleting the app removes all of it.
           </p>
+          <p>
+            Prompts you write in another language are translated to English on your device with
+            Apple&rsquo;s Translation framework before they reach the music model. The translation
+            runs locally once the language is downloaded; the text isn&rsquo;t sent to us.
+          </p>
         </Section>
 
         <Section title="Analytics">
           <p>
-            Murmur sends anonymous product-analytics events to PostHog, hosted in the EU. This
+            Murmur sends pseudonymous product-analytics events to PostHog, hosted in the EU. This
             exists so we can answer questions like “how many people give up during the first-run
             model download?” and “does anyone ever finish the tutorial?”
           </p>
           <p className="font-semibold text-murmur-text">Each event carries:</p>
           <ul className="list-disc space-y-2 pl-5 marker:text-lilac/60">
             <li>
-              <span className="font-semibold text-murmur-text">An anonymous device identifier</span>{" "}
-              — a random string, not tied to your name, email, Apple ID, or any account. It’s stored
+              <span className="font-semibold text-murmur-text">A random device identifier</span>{" "}
+              — a random string, not tied to your name, email, Apple ID, or any account. Because it
+              stays the same over time, the data is pseudonymous (not anonymous) under the GDPR. It’s stored
               in the iOS Keychain, which means it survives deleting and reinstalling the app. That’s
               deliberate: it stops one person’s reinstall from being counted as a dozen different
               people.
@@ -198,8 +220,9 @@ export default function PrivacyPage() {
             <span className="font-semibold text-murmur-text">
               no in-app toggle to turn off analytics or crash reporting
             </span>
-            . That’s an honest gap rather than a policy — it’s on the list to add. In the meantime,
-            if you’d like your device’s analytics data deleted, email us and we’ll remove it.
+            . That’s an honest gap rather than a policy — it’s on the list to add. In the meantime you
+            can object to analytics at any time (Art. 21 GDPR): email us and we’ll stop using and
+            delete your device’s analytics data.
           </p>
         </Section>
 
@@ -231,7 +254,7 @@ export default function PrivacyPage() {
               .
             </li>
             <li>
-              PostHog — anonymous product analytics, EU-hosted.{" "}
+              PostHog — pseudonymous product analytics, EU-hosted.{" "}
               <a
                 href="https://posthog.com/privacy"
                 className="text-lilac underline-offset-2 hover:underline"
@@ -258,7 +281,78 @@ export default function PrivacyPage() {
               Google Cloud and Cloudflare — hosting for the model-download service and model file
               storage.
             </li>
+            <li>GitHub Pages (GitHub, Inc.) — hosting of this website.</li>
+            <li>
+              YouTube (Google) — the demo video on this website, only after you tap play.{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                className="text-lilac underline-offset-2 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Their privacy policy
+              </a>
+              .
+            </li>
           </ul>
+        </Section>
+
+        <Section title="This website">
+          <div id="website" className="scroll-mt-24" />
+          <p>
+            murmurapps.com is a static site hosted on GitHub Pages. To deliver it, GitHub processes
+            your IP address and standard request data (time, page, browser) in server logs. This
+            website sets no cookies and uses no analytics or tracking; its fonts are served from this
+            domain.
+          </p>
+          <p>
+            The demo video is not loaded until you tap play. Before that, nothing is requested from
+            YouTube. When you tap play, the video loads from youtube-nocookie.com, and Google receives
+            your IP address and may store information on your device, under Google&rsquo;s privacy
+            policy. By tapping play you consent to this.
+          </p>
+        </Section>
+
+        <Section title="Legal bases (GDPR Art. 6)">
+          <ul className="list-disc space-y-2 pl-5 marker:text-lilac/60">
+            <li>
+              <span className="font-semibold text-murmur-text">Purchases and restoring them</span>{" "}
+              — performance of a contract (Art. 6(1)(b)); keeping transaction records — legal
+              obligations under tax and commercial law (Art. 6(1)(c)).
+            </li>
+            <li>
+              <span className="font-semibold text-murmur-text">
+                Model downloads and device verification (App Attest)
+              </span>{" "}
+              — providing the app you asked for (Art. 6(1)(b)) and our legitimate interest in
+              protecting the models from abuse (Art. 6(1)(f)).
+            </li>
+            <li>
+              <span className="font-semibold text-murmur-text">Analytics and crash reports</span> —
+              our legitimate interest in understanding how the app is used and fixing what breaks
+              (Art. 6(1)(f)). You can object at any time (see Opting out).
+            </li>
+            <li>
+              <span className="font-semibold text-murmur-text">Website server logs</span> — our
+              legitimate interest in delivering a secure website (Art. 6(1)(f)).
+            </li>
+            <li>
+              <span className="font-semibold text-murmur-text">The YouTube video</span> — your
+              consent when you tap play (Art. 6(1)(a) GDPR, § 25(1) TDDDG). You can withdraw it at any
+              time for the future by not playing the video again and clearing YouTube&rsquo;s data in
+              your browser.
+            </li>
+          </ul>
+        </Section>
+
+        <Section title="Transfers outside the EU">
+          <p>
+            Some providers (Sentry, RevenueCat, GitHub, Google, Cloudflare) are based in the United
+            States, so data may be processed there. These transfers rely on the European
+            Commission&rsquo;s adequacy decision for the EU–U.S. Data Privacy Framework, where the
+            provider is certified, and otherwise on the Commission&rsquo;s Standard Contractual
+            Clauses (Art. 46 GDPR). PostHog analytics data is hosted in the EU.
+          </p>
         </Section>
 
         <Section title="Data retention">
@@ -278,9 +372,16 @@ export default function PrivacyPage() {
 
         <Section title="Your rights">
           <p>
-            Depending on your region, you may have rights to access or delete data associated with
-            your purchase, your device identifier, or your analytics events. Contact us and we’ll
-            assist.
+            Under the GDPR you have the right to access your data (Art. 15), to have it corrected
+            (Art. 16) or deleted (Art. 17), to restrict its processing (Art. 18), to data
+            portability (Art. 20), to object to processing based on legitimate interests (Art. 21),
+            and to withdraw consent at any time (Art. 7(3)). Email us to use any of them. Because we
+            don&rsquo;t know who you are, please include your app&rsquo;s analytics ID or purchase
+            details if you want us to find your data.
+          </p>
+          <p>
+            You also have the right to lodge a complaint with a data protection supervisory
+            authority (Art. 77), in particular in the EU country where you live or work.
           </p>
         </Section>
 
@@ -293,7 +394,7 @@ export default function PrivacyPage() {
 
         <Section title="Contact">
           <p>
-            Questions? Email{" "}
+            Questions? Email Konstantin Tabakov at{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="text-lilac underline-offset-2 hover:underline"
@@ -311,9 +412,17 @@ export default function PrivacyPage() {
             <MurmurMark size={24} />
             <span className="text-xs font-black tracking-[0.3em] text-lilac">MURMUR</span>
           </Link>
-          <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
-            © 2026 Murmur
-          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/impressum/"
+              className="text-[9px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac"
+            >
+              Impressum
+            </Link>
+            <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
+              © 2026 Murmur
+            </p>
+          </div>
         </div>
       </footer>
     </div>

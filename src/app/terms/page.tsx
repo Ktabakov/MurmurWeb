@@ -212,9 +212,17 @@ export default function TermsPage() {
             <MurmurMark size={24} />
             <span className="text-xs font-black tracking-[0.3em] text-lilac">MURMUR</span>
           </Link>
-          <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
-            © 2026 Murmur
-          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/impressum/"
+              className="text-[9px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac"
+            >
+              Impressum
+            </Link>
+            <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
+              © 2026 Murmur
+            </p>
+          </div>
         </div>
       </footer>
     </div>

@@ -7,6 +7,7 @@ import { StyleCategoryGrid } from "@/components/style-category-grid";
 import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
 import { EngineSampleProvider, EngineToggle } from "@/components/engine-samples";
+import { YouTubeFacade } from "@/components/youtube-facade";
 
 const SITE_URL = "https://murmurapps.com";
 // Geo-neutral App Store link: Apple redirects each visitor to their own country's
@@ -39,7 +40,8 @@ const jsonLd = {
     "Live knob deck — DJ the mix with layer knobs while the music plays",
     "Export high-quality WAV files",
     "170+ curated instrumental presets",
-    "Custom scene prompts via MusicCoCa style tokens",
+    "Custom scene prompts in your own words",
+    "App in English, German, French, Spanish, Portuguese and Japanese",
     "One-time purchase — no subscription",
     "Private — no cloud rendering",
   ],
@@ -50,6 +52,14 @@ const jsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
+  inLanguage: ["en", "de", "fr", "es", "pt-BR", "ja"],
+  publisher: {
+    "@type": "Organization",
+    name: "Murmur",
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon-192.png`,
+  },
+  sameAs: [APP_STORE_URL, YOUTUBE_DEMO_URL.split("?")[0]],
 };
 
 const techStrip = [
@@ -79,7 +89,7 @@ const steps = [
     step: "02",
     title: "Generate the soundtrack",
     description:
-      "Murmur turns your prompt into musical style tokens and composes an original instrumental track directly on your phone.",
+      "Orpheus composes an original instrumental track from your words in seconds, directly on your phone. Prompts in German, French, Spanish, Portuguese or Japanese are translated on the device first.",
     accent: "#d4a8ff",
   },
   {
@@ -241,7 +251,7 @@ const faqItems = [
   {
     question: "Can I use the music on YouTube or in my commercial game?",
     answer:
-      "Yes. Music generated with Murmur Pro is royalty-free and cleared for commercial use — nothing to license, no rights held over what you generate. As with any AI-generated audio, an automated system like YouTube's Content ID could in rare cases flag a false match; that's a third-party detection issue, not a rights issue, and is disputable.",
+      "Yes. Every track you generate with Murmur, free tier or Pro, is royalty-free and can be used commercially — nothing to license, and neither Murmur nor its model providers claim rights over what you generate. As with any AI-generated audio, an automated system like YouTube's Content ID could in rare cases flag a false match; that's a third-party detection issue, not a rights issue, and is disputable.",
   },
   {
     question: "Can I generate AI music locally on my phone?",
@@ -261,7 +271,7 @@ const faqItems = [
   {
     question: "How does on-device AI music generation work?",
     answer:
-      "You pick a preset or describe a scene in your own words. Murmur translates that text into musical style tokens, then Magenta RT composes an original instrumental track directly on your iPhone — accelerated by the Apple Neural Engine.",
+      "You pick a preset or describe a scene in your own words. The Orpheus engine (powered by Stability AI) turns that text into an original instrumental track with a diffusion model running on your iPhone's GPU — a 30-second track takes seconds. Live mode uses Google's Magenta RT on the Apple Neural Engine to compose music in real time.",
   },
   {
     question: "Do I need an internet connection to make music?",
@@ -352,12 +362,12 @@ export default function Home() {
           </div>
 
           <div className="relative mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
-            <p className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 sm:text-[11px] sm:tracking-[0.24em]">
+            <h1 className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 sm:text-[11px] sm:tracking-[0.24em]">
               Royalty-free AI music for creators
-            </p>
+            </h1>
             <HeroHeadline />
             <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
-              Generate 100% original, copyright-free instrumental loops directly on your iPhone.
+              Generate original, royalty-free instrumental music directly on your iPhone.
               Perfect for YouTube, TikTok, indie games, and podcasts. No cloud, no internet
               required, and no subscription fees.
             </p>
@@ -439,12 +449,10 @@ export default function Home() {
               <figure className="order-2 mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none">
                 <div className="overflow-hidden rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
                   <div className="relative aspect-[9/16] w-full">
-                    <iframe
-                      src="https://www.youtube.com/embed/6yVzCr-LWgo"
+                    <YouTubeFacade
+                      videoId="6yVzCr-LWgo"
                       title="Murmur app demo"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      className="absolute inset-0 h-full w-full"
+                      poster="/images/demo-poster.jpg"
                     />
                   </div>
                 </div>
@@ -817,6 +825,9 @@ export default function Home() {
                 </a>
                 <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="/terms/">
                   Terms
+                </a>
+                <a className="text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac" href="/impressum/">
+                  Impressum
                 </a>
               </div>
             </div>

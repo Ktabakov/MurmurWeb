@@ -30,10 +30,10 @@ export function HeroHeadline() {
   }, []);
 
   return (
-    <h1
-      aria-label="Compose your scene."
-      className="mt-6 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl"
-    >
+    // A <p>, not the h1: the page's h1 is the keyword line above it ("Royalty-free AI music for
+    // creators"), which tells search engines what the page is about. This is the visual headline.
+    <p className="mt-6 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl">
+      <span className="sr-only">Compose your scene.</span>
       <span aria-hidden="true">
         {segments.map((segment, segmentIndex) => {
           // Group chars into words so a line break can only land between
@@ -83,6 +83,6 @@ export function HeroHeadline() {
           );
         })}
       </span>
-    </h1>
+    </p>
   );
 }
