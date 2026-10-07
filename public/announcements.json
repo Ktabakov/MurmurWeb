@@ -2,6 +2,119 @@
   "version": 1,
   "announcements": [
     {
+      "id": "2026-10-release-notes-2-1-0",
+      "style": "modal",
+      "title": "Murmur speaks your language",
+      "body": "• The app is now in English, German, French, Spanish, Portuguese and Japanese\n• Write prompts in your own language: they're translated on your iPhone before the music is made\n• New: Story Worlds, 37 film & game moods. Pick a scene and Murmur scores it\n• Better-sounding presets, tuned for Orpheus",
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.1.0",
+        "createEngine": "sa3"
+      },
+      "i18n": {
+        "de": {
+          "title": "Murmur spricht jetzt Deutsch",
+          "body": "• Die ganze App gibt es jetzt auf Deutsch\n• Schreib deine Prompts auf Deutsch – sie werden auf deinem iPhone übersetzt, bevor die Musik entsteht\n• Neu: Story Worlds, 37 Stimmungen aus Film und Games. Wähle eine Szene, Murmur komponiert dazu\n• Besser klingende Presets, abgestimmt auf Orpheus"
+        },
+        "fr": {
+          "title": "Murmur parle français",
+          "body": "• L'app est désormais en français\n• Écrivez vos prompts en français : ils sont traduits sur votre iPhone avant la création de la musique\n• Nouveau : Story Worlds, 37 ambiances de film et de jeu. Choisissez une scène, Murmur en compose la musique\n• Des presets au meilleur son, optimisés pour Orpheus"
+        },
+        "es": {
+          "title": "Murmur ahora habla español",
+          "body": "• La app ahora está en español\n• Escribe tus prompts en español: se traducen en tu iPhone antes de crear la música\n• Nuevo: Story Worlds, 37 ambientes de cine y videojuegos. Elige una escena y Murmur le pone música\n• Presets que suenan mejor, ajustados para Orpheus"
+        },
+        "pt-BR": {
+          "title": "O Murmur agora fala português",
+          "body": "• O app agora está em português\n• Escreva seus prompts em português: eles são traduzidos no seu iPhone antes de a música ser criada\n• Novo: Story Worlds, 37 climas de filmes e games. Escolha uma cena e o Murmur cria a trilha\n• Presets com som melhor, ajustados para o Orpheus"
+        },
+        "ja": {
+          "title": "Murmurが日本語に対応",
+          "body": "・アプリ全体が日本語になりました\n・プロンプトは日本語で入力OK。音楽を作る前に、iPhoneの中で翻訳されます\n・新機能「Story Worlds」：映画やゲームをイメージした37のムード。シーンを選ぶだけで、Murmurが音楽を付けます\n・Orpheus向けにプリセットの音質を改善"
+        }
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-1-0-classic",
+      "style": "modal",
+      "title": "New: your language + Story Worlds",
+      "body": "Murmur is now in English, German, French, Spanish, Portuguese and Japanese, and you can write prompts in your own language.\n\nAlso new: Story Worlds, 37 film & game moods made with Orpheus, Murmur's new engine. Full tracks in seconds, up to 6 minutes. One-time 2.1 GB download; your tracks and the Classic engine stay.",
+      "cta": {
+        "label": "Try Orpheus",
+        "url": "murmur://settings/engine"
+      },
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.1.0",
+        "minIos": "18.0",
+        "createEngine": "classic"
+      },
+      "i18n": {
+        "de": {
+          "title": "Neu: Deutsch und Story Worlds",
+          "cta": "Orpheus testen",
+          "body": "Murmur gibt es jetzt auf Deutsch, und du kannst deine Prompts auf Deutsch schreiben.\n\nAußerdem neu: Story Worlds, 37 Film- und Game-Stimmungen, gemacht mit Orpheus, Murmurs neuer Engine. Komplette Tracks in Sekunden, bis zu 6 Minuten. Einmaliger Download von 2,1 GB; deine Tracks und die Classic-Engine bleiben."
+        },
+        "fr": {
+          "title": "Nouveau : le français et Story Worlds",
+          "cta": "Essayer Orpheus",
+          "body": "Murmur est désormais en français, et vous pouvez écrire vos prompts en français.\n\nAutre nouveauté : Story Worlds, 37 ambiances de film et de jeu créées avec Orpheus, le nouveau moteur de Murmur. Des morceaux complets en quelques secondes, jusqu'à 6 minutes. Téléchargement unique de 2,1 Go ; vos morceaux et le moteur Classic restent."
+        },
+        "es": {
+          "title": "Nuevo: español y Story Worlds",
+          "cta": "Probar Orpheus",
+          "body": "Murmur ahora está en español y puedes escribir tus prompts en español.\n\nTambién nuevo: Story Worlds, 37 ambientes de cine y videojuegos hechos con Orpheus, el nuevo motor de Murmur. Pistas completas en segundos, de hasta 6 minutos. Descarga única de 2,1 GB; tus pistas y el motor Classic se quedan."
+        },
+        "pt-BR": {
+          "title": "Novo: português e Story Worlds",
+          "cta": "Testar o Orpheus",
+          "body": "O Murmur agora está em português, e você pode escrever seus prompts em português.\n\nTambém novo: Story Worlds, 37 climas de filmes e games feitos com o Orpheus, o novo motor do Murmur. Faixas completas em segundos, com até 6 minutos. Download único de 2,1 GB; suas faixas e o motor Classic continuam."
+        },
+        "ja": {
+          "title": "新機能：日本語対応とStory Worlds",
+          "cta": "Orpheusを試す",
+          "body": "Murmurが日本語に対応し、プロンプトも日本語で入力できるようになりました。\n\nさらに「Story Worlds」も登場：映画やゲームをイメージした37のムードを、Murmurの新エンジンOrpheusで作曲。最長6分のフル楽曲が数秒で完成します。2.1 GBの初回ダウンロードのみ。作った曲とClassicエンジンはそのまま残ります。"
+        }
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-1-0-ios17",
+      "style": "modal",
+      "title": "Murmur speaks your language",
+      "body": "Murmur is now in English, German, French, Spanish, Portuguese and Japanese. It follows your iPhone's language; to change it, go to Settings → Murmur → Language.",
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.1.0",
+        "maxIos": "17.99"
+      },
+      "i18n": {
+        "de": {
+          "title": "Murmur spricht jetzt Deutsch",
+          "body": "Die ganze App gibt es jetzt auf Deutsch, Englisch, Französisch, Spanisch, Portugiesisch und Japanisch. Murmur folgt der Sprache deines iPhones; ändern kannst du sie unter Einstellungen → Murmur → Sprache."
+        },
+        "fr": {
+          "title": "Murmur parle français",
+          "body": "L'app est désormais en français, anglais, allemand, espagnol, portugais et japonais. Murmur suit la langue de votre iPhone ; pour la changer : Réglages → Murmur → Langue."
+        },
+        "es": {
+          "title": "Murmur ahora habla español",
+          "body": "La app ahora está en español, inglés, alemán, francés, portugués y japonés. Murmur sigue el idioma de tu iPhone; para cambiarlo: Configuración → Murmur → Idioma."
+        },
+        "es-ES": {
+          "title": "Murmur ahora habla español",
+          "body": "La app ahora está en español, inglés, alemán, francés, portugués y japonés. Murmur sigue el idioma de tu iPhone; para cambiarlo: Ajustes → Murmur → Idioma."
+        },
+        "pt-BR": {
+          "title": "O Murmur agora fala português",
+          "body": "O app agora está em português, inglês, alemão, francês, espanhol e japonês. O Murmur segue o idioma do seu iPhone; para mudar: Ajustes → Murmur → Idioma."
+        },
+        "ja": {
+          "title": "Murmurが日本語に対応",
+          "body": "アプリは日本語、英語、ドイツ語、フランス語、スペイン語、ポルトガル語に対応しました。iPhoneの言語設定に合わせて表示されます。変更するには「設定」→「Murmur」→「言語」へ。"
+        }
+      }
+    },
+    {
       "id": "2026-10-update-2-0-1",
       "style": "banner",
       "title": "Update to Murmur 2.0.1",
@@ -31,33 +144,6 @@
         "minIos": "18.0",
         "createEngine": "classic",
         "maxApp": "2.0.1"
-      }
-    },
-    {
-      "id": "2026-10-release-notes-2-0-2-classic",
-      "style": "modal",
-      "title": "New: Story Worlds",
-      "body": "37 cinematic film & game moods — pick a scene and Murmur scores it. They're made with Orpheus, Murmur's new engine: full tracks in seconds, up to 6 minutes, a much richer sound.\n\nOne-time 2.1 GB download that runs in the background. Your tracks and the Classic engine stay.",
-      "cta": {
-        "label": "Try Orpheus",
-        "url": "murmur://settings/engine"
-      },
-      "expires": "2027-01-31T23:59:59Z",
-      "match": {
-        "minApp": "2.0.2",
-        "minIos": "18.0",
-        "createEngine": "classic"
-      }
-    },
-    {
-      "id": "2026-10-release-notes-2-0-2",
-      "style": "modal",
-      "title": "New: Story Worlds",
-      "body": "• 37 cinematic film & game moods — pick a scene and Murmur scores it\n• Find them on the Create screen, under Story Worlds\n• A cleaner Create screen: length sits right above Generate\n• Better-sounding presets, tuned for the Orpheus engine",
-      "expires": "2027-01-31T23:59:59Z",
-      "match": {
-        "minApp": "2.0.2",
-        "createEngine": "sa3"
       }
     },
     {
