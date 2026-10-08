@@ -46,7 +46,7 @@ const jsonLd = {
     "Private — no cloud rendering",
   ],
   keywords:
-    "royalty-free AI music, copyright-free soundtrack, instrumental AI music, live AI music, real-time AI music generator, AI DJ, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, no vocals AI music, content creator music app, Orpheus engine, Stability AI, Magenta RT, Apple Neural Engine",
+    "royalty-free AI music, copyright-free soundtrack, AI music for videos, video soundtrack generator, music for photos, background music for Reels, instrumental AI music, live AI music, real-time AI music generator, AI DJ, scene music generator, YouTube background music, TikTok music app, indie game music, WAV export, on-device AI music, no vocals AI music, content creator music app, Orpheus engine, Stability AI, Magenta RT, Apple Neural Engine",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -247,6 +247,11 @@ const faqItems = [
     question: "How much does Murmur cost? Is there a free version?",
     answer:
       "Murmur is free to download, and you get free tracks every day: with the Orpheus engine, three tracks a day up to 30 seconds, plus one free long track. Every track is royalty-free, free tier or Pro. Murmur Pro is a one-time purchase (a lifetime unlock, not a subscription) that opens the full studio: unlimited tracks up to 6 minutes each, all 170+ presets, custom scene prompts, Live mode, WAV export, and advanced controls. No monthly fees, ever — check the current price on the App Store.",
+  },
+  {
+    question: "Can Murmur make music for my videos and photos?",
+    answer:
+      "Yes, with Score mode, coming in Murmur 2.2. Pick a photo or video and Murmur looks at the scene on your iPhone, suggests three musical ideas that fit it (plus matching presets and Story Worlds), and composes a soundtrack exactly as long as your video. You can keep or mix in the original sound, then export the finished video for Instagram, TikTok, or WhatsApp. Your photos and videos never leave your iPhone. Automatic ideas need Apple Intelligence on a supported iPhone; everyone can score with presets, Story Worlds, or their own words.",
   },
   {
     question: "Can Murmur play music live, as it's being generated?",
