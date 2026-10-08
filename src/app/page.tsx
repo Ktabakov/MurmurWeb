@@ -829,9 +829,9 @@ export default function Home() {
                       Murmur Pro · one-time
                     </span>
                     <p className="flex items-baseline gap-1.5">
-                      <span className="text-2xl font-black tracking-tight text-white">€14.99</span>
+                      <span className="text-2xl font-black tracking-tight text-white">Pay once</span>
                       <span className="text-xs font-medium uppercase tracking-[0.12em] text-murmur-muted">
-                        once
+                        yours forever
                       </span>
                     </p>
                     <p className="text-sm leading-relaxed text-murmur-text-2">
