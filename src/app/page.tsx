@@ -133,6 +133,21 @@ const categories = [
   { label: "World", color: "#4db6ac", sample: "/audio/styles/world.mp3", sampleOrpheus: "/audio/orpheus/style-world.m4a" },
 ];
 
+const scoreModePoints = [
+  "Three on-device ideas per photo or video",
+  "Feelings: Epic, Chill, Dark, Playful…",
+  "Takes: retry without losing a result",
+  "Export video with music (9:16 or 1:1)",
+  "Mix in the original sound, or replace it",
+  "Share straight to Instagram or TikTok",
+];
+
+const scoreIdeaSamples = [
+  { title: "80s neon coast synth", feel: "driving · sunset speedboat" },
+  { title: "Breezy bossa nova", feel: "relaxed · golden hour" },
+  { title: "Imperial Ballroom", feel: "Story World · elegant waltz" },
+];
+
 const liveModePoints = [
   "Instrument knobs — fade layers in and out as it plays",
   "Wild knob: dial in surprise when the jam gets too safe",
@@ -323,6 +338,9 @@ export default function Home() {
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#how">
               How it works
             </a>
+            <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#score">
+              Score
+            </a>
             <a className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-murmur-muted transition-colors hover:text-lilac" href="#live">
               Live
             </a>
@@ -368,7 +386,8 @@ export default function Home() {
             <HeroHeadline />
             <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
               Generate original, royalty-free instrumental music directly on your iPhone.
-              Perfect for YouTube, TikTok, indie games, and podcasts. No cloud, no internet
+              Score your own photos and videos, or start from words, presets, and Story Worlds.
+              Perfect for YouTube, TikTok, Reels, indie games, and podcasts. No cloud, no internet
               required, and no subscription fees.
             </p>
             <div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
@@ -473,6 +492,76 @@ export default function Home() {
         </section>
 
         {/* LIVE MODE */}
+        {/* SCORE MODE (2.2) */}
+        <section id="score" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
+          <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-lilac/15 blur-3xl" />
+            <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,340px)] lg:items-center lg:gap-14">
+              <div>
+                <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
+                  New in 2.2 · coming soon
+                </p>
+                <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                  Score your photos and videos.
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg font-medium leading-snug text-murmur-text-2 sm:text-xl">
+                  Pick a clip, get music made for it.{" "}
+                  <span className="text-murmur-muted">Looked at and composed on your iPhone.</span>
+                </p>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
+                  Choose a photo or video and Murmur looks at the scene on the device, then suggests
+                  three musical directions that fit it, alongside matching presets and Story Worlds.
+                  Pick one, set a feeling, and Orpheus composes a soundtrack exactly as long as your
+                  video. Try again or try another idea without losing a take, fine-tune the music, then
+                  export the finished video with the new soundtrack, ready for Instagram, TikTok, or
+                  WhatsApp.
+                </p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-murmur-muted">
+                  Your photos and videos never leave your iPhone. Automatic ideas need Apple
+                  Intelligence on a supported iPhone; everyone can score with presets, Story Worlds, or
+                  their own words.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {scoreModePoints.map((point) => (
+                    <div
+                      key={point}
+                      className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
+                    >
+                      <span className="text-lilac">●</span>
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div aria-hidden="true" className="mx-auto w-full max-w-[300px] lg:max-w-none">
+                <div className="rounded-[2rem] border border-white/10 bg-black/40 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
+                  <div className="relative h-40 overflow-hidden rounded-2xl bg-gradient-to-br from-[#ff6ec7]/60 via-[#7c5cff]/50 to-[#38bdf8]/60">
+                    <span className="absolute left-3 top-3 rounded-full bg-black/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+                      Video · 0:20
+                    </span>
+                    <span className="absolute bottom-3 right-3 text-[10px] font-semibold text-white/80">
+                      ▶ playing with your score
+                    </span>
+                  </div>
+                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-murmur-muted">Suggested</p>
+                  {scoreIdeaSamples.map((idea, i) => (
+                    <div
+                      key={idea.title}
+                      className={`mt-2 rounded-xl border px-3 py-2.5 ${i === 0 ? "border-lilac/50 bg-lilac/10" : "border-white/10 bg-white/5"}`}
+                    >
+                      <p className="text-sm font-bold text-white">{idea.title}</p>
+                      <p className="text-xs text-murmur-muted">{idea.feel}</p>
+                    </div>
+                  ))}
+                  <div className="btn-generate mt-4 rounded-xl py-3 text-center text-[11px] font-black uppercase tracking-[0.2em] text-white">
+                    Compose score
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="live" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-lilac/15 blur-3xl" />
