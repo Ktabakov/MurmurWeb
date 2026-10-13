@@ -8,6 +8,7 @@ import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
 import { EngineSampleProvider, EngineToggle } from "@/components/engine-samples";
 import { YouTubeFacade } from "@/components/youtube-facade";
+import { BADGE_2_2, BADGE_2_2_SHORT, INLINE_2_2, after2_2 } from "@/lib/release";
 
 const SITE_URL = "https://murmurapps.com";
 // Geo-neutral App Store link: Apple redirects each visitor to their own country's
@@ -41,6 +42,11 @@ const jsonLd = {
     "Export high-quality WAV files",
     "170+ curated instrumental presets",
     "Custom scene prompts in your own words",
+    ...after2_2([
+      "Score mode — on-device soundtracks for your photos and videos",
+      "Moments — 31 ready-made soundtracks for everyday scenes",
+      "Story Worlds search — 40+ film and game moods by place, mood or scene",
+    ]),
     "App in English, German, French, Spanish, Portuguese and Japanese",
     "One-time purchase — no subscription",
     "Private — no cloud rendering",
@@ -134,12 +140,35 @@ const categories = [
 ];
 
 const scoreModePoints = [
-  "Three on-device ideas per photo or video",
+  "Music exactly as long as your video",
   "Feelings: Epic, Chill, Dark, Playful…",
   "Takes: retry without losing a result",
   "Export video with music (9:16 or 1:1)",
   "Mix in the original sound, or replace it",
-  "Share straight to Instagram or TikTok",
+  "Save it, share it, or post it to Instagram",
+];
+
+// A few of the 31 Moments (the app's own names), one per section.
+const momentSamples = [
+  "Birthday Confetti",
+  "First Dance",
+  "Dog Park Zoomies",
+  "Passport Stamps",
+  "Christmas Morning",
+  "Kitchen Groove",
+  "Fresh Powder",
+  "Product Reveal",
+];
+
+const momentSections = [
+  "Celebrations",
+  "Love & Weddings",
+  "Family & Pets",
+  "Travel & Outdoors",
+  "Seasons & Holidays",
+  "Food & Home",
+  "Sport & Action",
+  "Creators",
 ];
 
 const scoreIdeaSamples = [
@@ -233,6 +262,7 @@ const proPerks = [
   "Unlimited tracks, up to 6 minutes each",
   "Export high-quality WAV files",
   "Edit, trim & fade",
+  ...after2_2(["Score full-length videos, no watermark"]),
   "Advanced controls (CFG, temperature, top-K)",
   "Model choice: Small, Base, and Large",
 ];
@@ -251,7 +281,7 @@ const faqItems = [
   {
     question: "Can Murmur make music for my videos and photos?",
     answer:
-      "Yes, with Score mode, coming in Murmur 2.2. Pick a photo or video and Murmur looks at the scene on your iPhone, suggests three musical ideas that fit it (plus matching presets and Story Worlds), and composes a soundtrack exactly as long as your video. You can keep or mix in the original sound, then export the finished video for Instagram, TikTok, or WhatsApp. Your photos and videos never leave your iPhone. Automatic ideas need Apple Intelligence on a supported iPhone; everyone can score with presets, Story Worlds, or their own words.",
+      `Yes, with Score mode, ${INLINE_2_2}. Pick a photo or video and Murmur composes a soundtrack for it on your iPhone, exactly as long as your video. On iPhones with Apple Intelligence (iPhone 15 Pro or newer, iOS 27), Apple's on-device model looks at the scene and suggests three musical ideas that fit it. On other iPhones, Score still works: start from presets, Moments, Story Worlds, or your own words. You can keep or mix in the original sound, then save the finished video to Photos, share it, or post it to Instagram. Free scores cover photos and videos up to 30 seconds and carry a small "Made with Murmur" mark; Pro scores full-length videos without it. Your photos and videos never leave your iPhone. Score uses the Orpheus engine (iOS 18 or later).`,
   },
   {
     question: "Can Murmur play music live, as it's being generated?",
@@ -496,7 +526,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LIVE MODE */}
         {/* SCORE MODE (2.2) */}
         <section id="score" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
@@ -504,7 +533,7 @@ export default function Home() {
             <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,340px)] lg:items-center lg:gap-14">
               <div>
                 <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
-                  New in 2.2 · coming soon
+                  {BADGE_2_2}
                 </p>
                 <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
                   Score your photos and videos.
@@ -514,17 +543,16 @@ export default function Home() {
                   <span className="text-murmur-muted">Looked at and composed on your iPhone.</span>
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
-                  Choose a photo or video and Murmur looks at the scene on the device, then suggests
-                  three musical directions that fit it, alongside matching presets and Story Worlds.
-                  Pick one, set a feeling, and Orpheus composes a soundtrack exactly as long as your
-                  video. Try again or try another idea without losing a take, fine-tune the music, then
-                  export the finished video with the new soundtrack, ready for Instagram, TikTok, or
-                  WhatsApp.
+                  Choose a photo or video and Murmur suggests music that fits it: three ideas for the
+                  scene, matching presets, Moments, and Story Worlds. Pick one, set a feeling, and
+                  Orpheus composes a soundtrack exactly as long as your video. Try again or try another
+                  idea without losing a take, then save the video with its new music, share it, or post
+                  it to Instagram.
                 </p>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-murmur-muted">
-                  Your photos and videos never leave your iPhone. Automatic ideas need Apple
-                  Intelligence on a supported iPhone; everyone can score with presets, Story Worlds, or
-                  their own words.
+                  Your photos and videos never leave your iPhone. Scene ideas need Apple Intelligence
+                  (iPhone 15 Pro or newer, iOS 27). On other iPhones, Score works with presets,
+                  Moments, Story Worlds, or your own words.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {scoreModePoints.map((point) => (
@@ -548,7 +576,7 @@ export default function Home() {
                       ▶ playing with your score
                     </span>
                   </div>
-                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-murmur-muted">Suggested</p>
+                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-murmur-muted">Scene ideas</p>
                   {scoreIdeaSamples.map((idea, i) => (
                     <div
                       key={idea.title}
@@ -564,9 +592,62 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            <div className="relative mt-10 grid grid-cols-1 gap-5 lg:mt-12 lg:grid-cols-2">
+              <div id="moments" className="scroll-mt-24 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">Moments</h3>
+                  <span className="rounded-full border border-lilac/20 bg-lilac/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-lilac">
+                    {BADGE_2_2_SHORT}
+                  </span>
+                </div>
+                <p className="mt-3 text-base leading-relaxed text-murmur-text-2">
+                  31 ready-made soundtracks for the scenes people film most: birthdays, weddings, the
+                  dog park, travel, holidays and more. Pick a moment and Murmur scores it, no
+                  description needed.
+                </p>
+                <ul className="mt-5 flex flex-wrap gap-2" aria-label="Some of the Moments">
+                  {momentSamples.map((moment) => (
+                    <li
+                      key={moment}
+                      className="rounded-full border border-lilac/15 bg-lilac/5 px-3 py-1.5 text-xs font-semibold text-murmur-text-2"
+                    >
+                      {moment}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs leading-relaxed text-murmur-muted">
+                  8 sections: {momentSections.join(" · ")}
+                </p>
+              </div>
+
+              <div id="story-worlds" className="scroll-mt-24 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+                    Story Worlds, now with search
+                  </h3>
+                  <span className="rounded-full border border-lilac/20 bg-lilac/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-lilac">
+                    {BADGE_2_2_SHORT}
+                  </span>
+                </div>
+                <p className="mt-3 text-base leading-relaxed text-murmur-text-2">
+                  40+ cinematic film and game moods. Search them by place, mood or scene, pick one,
+                  and Murmur scores it, for your photo, your video, or on its own.
+                </p>
+                <div aria-hidden="true" className="mt-5 flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-4 py-3">
+                  <span className="text-murmur-muted">⌕</span>
+                  <span className="text-sm text-murmur-muted">Search worlds…</span>
+                </div>
+                <p className="mt-4 text-xs leading-relaxed text-murmur-muted">
+                  Try a place, a mood or a scene, like &ldquo;paris&rdquo;, &ldquo;rain&rdquo; or
+                  &ldquo;desert&rdquo;. Plus new regional styles from 30+ countries.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
+        {/* LIVE MODE */}
         <section id="live" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-lilac/15 blur-3xl" />
