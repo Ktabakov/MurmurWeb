@@ -5,12 +5,12 @@ import { MurmurMark } from "@/components/murmur-mark";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Murmur handles your data. Music generation runs entirely on your device. We collect pseudonymous usage analytics and crash reports — never your prompts or your audio — and never for advertising.",
+    "How Murmur handles your data. Music generation runs entirely on your device. We collect anonymous usage statistics and crash reports — never your prompts or your audio — and never for advertising.",
   alternates: { canonical: "https://murmurapps.com/privacy/" },
   robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "October 7, 2026";
+const LAST_UPDATED = "October 13, 2026"; // set to the 2.2 release day when merging to main
 const CONTACT_EMAIL = "murmurapps@gmail.com";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -77,8 +77,8 @@ export default function PrivacyPage() {
             anywhere.
           </p>
           <p>
-            Murmur <em>is</em> a normal app in one respect: it collects pseudonymous usage
-            analytics and crash reports, so a one-person developer can see which features get used and what is
+            Murmur <em>is</em> a normal app in one respect: it collects anonymous usage
+            statistics and crash reports, so a one-person developer can see which features get used and what is
             breaking. That data is about <em>how the app is used</em>, never about{" "}
             <em>what you make</em>. There is no advertising, no ad tracking, and nothing is sold or
             shared with data brokers.
@@ -101,48 +101,39 @@ export default function PrivacyPage() {
 
         <Section title="Analytics">
           <p>
-            Murmur sends pseudonymous product-analytics events to PostHog, hosted in the EU. This
-            exists so we can answer questions like “how many people give up during the first-run
-            model download?” and “does anyone ever finish the tutorial?”
+            To find crashes, failed downloads and failed generations, Murmur sends anonymous usage
+            events to PostHog, hosted in the EU (Frankfurt). This exists so we can answer questions
+            like “how often does the first-run model download fail?” and “on which iPhones do
+            generations fail?”
           </p>
           <p className="font-semibold text-murmur-text">Each event carries:</p>
           <ul className="list-disc space-y-2 pl-5 marker:text-lilac/60">
             <li>
-              <span className="font-semibold text-murmur-text">A random device identifier</span>{" "}
-              — a random string, not tied to your name, email, Apple ID, or any account. Because it
-              stays the same over time, the data is pseudonymous (not anonymous) under the GDPR. It’s stored
-              in the iOS Keychain, which means it survives deleting and reinstalling the app. That’s
-              deliberate: it stops one person’s reinstall from being counted as a dozen different
-              people.
-            </li>
-            <li>
-              <span className="font-semibold text-murmur-text">A session identifier</span>,
-              regenerated every time the app launches.
+              <span className="font-semibold text-murmur-text">A random number for this app launch</span>{" "}
+              — it exists only in memory while the app is open and is new every time you start the
+              app. Murmur stores no analytics identifier on your device, so events from different
+              days can&rsquo;t be linked to each other or to you, and no user profile is created.
             </li>
             <li>
               <span className="font-semibold text-murmur-text">Device and build facts</span> —
-              device name and hardware model, iOS version, app version and build number, and whether
-              the app is running in a simulator.
+              hardware model (for example &ldquo;iPhone 15 Pro&rdquo;), iOS version, app version and build
+              number, app language, and whether the app is running in a simulator.
             </li>
             <li>
-              <span className="font-semibold text-murmur-text">The event itself</span> — app opens;
-              onboarding completion; the model download’s start, completion or failure (with
-              duration and, on failure, a truncated error message); model load failures; Neural
-              Engine compatibility fallbacks; storage fallbacks; paywall and upsell impressions;
-              purchases, cancellations and restores; preset selections; generation and Live-session
-              start and end; each step of the first-run tutorial; and taps on the demo sound bubbles
-              during the download screen.
+              <span className="font-semibold text-murmur-text">The event itself</span> — for example
+              &ldquo;a track finished&rdquo;, &ldquo;the download failed&rdquo; (with duration and a
+              truncated error message), timings of on-device steps, paywall impressions and purchases,
+              and which presets or features were used.
             </li>
           </ul>
           <p>
             <span className="font-semibold text-murmur-text">Events never carry</span> your prompt
-            text, your generated audio, your saved library, file names, your location, or your
-            contacts.
+            text, your generated audio, your photos or videos, your saved library, file names, your
+            location, or your contacts.
           </p>
           <p>
-            As with any web request, PostHog’s servers see the IP address of the request, and the
-            app identifies itself with a User-Agent header naming the app version, device and iOS
-            version.
+            IP addresses are discarded by PostHog and not stored with the events. The app identifies
+            itself with a User-Agent header naming the app version, device model and iOS version.
           </p>
           <p>
             <span className="font-semibold text-murmur-text">What it isn’t used for:</span>{" "}
@@ -161,8 +152,10 @@ export default function PrivacyPage() {
           </p>
           <p>
             Performance tracing is switched off — Murmur sends crashes and errors, not a trace of
-            your session. Sentry never receives your audio, your prompts, your library, or your
-            files.
+            your session. Sentry never receives your audio, your prompts, your photos or videos, your library,
+            or your files. No account, name or user ID is attached to crash reports; Sentry&rsquo;s
+            own crash software keeps a random installation number on the device to group reports
+            from the same install.
           </p>
         </Section>
 
@@ -216,13 +209,13 @@ export default function PrivacyPage() {
 
         <Section title="Opting out">
           <p>
-            There is currently{" "}
+            You can switch both off at any time in the app, under{" "}
             <span className="font-semibold text-murmur-text">
-              no in-app toggle to turn off analytics or crash reporting
-            </span>
-            . That’s an honest gap rather than a policy — it’s on the list to add. In the meantime you
-            can object to analytics at any time (Art. 21 GDPR): email us and we’ll stop using and
-            delete your device’s analytics data.
+              Settings → Privacy → &ldquo;Share anonymous usage data&rdquo;
+            </span>{" "}
+            and{" "}
+            <span className="font-semibold text-murmur-text">&ldquo;Send crash reports&rdquo;</span>.
+            After that, nothing more is sent. You can also object by email (Art. 21 GDPR).
           </p>
         </Section>
 
@@ -330,7 +323,8 @@ export default function PrivacyPage() {
             <li>
               <span className="font-semibold text-murmur-text">Analytics and crash reports</span> —
               our legitimate interest in understanding how the app is used and fixing what breaks
-              (Art. 6(1)(f)). You can object at any time (see Opting out).
+              (Art. 6(1)(f)). No identifier is stored on your device for analytics. You can switch both
+              off at any time (see Opting out).
             </li>
             <li>
               <span className="font-semibold text-murmur-text">Website server logs</span> — our
@@ -376,8 +370,8 @@ export default function PrivacyPage() {
             (Art. 16) or deleted (Art. 17), to restrict its processing (Art. 18), to data
             portability (Art. 20), to object to processing based on legitimate interests (Art. 21),
             and to withdraw consent at any time (Art. 7(3)). Email us to use any of them. Because we
-            don&rsquo;t know who you are, please include your app&rsquo;s analytics ID or purchase
-            details if you want us to find your data.
+            don&rsquo;t know who you are, please include your purchase details if you want us to find your
+            data; anonymous analytics events can&rsquo;t be linked to you.
           </p>
           <p>
             You also have the right to lodge a complaint with a data protection supervisory
