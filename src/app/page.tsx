@@ -497,10 +497,10 @@ export default function Home() {
                 <picture>
                   <source srcSet="/images/score-photo.webp" type="image/webp" />
                   <img
-                    src="/images/score-photo.jpg"
+                    src="/images/score-photo.png"
                     alt="Murmur's Score screen on iPhone: a photo of a small white dog in the grass, Feeling chips (Auto, Epic, Uplifting, Chill), and the suggested music below it, with Dog Park Zoomies as the best match and Acoustic pop as another idea"
                     width={720}
-                    height={1296}
+                    height={1347}
                     loading="lazy"
                     decoding="async"
                     className="h-auto w-full"
