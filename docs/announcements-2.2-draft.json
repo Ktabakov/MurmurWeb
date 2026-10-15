@@ -81,7 +81,7 @@
       "id": "2026-10-release-notes-2-2-0-classic",
       "style": "modal",
       "title": "New: score your photos and videos",
-      "body": "Pick a photo or a video and Murmur composes a soundtrack for it, right on your iPhone. Save the video with its music, share it, or post it to Instagram.\n\nScore mode runs on Orpheus, Murmur's newer engine: a one-time 2.1 GB download. Your tracks and the Classic engine stay.\n\nAlso new: Moments, 31 ready-made soundtracks for birthdays, weddings, travel and more.",
+      "body": "Pick a photo or a video and Murmur composes its soundtrack, right on your iPhone.\n\nScore mode runs on Orpheus, Murmur's newer engine: the full version on newer iPhones (2.1 GB), Orpheus Small on older ones (1.2 GB). Your tracks and the Classic engine stay.\n\nAlso new: Moments, 31 ready-made soundtracks for birthdays, weddings, travel and more.",
       "cta": {
         "label": "Try Orpheus",
         "url": "murmur://settings/engine"
@@ -89,76 +89,123 @@
       "expires": "2027-03-31T23:59:59Z",
       "match": {
         "minApp": "2.2.0",
-        "minIos": "18.0",
+        "minIos": "26.0",
         "createEngine": "classic"
       },
       "i18n": {
         "de": {
           "title": "Neu: Vertone deine Fotos und Videos",
           "cta": "Orpheus testen",
-          "body": "Wähle ein Foto oder Video, und Murmur komponiert den Soundtrack dazu, direkt auf deinem iPhone. Speichere das Video mit der Musik, teile es oder poste es auf Instagram.\n\nVertonen läuft mit Orpheus, Murmurs neuerer Engine: einmaliger Download von 2,1 GB. Deine Tracks und die Classic-Engine bleiben.\n\nAußerdem neu: Momente, 31 fertige Soundtracks für Geburtstage, Hochzeiten, Reisen und mehr."
+          "body": "Wähle ein Foto oder Video, und Murmur komponiert den Soundtrack dazu, direkt auf deinem iPhone.\n\nVertonen läuft mit Orpheus, Murmurs neuerer Engine: die volle Version auf neueren iPhones (2,1 GB), Orpheus Small auf älteren (1,2 GB). Deine Tracks und die Classic-Engine bleiben.\n\nAußerdem neu: Momente, 31 fertige Soundtracks für Geburtstage, Hochzeiten, Reisen und mehr."
         },
         "fr": {
           "title": "Nouveau : le mode Illustrer",
           "cta": "Essayer Orpheus",
-          "body": "Choisissez une photo ou une vidéo, Murmur en compose la bande-son sur votre iPhone. Enregistrez la vidéo avec sa musique, partagez-la ou publiez-la sur Instagram.\n\nLe mode Illustrer utilise Orpheus, le nouveau moteur de Murmur : téléchargement unique de 2,1 Go. Vos morceaux et le moteur Classic restent.\n\nAutre nouveauté : Moments, 31 bandes-son pour anniversaires, mariages, voyages et plus."
+          "body": "Choisissez une photo ou une vidéo, Murmur en compose la bande-son sur votre iPhone.\n\nLe mode Illustrer utilise Orpheus, le nouveau moteur de Murmur : la version complète sur les iPhone récents (2,1 Go), Orpheus Small sur les plus anciens (1,2 Go). Vos morceaux et le moteur Classic restent.\n\nAutre nouveauté : Moments, 31 bandes-son pour anniversaires, mariages, voyages et plus."
         },
         "es": {
           "title": "Nuevo: musicaliza tus fotos y videos",
           "cta": "Probar Orpheus",
-          "body": "Elige una foto o un video y Murmur le compone un soundtrack, directo en tu iPhone. Guarda el video con su música, compártelo o publícalo en Instagram.\n\nEl modo Musicalizar funciona con Orpheus, el nuevo motor de Murmur: descarga única de 2,1 GB. Tus pistas y el motor Classic se quedan.\n\nTambién nuevo: Momentos, 31 soundtracks listos para cumpleaños, bodas, viajes y más."
+          "body": "Elige una foto o un video y Murmur le compone un soundtrack, directo en tu iPhone.\n\nEl modo Musicalizar funciona con Orpheus, el nuevo motor de Murmur: la versión completa en iPhone recientes (2.1 GB) y Orpheus Small en los más antiguos (1.2 GB). Tus pistas y el motor Classic se quedan.\n\nTambién nuevo: Momentos, 31 soundtracks listos para cumpleaños, bodas, viajes y más."
         },
         "es-ES": {
           "title": "Nuevo: musicaliza tus fotos y vídeos",
           "cta": "Probar Orpheus",
-          "body": "Elige una foto o un vídeo y Murmur le compone una banda sonora, en tu propio iPhone. Guarda el vídeo con su música, compártelo o publícalo en Instagram.\n\nEl modo Musicalizar funciona con Orpheus, el nuevo motor de Murmur: descarga única de 2,1 GB. Tus pistas y el motor Classic se quedan.\n\nTambién nuevo: Momentos, 31 bandas sonoras listas para cumpleaños, bodas, viajes y más."
+          "body": "Elige una foto o un vídeo y Murmur le compone una banda sonora, en tu propio iPhone.\n\nEl modo Musicalizar funciona con Orpheus, el nuevo motor de Murmur: la versión completa en iPhone recientes (2,1 GB) y Orpheus Small en los más antiguos (1,2 GB). Tus pistas y el motor Classic se quedan.\n\nTambién nuevo: Momentos, 31 bandas sonoras listas para cumpleaños, bodas, viajes y más."
         },
         "pt-BR": {
           "title": "Novo: trilhas para suas fotos e vídeos",
           "cta": "Testar o Orpheus",
-          "body": "Escolha uma foto ou um vídeo e o Murmur compõe a trilha sonora, direto no seu iPhone. Salve o vídeo com a música, compartilhe ou publique no Instagram.\n\nO modo Trilha usa o Orpheus, o novo motor do Murmur: download único de 2,1 GB. Suas faixas e o motor Classic continuam.\n\nTambém novo: Momentos, 31 trilhas prontas para aniversários, casamentos, viagens e mais."
+          "body": "Escolha uma foto ou um vídeo e o Murmur compõe a trilha sonora, direto no seu iPhone.\n\nO modo Trilha usa o Orpheus, o novo motor do Murmur: a versão completa nos iPhones mais novos (2,1 GB) e o Orpheus Small nos mais antigos (1,2 GB). Suas faixas e o motor Classic continuam.\n\nTambém novo: Momentos, 31 trilhas prontas para aniversários, casamentos, viagens e mais."
         },
         "ja": {
           "title": "新機能：写真や動画にBGMを",
           "cta": "Orpheusを試す",
-          "body": "写真か動画を選ぶだけで、MurmurがiPhoneの中でその映像のための音楽を作曲。音楽付きの動画を保存、共有、Instagramに投稿できます。\n\n「BGM」モードはMurmurの新エンジンOrpheusで動作します。2.1 GBの初回ダウンロードのみ。作った曲とClassicエンジンはそのまま残ります。\n\nさらに新機能「シーン」：誕生日、結婚式、旅行など、31種類のシーン別プリセット。"
+          "body": "写真か動画を選ぶだけで、MurmurがiPhoneの中でその映像のための音楽を作曲。\n\n「BGM」モードはMurmurの新エンジンOrpheusで動作します。新しいiPhoneではフル版(2.1 GB)、古いiPhoneでは軽量版のOrpheus Small(1.2 GB)を使います。作った曲とClassicエンジンはそのまま残ります。\n\nさらに新機能「シーン」：誕生日、結婚式、旅行など、31種類のシーン別プリセット。"
         }
       }
     },
     {
-      "id": "2026-10-release-notes-2-2-0-ios17",
+      "id": "2026-10-release-notes-2-2-0-pre-ios26",
       "style": "modal",
       "title": "New: Moments",
-      "body": "31 ready-made styles for the scenes people film most: birthdays, weddings, the dog park, travel, holidays and more. Pick a moment and Murmur makes the music, no description needed.",
+      "body": "31 ready-made styles for the scenes people film most: birthdays, weddings, the dog park, travel, holidays and more. Pick a moment and Murmur makes the music, no description needed. Score mode, which turns photos and videos into songs, needs iOS 26 or later.",
       "expires": "2027-03-31T23:59:59Z",
       "match": {
         "minApp": "2.2.0",
-        "maxIos": "17.99"
+        "maxIos": "25.99"
       },
       "i18n": {
         "de": {
           "title": "Neu: Momente",
-          "body": "31 fertige Stile für die Szenen, die man am häufigsten filmt: Geburtstage, Hochzeiten, die Hundewiese, Reisen, Feiertage und mehr. Wähle einen Moment, und Murmur macht die Musik, ganz ohne Beschreibung."
+          "body": "31 fertige Stile für die Szenen, die man am häufigsten filmt: Geburtstage, Hochzeiten, die Hundewiese, Reisen, Feiertage und mehr. Wähle einen Moment, und Murmur macht die Musik, ganz ohne Beschreibung. Vertonen, das Fotos und Videos in Songs verwandelt, braucht iOS 26 oder neuer."
         },
         "fr": {
           "title": "Nouveau : Moments",
-          "body": "31 styles prêts à l'emploi pour les scènes qu'on filme le plus : anniversaires, mariages, le parc avec le chien, voyages, fêtes et plus. Choisissez un moment, Murmur fait la musique, sans rien décrire."
+          "body": "31 styles prêts à l'emploi pour les scènes qu'on filme le plus : anniversaires, mariages, le parc avec le chien, voyages, fêtes et plus. Choisissez un moment, Murmur fait la musique, sans rien décrire. Le mode Illustrer, qui transforme photos et vidéos en morceaux, nécessite iOS 26 ou plus récent."
         },
         "es": {
           "title": "Nuevo: Momentos",
-          "body": "31 estilos listos para las escenas que más se graban: cumpleaños, bodas, el parque con tu perro, viajes, fiestas y más. Elige un momento y Murmur hace la música, sin describir nada."
+          "body": "31 estilos listos para las escenas que más se graban: cumpleaños, bodas, el parque con tu perro, viajes, fiestas y más. Elige un momento y Murmur hace la música, sin describir nada. El modo Musicalizar, que convierte fotos y videos en canciones, necesita iOS 26 o posterior."
         },
         "es-ES": {
           "title": "Nuevo: Momentos",
-          "body": "31 estilos listos para las escenas que más se graban: cumpleaños, bodas, el parque con tu perro, viajes, fiestas y más. Elige un momento y Murmur hace la música, sin describir nada."
+          "body": "31 estilos listos para las escenas que más se graban: cumpleaños, bodas, el parque con tu perro, viajes, fiestas y más. Elige un momento y Murmur hace la música, sin describir nada. El modo Musicalizar, que convierte fotos y vídeos en canciones, necesita iOS 26 o posterior."
         },
         "pt-BR": {
           "title": "Novo: Momentos",
-          "body": "31 estilos prontos para as cenas que mais filmamos: aniversários, casamentos, o parque com o cachorro, viagens, festas e mais. Escolha um momento e o Murmur faz a música, sem precisar descrever."
+          "body": "31 estilos prontos para as cenas que mais filmamos: aniversários, casamentos, o parque com o cachorro, viagens, festas e mais. Escolha um momento e o Murmur faz a música, sem precisar descrever. O modo Trilha, que transforma fotos e vídeos em músicas, precisa do iOS 26 ou posterior."
         },
         "ja": {
           "title": "新機能：シーン",
-          "body": "誕生日、結婚式、ドッグラン、旅行、季節のイベントなど、よく撮るシーンのための31種類のプリセット。シーンを選ぶだけで、説明を書かなくてもMurmurが音楽を作ります。"
+          "body": "誕生日、結婚式、ドッグラン、旅行、季節のイベントなど、よく撮るシーンのための31種類のプリセット。シーンを選ぶだけで、説明を書かなくてもMurmurが音楽を作ります。写真や動画を曲にする「BGM」モードには、iOS 26以降が必要です。"
+        }
+      }
+    },
+    {
+      "id": "2026-10-update-2-2-0",
+      "style": "banner",
+      "title": "New in Murmur 2.2: Score mode",
+      "body": "Turn your photos and videos into songs, right on your iPhone. Update to get it.",
+      "cta": {
+        "label": "Update",
+        "url": "https://apps.apple.com/app/id6776807467"
+      },
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "maxApp": "2.1.99",
+        "minIos": "26.0"
+      },
+      "i18n": {
+        "de": {
+          "title": "Neu in Murmur 2.2: Vertonen",
+          "body": "Verwandle deine Fotos und Videos in Songs, direkt auf deinem iPhone. Aktualisiere, um es zu bekommen.",
+          "cta": "Aktualisieren"
+        },
+        "fr": {
+          "title": "Nouveau dans Murmur 2.2 : Illustrer",
+          "body": "Transformez vos photos et vidéos en morceaux, directement sur votre iPhone. Mettez à jour pour en profiter.",
+          "cta": "Mettre à jour"
+        },
+        "es": {
+          "title": "Nuevo en Murmur 2.2: Musicalizar",
+          "body": "Convierte tus fotos y videos en canciones, directo en tu iPhone. Actualiza para tenerlo.",
+          "cta": "Actualizar"
+        },
+        "es-ES": {
+          "title": "Nuevo en Murmur 2.2: Musicalizar",
+          "body": "Convierte tus fotos y vídeos en canciones, en tu propio iPhone. Actualiza para tenerlo.",
+          "cta": "Actualizar"
+        },
+        "pt-BR": {
+          "title": "Novo no Murmur 2.2: modo Trilha",
+          "body": "Transforme suas fotos e vídeos em músicas, direto no seu iPhone. Atualize para ter.",
+          "cta": "Atualizar"
+        },
+        "ja": {
+          "title": "Murmur 2.2の新機能：「BGM」モード",
+          "body": "写真や動画を、iPhoneの中で曲に。アップデートしてお試しください。",
+          "cta": "アップデート"
         }
       }
     }
