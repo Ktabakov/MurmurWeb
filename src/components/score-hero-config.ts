@@ -1,34 +1,81 @@
-import type { HeroStyleId } from "@/components/score-hero-audio";
+/**
+ * The hero's soundtracks: four real Murmur presets / Story Worlds, rendered by Orpheus for the lake clip
+ * from the app's own prompts. The first entry is what "Hear it scored" plays first.
+ */
+export type HeroTrackId =
+  | "italian-golden-hour"
+  | "japanese-koto"
+  | "tiny-planet-campfire"
+  | "campfire-on-the-range";
 
 /**
- * Which Orpheus render plays for each style in the hero (paths in /public, no extension: the player
- * loads ".m4a" and falls back to ".webm"). Both seeds are in public/media/hero/ — to try the other
- * take of a style, change "-s1" to "-s2" here. Nothing else needs editing.
+ * Which render plays for each track (paths in /public, no extension: the player loads ".m4a" and falls
+ * back to ".webm"). Both seeds are in public/media/hero/ — to try the other take of a track, change "-s1"
+ * to "-s2" here. Nothing else needs editing.
  */
-export const HERO_SOUNDTRACK_FILES: Record<HeroStyleId, string> = {
-  epic: "/media/hero/lake-epic-s1",
-  chill: "/media/hero/lake-chill-s1",
-  uplifting: "/media/hero/lake-uplifting-s1",
-  ethereal: "/media/hero/lake-ethereal-s1",
+export const HERO_SOUNDTRACK_FILES: Record<HeroTrackId, string> = {
+  "italian-golden-hour": "/media/hero/lake-italian-golden-hour-s1",
+  "japanese-koto": "/media/hero/lake-japanese-koto-s1",
+  "tiny-planet-campfire": "/media/hero/lake-tiny-planet-campfire-s1",
+  "campfire-on-the-range": "/media/hero/lake-campfire-on-the-range-s1",
 };
 
-/** The style the first tap plays; shown as "Best match" (its prompt describes this very scene). */
-export const HERO_DEFAULT_STYLE: HeroStyleId = "chill";
+export type HeroIcon = "air" | "note" | "planet" | "fire";
 
-export const HERO_STYLES: { id: HeroStyleId; label: string; dot: string; detail: string }[] = [
-  { id: "epic", label: "Epic", dot: "#ff9f43", detail: "Soaring strings · taiko drums" },
-  { id: "chill", label: "Chill", dot: "#38bdf8", detail: "Nylon guitar · soft Rhodes" },
-  { id: "uplifting", label: "Uplifting", dot: "#facc15", detail: "Acoustic strums · handclaps" },
-  { id: "ethereal", label: "Ethereal", dot: "#c59aff", detail: "Shimmering pads · piano" },
+export type HeroTrack = {
+  id: HeroTrackId;
+  name: string;
+  kind: "Preset" | "Story World";
+  detail: string;
+  /** App colours: presets use the Score mood palette, Story Worlds their own accent (StoryWorlds.tsx). */
+  accent: string;
+  icon: HeroIcon;
+};
+
+export const HERO_TRACKS: HeroTrack[] = [
+  {
+    id: "italian-golden-hour",
+    name: "Italian Golden Hour",
+    kind: "Preset",
+    detail: "Wistful clarinet · nylon guitar · nostalgic",
+    accent: "#ffc15e",
+    icon: "air",
+  },
+  {
+    id: "japanese-koto",
+    name: "Japanese Koto",
+    kind: "Preset",
+    detail: "Koto · shakuhachi · calm",
+    accent: "#4dd6e0",
+    icon: "note",
+  },
+  {
+    id: "tiny-planet-campfire",
+    name: "Tiny Planet Campfire",
+    kind: "Story World",
+    detail: "Space folk · banjo · under the stars",
+    accent: "#7dd3a8",
+    icon: "planet",
+  },
+  {
+    id: "campfire-on-the-range",
+    name: "Campfire on the Range",
+    kind: "Story World",
+    detail: "Western folk · pedal steel · quiet night",
+    accent: "#f0a35e",
+    icon: "fire",
+  },
 ];
+
+export const HERO_DEFAULT_TRACK: HeroTrackId = HERO_TRACKS[0].id;
 
 export const HERO_VIDEO = {
   mp4: "/media/hero/lake.mp4",
   webm: "/media/hero/lake.webm",
   poster: "/media/hero/lake-poster.jpg",
   /**
-   * Mirror the clip on wide screens, where the headline sits over the left of the frame: the boat
-   * then crosses the open right side instead of hiding behind the text. Set false to show it as shot.
+   * Mirror the clip on wide screens. Off: as shot, the boat rows left to right from behind the headline
+   * and stops at ~60% of the width, so it never passes under the Score panel docked bottom-right.
    */
-  mirrorOnDesktop: true,
+  mirrorOnDesktop: false,
 };

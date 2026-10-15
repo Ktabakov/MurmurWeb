@@ -1,6 +1,6 @@
 /**
- * Hero soundtrack engine: plays one of several pre-rendered scores in sync with a muted, looping
- * <video>, and crossfades between them without touching the video.
+ * Score player engine: plays one of several pre-rendered scores in sync with a muted, looping <video>,
+ * and crossfades between them without touching the video. Used by the hero and by the Score section.
  *
  * How sync works
  * - Every score is a decoded AudioBuffer played by a looping AudioBufferSourceNode (sample-accurate
@@ -14,14 +14,18 @@
  * - When the video is not playing (reduced motion, Low Power Mode, not loaded yet, paused offscreen),
  *   the audio is its own clock and keeps looping. If the video starts (again) while sound is on, the
  *   video is seeked to the audio position once, then the normal drift check takes over.
+ *
+ * One AudioContext and one decoded-buffer cache are shared by every player on the page, and only one
+ * player sounds at a time: starting one stops the other (its owner hears about it via onInterrupted).
  */
 
-export type HeroStyleId = "epic" | "chill" | "uplifting" | "ethereal";
+/** Track id (the hero config defines the actual ids). */
+export type HeroStyleId = string;
 
 /** Length of the hero video and of every score, in seconds (455 frames at 30 fps). */
 export const HERO_LOOP_SECONDS = 455 / 30;
 
-/** Crossfade when switching styles. */
+/** Crossfade when switching tracks. */
 const SWITCH_FADE = 0.3;
 const START_FADE = 0.08;
 const STOP_FADE = 0.2;
@@ -44,7 +48,7 @@ type Voice = {
 export type SyncStats = {
   /** Last measured drift in ms (audio ahead of video is positive). */
   lastDriftMs: number;
-  /** Largest absolute drift seen since play started, in ms (excludes the reading at a loop wrap). */
+  /** Largest absolute drift seen since play started, in ms. */
   maxAbsDriftMs: number;
   samples: number;
   resyncs: number;
@@ -52,13 +56,13 @@ export type SyncStats = {
 };
 
 type Options = {
-  /** style -> file path without extension; ".m4a" is tried first, then ".webm" (Opus). */
-  files: Record<HeroStyleId, string>;
+  /** id -> file path without extension; ".m4a" is tried first, then ".webm" (Opus). */
+  files: Readonly<Record<string, string>>;
   getVideo: () => HTMLVideoElement | null;
   /** False when the video must not drive the audio (reduced motion: the poster stays still). */
   videoClockAllowed: () => boolean;
-  /** Called every animation frame while sound is on, with analyser data and the score position. */
-  onFrame?: (freq: Uint8Array | null, positionSec: number) => void;
+  /** Another player on the page took over the speakers; this one has stopped. */
+  onInterrupted?: () => void;
   onStats?: (stats: SyncStats) => void;
 };
 
@@ -76,12 +80,52 @@ export function circularDiff(a: number, b: number) {
   return d;
 }
 
+// ---- shared audio graph (one per page) ---------------------------------------------------------
+
+type Shared = {
+  ctx: AudioContext;
+  master: GainNode;
+  analyser: AnalyserNode;
+  freq: Uint8Array<ArrayBuffer>;
+  buffers: Map<string, Promise<AudioBuffer>>;
+  active: SyncedSoundtrack | null;
+  suspendTimer: ReturnType<typeof setTimeout> | null;
+};
+let shared: Shared | null = null;
+
+function getShared(): Shared {
+  if (!shared) {
+    // iOS 17+: play through the ringer/silent switch like a normal media player.
+    const nav = navigator as AudioSessionNavigator;
+    if (nav.audioSession) {
+      try {
+        nav.audioSession.type = "playback";
+      } catch {
+        /* older WebKit */
+      }
+    }
+    const ctx = new AudioContext({ latencyHint: "interactive" });
+    const master = ctx.createGain();
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.78;
+    master.connect(analyser);
+    analyser.connect(ctx.destination);
+    shared = {
+      ctx,
+      master,
+      analyser,
+      freq: new Uint8Array(analyser.frequencyBinCount),
+      buffers: new Map(),
+      active: null,
+      suspendTimer: null,
+    };
+  }
+  return shared;
+}
+
 export class SyncedSoundtrack {
-  private ctx: AudioContext | null = null;
-  private master: GainNode | null = null;
-  private analyser: AnalyserNode | null = null;
-  private freq: Uint8Array<ArrayBuffer> | null = null;
-  private buffers = new Map<HeroStyleId, Promise<AudioBuffer>>();
+  private readonly opts: Options;
   private voice: Voice | null = null;
   private request = 0;
   private raf = 0;
@@ -91,10 +135,7 @@ export class SyncedSoundtrack {
   private nextCheckAt = 0;
   private lastResyncAt = 0;
   private settleUntil = 0;
-  private suspendTimer: ReturnType<typeof setTimeout> | null = null;
   private stats: SyncStats = { lastDriftMs: 0, maxAbsDriftMs: 0, samples: 0, resyncs: 0, loops: 0 };
-
-  private readonly opts: Options;
 
   constructor(opts: Options) {
     this.opts = opts;
@@ -104,64 +145,55 @@ export class SyncedSoundtrack {
     return this.voice !== null;
   }
 
-  /** Must run synchronously inside the user's tap/click handler (iOS unlocks audio only there). */
-  unlock(): AudioContext {
-    if (this.suspendTimer) {
-      clearTimeout(this.suspendTimer);
-      this.suspendTimer = null;
-    }
-    if (!this.ctx) {
-      // iOS 17+: play through the ringer/silent switch like a normal media player.
-      const nav = navigator as AudioSessionNavigator;
-      if (nav.audioSession) {
-        try {
-          nav.audioSession.type = "playback";
-        } catch {
-          /* older WebKit */
-        }
-      }
-      const ctx = new AudioContext({ latencyHint: "interactive" });
-      const master = ctx.createGain();
-      const analyser = ctx.createAnalyser();
-      analyser.fftSize = 256;
-      analyser.smoothingTimeConstant = 0.78;
-      master.connect(analyser);
-      analyser.connect(ctx.destination);
-      this.ctx = ctx;
-      this.master = master;
-      this.analyser = analyser;
-      this.freq = new Uint8Array(analyser.frequencyBinCount);
-    }
-    if (this.ctx.state !== "running") void this.ctx.resume();
-    return this.ctx;
+  /** Position of the playing score in the loop (seconds), or null when silent. */
+  get position(): number | null {
+    return this.voice && shared ? this.voicePosition(this.voice) : null;
   }
 
-  /** Fetch + decode one score (cached). Requires unlock() first. */
+  /** Current analyser spectrum while this player sounds, else null. */
+  levels(): Uint8Array | null {
+    if (!this.voice || !shared) return null;
+    shared.analyser.getByteFrequencyData(shared.freq);
+    return shared.freq;
+  }
+
+  /** Must run synchronously inside the user's tap/click handler (iOS unlocks audio only there). */
+  unlock(): AudioContext {
+    const s = getShared();
+    if (s.suspendTimer) {
+      clearTimeout(s.suspendTimer);
+      s.suspendTimer = null;
+    }
+    if (s.ctx.state !== "running") void s.ctx.resume();
+    return s.ctx;
+  }
+
+  /** Fetch + decode one score (cached page-wide). Requires unlock() first. */
   load(style: HeroStyleId): Promise<AudioBuffer> {
-    const cached = this.buffers.get(style);
-    if (cached) return cached;
-    const ctx = this.ctx;
-    if (!ctx) return Promise.reject(new Error("AudioContext not unlocked"));
+    const s = shared;
+    if (!s) return Promise.reject(new Error("AudioContext not unlocked"));
     const base = this.opts.files[style];
+    const cached = s.buffers.get(base);
+    if (cached) return cached;
     const promise = (async () => {
       let lastError: unknown = null;
       for (const ext of [".m4a", ".webm"]) {
         try {
           const res = await fetch(base + ext);
           if (!res.ok) throw new Error(`${res.status} ${base}${ext}`);
-          return await ctx.decodeAudioData(await res.arrayBuffer());
+          return await s.ctx.decodeAudioData(await res.arrayBuffer());
         } catch (error) {
           lastError = error;
         }
       }
       throw lastError;
     })();
-    promise.catch(() => this.buffers.delete(style));
-    this.buffers.set(style, promise);
+    promise.catch(() => s.buffers.delete(base));
+    s.buffers.set(base, promise);
     return promise;
   }
 
-  /** Warm the cache for the other styles, one at a time, after the first one plays. */
+  /** Warm the cache for other tracks, one at a time, after the first one plays. */
   async preload(styles: HeroStyleId[]) {
     for (const style of styles) {
       try {
@@ -173,12 +205,19 @@ export class SyncedSoundtrack {
   }
 
   /**
-   * Start sound with `style`, or crossfade to it if something is playing. Resolves false when a
-   * newer play()/stop() superseded this call while it was loading.
+   * Start sound with `style`, or crossfade to it if this player is already sounding. Stops any other
+   * player first. Resolves false when a newer play()/stop() superseded this call while it was loading.
    */
   async play(style: HeroStyleId): Promise<boolean> {
     const ctx = this.unlock();
+    const s = shared!;
     const request = ++this.request;
+    if (s.active && s.active !== this) {
+      const other = s.active;
+      other.stop();
+      other.opts.onInterrupted?.();
+    }
+    s.active = this;
     const buffer = await this.load(style);
     if (request !== this.request) return false;
     if (ctx.state !== "running") {
@@ -214,27 +253,23 @@ export class SyncedSoundtrack {
     this.voice = null;
     cancelAnimationFrame(this.raf);
     this.raf = 0;
-    this.opts.onFrame?.(null, 0);
-    const ctx = this.ctx;
-    if (ctx) {
-      this.suspendTimer = setTimeout(() => {
-        if (!this.voice && ctx.state === "running") void ctx.suspend();
-      }, 600);
-    }
+    const s = shared;
+    if (!s) return;
+    if (s.active === this) s.active = null;
+    if (s.suspendTimer) clearTimeout(s.suspendTimer);
+    s.suspendTimer = setTimeout(() => {
+      if (!s.active && s.ctx.state === "running") void s.ctx.suspend();
+    }, 600);
   }
 
   dispose() {
     this.stop();
-    if (this.suspendTimer) clearTimeout(this.suspendTimer);
-    void this.ctx?.close();
-    this.ctx = null;
-    this.buffers.clear();
   }
 
   // ---------------------------------------------------------------------------------------------
 
   private latency() {
-    const ctx = this.ctx as (AudioContext & { outputLatency?: number }) | null;
+    const ctx = shared?.ctx as (AudioContext & { outputLatency?: number }) | undefined;
     if (!ctx) return 0;
     if (typeof ctx.outputLatency === "number" && ctx.outputLatency > 0) return ctx.outputLatency;
     return ctx.baseLatency || 0;
@@ -251,7 +286,7 @@ export class SyncedSoundtrack {
   }
 
   private voicePosition(voice: Voice) {
-    const ctx = this.ctx!;
+    const ctx = shared!.ctx;
     return (voice.offset + (ctx.currentTime - voice.ctxStart)) % voice.loopEnd;
   }
 
@@ -264,7 +299,7 @@ export class SyncedSoundtrack {
   }
 
   private startVoice(style: HeroStyleId, buffer: AudioBuffer, position: number, fade: number): Voice {
-    const ctx = this.ctx!;
+    const { ctx, master } = shared!;
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     source.loop = true;
@@ -275,14 +310,14 @@ export class SyncedSoundtrack {
     gain.gain.setValueAtTime(0, t);
     gain.gain.linearRampToValueAtTime(1, t + fade);
     source.connect(gain);
-    gain.connect(this.master!);
+    gain.connect(master);
     const offset = position % source.loopEnd;
     source.start(t, offset);
     return { style, source, gain, ctxStart: t, offset, loopEnd: source.loopEnd };
   }
 
   private stopVoice(voice: Voice, fade: number) {
-    const ctx = this.ctx!;
+    const ctx = shared!.ctx;
     const t = ctx.currentTime;
     const g = voice.gain.gain;
     g.cancelScheduledValues(t);
@@ -322,50 +357,42 @@ export class SyncedSoundtrack {
 
   private tick() {
     const voice = this.voice;
-    if (!voice || !this.ctx) return;
+    if (!voice || !shared) return;
     const now = performance.now();
     const video = this.opts.getVideo();
-    const active = this.videoActive(video);
-
-    if (active) {
-      const vt = video.currentTime;
-      const looped = this.lastVideoTime >= 0 && vt + HERO_LOOP_SECONDS / 2 < this.lastVideoTime;
-      this.lastVideoTime = vt;
-
-      if (!this.videoWasActive) {
-        // The video (re)started while the audio was its own clock: bring the picture to the sound.
-        this.videoWasActive = true;
-        video.currentTime = wrap(this.voicePosition(voice) - this.latency());
-        this.settleUntil = now + SETTLE_AFTER_SEEK_MS;
-        this.nextCheckAt = this.settleUntil;
-      } else if (looped) {
-        this.stats.loops++;
-        this.resync(LOOP_FADE);
-        this.nextCheckAt = now + CHECK_EVERY_MS;
-      } else if (now >= this.nextCheckAt && now >= this.settleUntil) {
-        this.nextCheckAt = now + CHECK_EVERY_MS;
-        const drift = circularDiff(this.voicePosition(voice), vt + this.latency());
-        const driftMs = drift * 1000;
-        this.stats.lastDriftMs = driftMs;
-        this.stats.samples++;
-        this.stats.maxAbsDriftMs = Math.max(this.stats.maxAbsDriftMs, Math.abs(driftMs));
-        this.overCount = Math.abs(drift) > DRIFT_LIMIT ? this.overCount + 1 : 0;
-        if (this.overCount >= 2 && now - this.lastResyncAt > MIN_RESYNC_GAP_MS) {
-          this.stats.resyncs++;
-          this.resync(RESYNC_FADE);
-        }
-        this.opts.onStats?.({ ...this.stats });
-      }
-    } else {
+    if (!this.videoActive(video)) {
       this.videoWasActive = false;
       this.lastVideoTime = -1;
+      return;
     }
 
-    let freq: Uint8Array | null = null;
-    if (this.analyser && this.freq) {
-      this.analyser.getByteFrequencyData(this.freq);
-      freq = this.freq;
+    const vt = video.currentTime;
+    const looped = this.lastVideoTime >= 0 && vt + HERO_LOOP_SECONDS / 2 < this.lastVideoTime;
+    this.lastVideoTime = vt;
+
+    if (!this.videoWasActive) {
+      // The video (re)started while the audio was its own clock: bring the picture to the sound.
+      this.videoWasActive = true;
+      video.currentTime = wrap(this.voicePosition(voice) - this.latency());
+      this.settleUntil = now + SETTLE_AFTER_SEEK_MS;
+      this.nextCheckAt = this.settleUntil;
+    } else if (looped) {
+      this.stats.loops++;
+      this.resync(LOOP_FADE);
+      this.nextCheckAt = now + CHECK_EVERY_MS;
+    } else if (now >= this.nextCheckAt && now >= this.settleUntil) {
+      this.nextCheckAt = now + CHECK_EVERY_MS;
+      const drift = circularDiff(this.voicePosition(voice), vt + this.latency());
+      const driftMs = drift * 1000;
+      this.stats.lastDriftMs = driftMs;
+      this.stats.samples++;
+      this.stats.maxAbsDriftMs = Math.max(this.stats.maxAbsDriftMs, Math.abs(driftMs));
+      this.overCount = Math.abs(drift) > DRIFT_LIMIT ? this.overCount + 1 : 0;
+      if (this.overCount >= 2 && now - this.lastResyncAt > MIN_RESYNC_GAP_MS) {
+        this.stats.resyncs++;
+        this.resync(RESYNC_FADE);
+      }
+      this.opts.onStats?.({ ...this.stats });
     }
-    this.opts.onFrame?.(freq, this.voice ? this.voicePosition(this.voice) : 0);
   }
 }
