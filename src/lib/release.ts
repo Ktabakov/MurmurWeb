@@ -5,7 +5,7 @@
  * every "coming in 2.2" sentence and the 2.2 lines in the structured data read it, so nothing else
  * on the site needs editing.
  */
-export const IS_RELEASED_2_2 = false;
+export const IS_RELEASED_2_2 = true;
 
 /** Badge on the 2.2 sections and cards. */
 export const BADGE_2_2 = IS_RELEASED_2_2 ? "New in 2.2" : "New in 2.2 · coming soon";

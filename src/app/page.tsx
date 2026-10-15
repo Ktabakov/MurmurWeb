@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ScoreHero } from "@/components/score-hero";
+import { ScoreDemo } from "@/components/score-demo";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
@@ -84,23 +85,23 @@ const techStrip = [
 const steps = [
   {
     step: "01",
-    title: "Define the scene",
+    title: "Start from your scene",
     description:
-      "Choose a curated preset or describe the scene in your own words — genre, instrument, texture, or tempo.",
+      "Pick a photo or video, or describe the scene in your own words. Presets, Moments and Story Worlds are one tap away.",
     accent: "#c59aff",
   },
   {
     step: "02",
-    title: "Generate the soundtrack",
+    title: "Murmur composes it",
     description:
-      "Orpheus composes an original instrumental track from your words in seconds, directly on your phone. Prompts in German, French, Spanish, Portuguese or Japanese are translated on the device first.",
+      "Orpheus writes an original instrumental in seconds, right on your iPhone, exactly as long as your video. Prompts in German, French, Spanish, Portuguese or Japanese are translated on the device first.",
     accent: "#d4a8ff",
   },
   {
     step: "03",
     title: "Export to your edit",
     description:
-      "Save as high-quality WAV, then AirDrop to Final Cut Pro, Premiere, or Unity — or share straight to TikTok and Instagram Reels.",
+      "Save the video with its new music, share it or post it to Instagram, or export the track as a high-quality WAV for Final Cut Pro, Premiere or Unity.",
     accent: "#ad63ff",
   },
 ];
@@ -146,16 +147,17 @@ const scoreModePoints = [
   "Save it, share it, or post it to Instagram",
 ];
 
-// A few of the 31 Moments (the app's own names), one per section.
+// A few of the 31 Moments and 40+ Story Worlds (the app's own names, colours and moods).
 const momentSamples = [
-  "Birthday Confetti",
-  "First Dance",
-  "Dog Park Zoomies",
-  "Passport Stamps",
-  "Christmas Morning",
-  "Kitchen Groove",
-  "Fresh Powder",
-  "Product Reveal",
+  { name: "Birthday Confetti", mood: "Candles, balloons and a room full of cheering.", accent: "#ff5fa2" },
+  { name: "Dog Park Zoomies", mood: "Zoomies, fetch and a very good, very silly day.", accent: "#f59e5b" },
+  { name: "Window Seat", mood: "Floating above the clouds, calm and weightless.", accent: "#a5b4fc" },
+];
+
+const storyWorldSamples = [
+  { name: "Left Bank Midnight", mood: "Rain on cobblestones and a saxophone after midnight.", accent: "#e0a458" },
+  { name: "Imperial Ballroom", mood: "Candlelight on gold and a waltz that never misses a step.", accent: "#e8c27a" },
+  { name: "High Seas Chase", mood: "Cannon smoke, a stolen map and a ship outrunning the storm.", accent: "#38bdf8" },
 ];
 
 const momentSections = [
@@ -167,12 +169,6 @@ const momentSections = [
   "Food & Home",
   "Sport & Action",
   "Creators",
-];
-
-const scoreIdeaSamples = [
-  { title: "80s neon coast synth", feel: "driving · sunset speedboat" },
-  { title: "Breezy bossa nova", feel: "relaxed · golden hour" },
-  { title: "Imperial Ballroom", feel: "Story World · elegant waltz" },
 ];
 
 const liveModePoints = [
@@ -436,7 +432,7 @@ export default function Home() {
         <section id="how" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
           <div className="mb-10 flex items-center gap-4 sm:mb-14">
             <div className="h-8 w-1 rounded-full bg-gradient-to-b from-lilac to-gen-end" />
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From idea to export-ready audio</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">From scene to export-ready soundtrack</h2>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -492,31 +488,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <div aria-hidden="true" className="mx-auto w-full max-w-[300px] lg:max-w-none">
-                <div className="rounded-[2rem] border border-white/10 bg-black/40 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
-                  <div className="relative h-40 overflow-hidden rounded-2xl bg-gradient-to-br from-[#ff6ec7]/60 via-[#7c5cff]/50 to-[#38bdf8]/60">
-                    <span className="absolute left-3 top-3 rounded-full bg-black/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
-                      Video · 0:20
-                    </span>
-                    <span className="absolute bottom-3 right-3 text-[10px] font-semibold text-white/80">
-                      ▶ playing with your score
-                    </span>
-                  </div>
-                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-murmur-muted">Scene ideas</p>
-                  {scoreIdeaSamples.map((idea, i) => (
-                    <div
-                      key={idea.title}
-                      className={`mt-2 rounded-xl border px-3 py-2.5 ${i === 0 ? "border-lilac/50 bg-lilac/10" : "border-white/10 bg-white/5"}`}
-                    >
-                      <p className="text-sm font-bold text-white">{idea.title}</p>
-                      <p className="text-xs text-murmur-muted">{idea.feel}</p>
-                    </div>
-                  ))}
-                  <div className="btn-generate mt-4 rounded-xl py-3 text-center text-[11px] font-black uppercase tracking-[0.2em] text-white">
-                    Compose score
-                  </div>
-                </div>
-              </div>
+              <ScoreDemo />
             </div>
 
             <div className="relative mt-10 grid grid-cols-1 gap-5 lg:mt-12 lg:grid-cols-2">
@@ -532,16 +504,7 @@ export default function Home() {
                   dog park, travel, holidays and more. Pick a moment and Murmur scores it, no
                   description needed.
                 </p>
-                <ul className="mt-5 flex flex-wrap gap-2" aria-label="Some of the Moments">
-                  {momentSamples.map((moment) => (
-                    <li
-                      key={moment}
-                      className="rounded-full border border-lilac/15 bg-lilac/5 px-3 py-1.5 text-xs font-semibold text-murmur-text-2"
-                    >
-                      {moment}
-                    </li>
-                  ))}
-                </ul>
+                <SampleCards label="Some of the Moments" items={momentSamples} />
                 <p className="mt-4 text-xs leading-relaxed text-murmur-muted">
                   8 sections: {momentSections.join(" · ")}
                 </p>
@@ -549,24 +512,18 @@ export default function Home() {
 
               <div id="story-worlds" className="scroll-mt-24 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
                 <div className="flex flex-wrap items-center gap-3">
-                  <h3 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-                    Story Worlds, now with search
-                  </h3>
+                  <h3 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">Story Worlds</h3>
                   <span className="rounded-full border border-lilac/20 bg-lilac/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-lilac">
                     {BADGE_2_2_SHORT}
                   </span>
                 </div>
                 <p className="mt-3 text-base leading-relaxed text-murmur-text-2">
-                  40+ cinematic film and game moods. Search them by place, mood or scene, pick one,
-                  and Murmur scores it, for your photo, your video, or on its own.
+                  40+ cinematic film and game moods, now searchable in the app by place, mood or
+                  scene. Pick one and Murmur scores it, for your photo, your video, or on its own.
                 </p>
-                <div aria-hidden="true" className="mt-5 flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-4 py-3">
-                  <span className="text-murmur-muted">⌕</span>
-                  <span className="text-sm text-murmur-muted">Search worlds…</span>
-                </div>
+                <SampleCards label="Some of the Story Worlds" items={storyWorldSamples} />
                 <p className="mt-4 text-xs leading-relaxed text-murmur-muted">
-                  Try a place, a mood or a scene, like &ldquo;paris&rdquo;, &ldquo;rain&rdquo; or
-                  &ldquo;desert&rdquo;. Plus new regional styles from 30+ countries.
+                  Plus new regional styles from 30+ countries.
                 </p>
               </div>
             </div>
@@ -939,5 +896,28 @@ export default function Home() {
         </footer>
       </main>
     </div>
+  );
+}
+
+function SampleCards({
+  label,
+  items,
+}: {
+  label: string;
+  items: { name: string; mood: string; accent: string }[];
+}) {
+  return (
+    <ul className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3" aria-label={label}>
+      {items.map((item) => (
+        <li
+          key={item.name}
+          className="rounded-xl border border-white/10 bg-black/25 px-3.5 py-3"
+          style={{ boxShadow: `inset 3px 0 0 ${item.accent}` }}
+        >
+          <p className="text-sm font-bold text-white">{item.name}</p>
+          <p className="mt-0.5 text-xs leading-snug text-murmur-muted">{item.mood}</p>
+        </li>
+      ))}
+    </ul>
   );
 }
