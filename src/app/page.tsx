@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { HeroHeadline } from "@/components/hero-headline";
-import { NoiseWaveformHero } from "@/components/noise-waveform-hero";
+import { ScoreHero } from "@/components/score-hero";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
 import { MoodPromptList } from "@/components/mood-prompt-list";
 import { FaqSection } from "@/components/faq-section";
 import { EngineSampleProvider, EngineToggle } from "@/components/engine-samples";
-import { YouTubeFacade } from "@/components/youtube-facade";
 import { BADGE_2_2, BADGE_2_2_SHORT, INLINE_2_2, after2_2 } from "@/lib/release";
 
 const SITE_URL = "https://murmurapps.com";
@@ -182,13 +180,6 @@ const liveModePoints = [
   "Wild knob: dial in surprise when the jam gets too safe",
   "Generated in real time, fully on-device",
   "Keep the jam: save the session as a track",
-];
-
-const demoHighlights = [
-  "Describe your scene — genre, texture, or instrument",
-  "Generate copyright-free instrumentals on-device",
-  "Preview tracks with waveform playback in your Library",
-  "100% royalty-free for commercial edits",
 ];
 
 const examplePrompts = [
@@ -408,45 +399,38 @@ export default function Home() {
       </nav>
 
       <main className="relative z-10">
-        {/* HERO */}
-        <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pt-36">
-          <div className="relative mx-auto mb-8 w-full max-w-2xl xl:max-w-3xl 2xl:max-w-4xl">
-            <NoiseWaveformHero />
+        {/* HERO: the lake clip scored in Murmur; tap to hear it, pick a feeling to switch the score */}
+        <ScoreHero>
+          {/* The h1 stays the keyword line (what the page is about); the big line is the visual headline. */}
+          <h1 className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 backdrop-blur-sm sm:text-[11px] sm:tracking-[0.24em]">
+            Royalty-free AI music for creators
+          </h1>
+          <p className="mt-5 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:mt-6 sm:text-6xl xl:text-7xl">
+            <span className="block">Your scene.</span>
+            <span className="hero-gradient-text block pb-1">Your sound.</span>
+          </p>
+          <p className="mt-5 max-w-xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-lg">
+            Original, royalty-free music composed right on your iPhone, for your photos and videos,
+            YouTube, TikTok, Reels, games and podcasts. No cloud, no subscription.
+          </p>
+          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-generate flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90"
+            >
+              <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
+              Download on the App Store
+            </a>
+            <a
+              href="#how"
+              className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8"
+            >
+              See how it works
+            </a>
           </div>
-
-          <div className="relative mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
-            <h1 className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 sm:text-[11px] sm:tracking-[0.24em]">
-              Royalty-free AI music for creators
-            </h1>
-            <HeroHeadline />
-            <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-xl">
-              Generate original, royalty-free instrumental music directly on your iPhone.
-              Score your own photos and videos, or start from words, presets, and Story Worlds.
-              Perfect for YouTube, TikTok, Reels, indie games, and podcasts. No cloud, no internet
-              required, and no subscription fees.
-            </p>
-            <div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
-              <a
-                href={APP_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-generate flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:px-10"
-              >
-                <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
-                Download on the App Store
-              </a>
-              <a
-                href="#how"
-                className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8 sm:px-10"
-              >
-                See how it works
-              </a>
-            </div>
-            <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-murmur-muted sm:text-[11px] sm:tracking-[0.24em]">
-              Free on iPhone · Royalty-free instrumental music for creators, editors, and devs
-            </p>
-          </div>
-        </section>
+        </ScoreHero>
 
         {/* HOW IT WORKS */}
         <section id="how" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
@@ -465,64 +449,6 @@ export default function Home() {
                 <p className="mt-4 text-sm leading-relaxed text-murmur-text-2">{card.description}</p>
               </article>
             ))}
-          </div>
-        </section>
-
-        {/* SEE IT IN ACTION */}
-        <section id="demo" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
-          <div className="glass-card relative overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
-            <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-gen-end/15 blur-3xl" />
-            <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,340px)] lg:items-start lg:gap-14">
-              <div className="order-1 lg:col-start-1 lg:row-start-1">
-                <p className="inline-flex items-center gap-2 rounded-full border border-lilac/20 bg-lilac/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-lilac">
-                  <span className="text-[10px] text-lilac" aria-hidden="true">
-                    ▶
-                  </span>
-                  App demo
-                </p>
-                <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-                  See it in action.
-                </h2>
-                <p className="mt-4 max-w-2xl text-lg font-medium leading-snug text-murmur-text-2 sm:text-xl">
-                  From scene prompt to edit-ready WAV.{" "}
-                  <span className="text-murmur-muted">Built for editors on the go.</span>
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
-                  Watch Murmur score your cut — describe the scene and generate an original
-                  instrumental track on your iPhone.
-                </p>
-                <a
-                  href={YOUTUBE_DEMO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 rounded-xl border border-lilac/20 bg-lilac/10 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-lilac transition-all hover:bg-lilac/20 hover:text-white"
-                >
-                  Watch on YouTube
-                </a>
-              </div>
-              <figure className="order-2 mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none">
-                <div className="overflow-hidden rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
-                  <div className="relative aspect-[9/16] w-full">
-                    <YouTubeFacade
-                      videoId="6yVzCr-LWgo"
-                      title="Murmur app demo"
-                      poster="/images/demo-poster.jpg"
-                    />
-                  </div>
-                </div>
-              </figure>
-              <div className="order-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
-                {demoHighlights.map((point) => (
-                  <div
-                    key={point}
-                    className="flex items-center gap-3 rounded-xl border border-lilac/10 bg-lilac/5 px-4 py-3 text-sm text-murmur-text-2"
-                  >
-                    <span className="text-lilac">●</span>
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 

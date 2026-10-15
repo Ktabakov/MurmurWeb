@@ -251,3 +251,77 @@ body {
     animation: none;
   }
 }
+
+/* ── Score hero ─────────────────────────────────────────────────────────── */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Record-label ring text on the sound button */
+@keyframes hero-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-spin {
+  transform-origin: 50% 50%;
+  animation: hero-spin 22s linear infinite;
+}
+
+@keyframes hero-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(173, 99, 255, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 52px rgba(220, 99, 255, 0.75);
+  }
+}
+
+.hero-breathe {
+  animation: hero-breathe 2.4s ease-in-out infinite;
+}
+
+/* Dashed connectors drift while sound is on */
+@keyframes hero-dash-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+.hero-dash-flow {
+  animation: hero-dash-flow 1.6s linear infinite;
+}
+
+/* Level-meter bars: height set per frame from the analyser (transform only, no layout) */
+.hero-level-bar {
+  transform-origin: 50% 50%;
+  transform: scaleY(0.3);
+  transition: transform 90ms linear;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise,
+  .hero-spin,
+  .hero-breathe,
+  .hero-dash-flow {
+    animation: none;
+  }
+
+  .hero-level-bar {
+    transition: none;
+  }
+}
