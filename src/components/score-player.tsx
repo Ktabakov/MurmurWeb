@@ -171,7 +171,7 @@ export function useScorePlayer() {
   );
 
   /**
-   * "Compose score" / "Compose again": a short composing state (COMPOSE_MS minimum, longer only while the
+   * "Compose score": a short composing state (COMPOSE_MS minimum, longer only while the
    * audio is still loading), then the soundtrack starts in sync with the clip and the suggestions show.
    * Taking longer than COMPOSE_MS only ever happens because the file is really still downloading.
    */
@@ -237,12 +237,6 @@ export function useScorePlayer() {
     setAnnouncement("Composing cancelled.");
   }, [dropCompose]);
 
-  const composeAgain = useCallback(() => {
-    if (phase !== "composed") return;
-    const i = HERO_TRACKS.findIndex((t) => t.id === selected);
-    compose(HERO_TRACKS[(i + 1) % HERO_TRACKS.length].id);
-  }, [compose, phase, selected]);
-
   /** The main button: Compose score → (cancel while composing) → Play / Stop. */
   const primary = useCallback(() => {
     if (phase === "initial") compose(HERO_DEFAULT_TRACK);
@@ -254,7 +248,7 @@ export function useScorePlayer() {
   const pick = useCallback(
     (id: HeroTrackId) => {
       if (phase === "composing") {
-        // Picking a suggestion while "Compose again" is running: skip the wait, no fake delay.
+        // Picking a suggestion while composing: skip the wait, no fake delay.
         dropCompose();
         setPhase("composed");
         play(id);
@@ -361,7 +355,6 @@ export function useScorePlayer() {
     revealed,
     composeSlow,
     primary,
-    composeAgain,
     pick,
   };
 }
@@ -502,10 +495,10 @@ function BestMatchTag({ best }: { best: boolean }) {
 /**
  * Murmur's Score screen in miniature. Starts as just the header and a "Compose score" button; after the
  * short composing state the suggestion rows ease in and the first one plays. Then play/stop, instant
- * style switching and a "Compose again" for the next idea.
+ * style switching.
  */
 export function ScorePanel({ player, className }: { player: ScorePlayer; className?: string }) {
-  const { phase, revealed, composeSlow, status, selected, loadingId, primary, composeAgain, pick, progressBar, timeRef, eqBar } = player;
+  const { phase, revealed, composeSlow, status, selected, loadingId, primary, pick, progressBar, timeRef, eqBar } = player;
   const playing = status === "playing";
   const composing = phase === "composing";
 
@@ -605,22 +598,6 @@ export function ScorePanel({ player, className }: { player: ScorePlayer; classNa
         <PrimaryLabel phase={phase} status={status} slow={composeSlow} />
       </button>
 
-      <Collapse open={revealed}>
-        <div className="flex justify-center pt-1">
-          <button
-            type="button"
-            onClick={composeAgain}
-            aria-disabled={composing || undefined}
-            className={clsx(
-              "rounded-full px-3 py-1.5 text-[13px] font-semibold text-lilac transition-opacity hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-lilac",
-              composing && "opacity-40"
-            )}
-          >
-            Compose again
-          </button>
-        </div>
-      </Collapse>
-
       <ScoreNote className="mt-2.5 px-1 text-center" />
     </div>
   );
@@ -653,10 +630,10 @@ function Equalizer({
 /**
  * Phones: the same flow in one block. Initially just the "Compose score" pill and the note; after
  * composing, a horizontally scrolling row of chips (colour dot + name; the selected one gets its accent
- * border, the playing one an equalizer) eases in above the play pill, with "Compose again" beside it.
+ * border, the playing one an equalizer) eases in above the play pill,.
  */
 export function CompactPicker({ player, className }: { player: ScorePlayer; className?: string }) {
-  const { phase, revealed, composeSlow, status, selected, loadingId, primary, composeAgain, pick, progressBar, eqBar } = player;
+  const { phase, revealed, composeSlow, status, selected, loadingId, primary, pick, progressBar, eqBar } = player;
   const playing = status === "playing";
   const composing = phase === "composing";
 
@@ -721,19 +698,6 @@ export function CompactPicker({ player, className }: { player: ScorePlayer; clas
         >
           <PrimaryLabel phase={phase} status={status} slow={composeSlow} />
         </button>
-        <Collapse open={revealed} axis="x">
-          <button
-            type="button"
-            onClick={composeAgain}
-            aria-disabled={composing || undefined}
-            className={clsx(
-              "whitespace-nowrap rounded-full py-2 pl-4 pr-1 text-[13px] font-semibold text-lilac transition-opacity hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-lilac",
-              composing && "opacity-40"
-            )}
-          >
-            Compose again
-          </button>
-        </Collapse>
       </div>
 
       <Collapse open={revealed}>
