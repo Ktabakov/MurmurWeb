@@ -14,6 +14,7 @@ import {
 export type PlayerStatus = "idle" | "loading" | "playing";
 
 const EQ_BARS = 4;
+const IDLE_EQ = [0.55, 0.9, 0.7, 0.45];
 export const LOOP_LABEL = formatTime(HERO_LOOP_SECONDS);
 
 function formatTime(seconds: number) {
@@ -41,35 +42,52 @@ export function usePrefersReducedMotion() {
 }
 
 /**
- * One Score player: a <video> + the shared audio engine + UI state.
- * - "ambient" (hero): the muted clip loops by itself (not for reduced motion / Data Saver); a tap adds sound.
- * - "on-demand" (Score section): the clip stays on its poster until a tap, then plays with its score and
- *   pauses again on stop. A tap is the visitor's choice, so this also plays under reduced motion.
- * Only one player sounds at a time page-wide (the engine stops the other one).
+ * The hero's Score player: a muted looping <video> (not for reduced motion / Data Saver) + the shared
+ * audio engine + UI state. A tap adds the sound, in sync with the clip.
  */
-export function useScorePlayer(mode: "ambient" | "on-demand") {
+export function useScorePlayer() {
   const reduced = usePrefersReducedMotion();
   const reducedRef = useRef(false);
   const rootRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const engineRef = useRef<SyncedSoundtrack | null>(null);
   const preloadedRef = useRef(false);
-  const progressRef = useRef<HTMLSpanElement | null>(null);
   const timeRef = useRef<HTMLSpanElement | null>(null);
-  const eqRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  // Progress bars and equalizer bars register themselves (desktop panel + phone picker both have them).
+  const progressEls = useRef(new Set<HTMLElement>());
+  const eqEls = useRef(new Set<HTMLElement>());
 
   const [status, setStatus] = useState<PlayerStatus>("idle");
   const [selected, setSelected] = useState<HeroTrackId>(HERO_DEFAULT_TRACK);
   const [loadingId, setLoadingId] = useState<HeroTrackId | null>(null);
   const [announcement, setAnnouncement] = useState("");
 
-  const videoClockAllowed = useCallback(() => mode === "on-demand" || !reducedRef.current, [mode]);
+  const videoClockAllowed = useCallback(() => !reducedRef.current, []);
 
   const markStopped = useCallback(() => {
     setStatus("idle");
     setLoadingId(null);
-    if (mode === "on-demand") videoRef.current?.pause();
-  }, [mode]);
+  }, []);
+
+  /** Callback ref for a progress-bar fill (scaled 0..1 along x). */
+  const progressBar = useCallback((el: HTMLElement | null) => {
+    if (!el) return;
+    const set = progressEls.current;
+    set.add(el);
+    return () => {
+      set.delete(el);
+    };
+  }, []);
+
+  /** Callback ref for one equalizer bar; its data-bar attribute picks the band. */
+  const eqBar = useCallback((el: HTMLElement | null) => {
+    if (!el) return;
+    const set = eqEls.current;
+    set.add(el);
+    return () => {
+      set.delete(el);
+    };
+  }, []);
 
   const getEngine = useCallback(() => {
     if (!engineRef.current) {
@@ -98,8 +116,7 @@ export function useScorePlayer(mode: "ambient" | "on-demand") {
       engine.unlock(); // synchronous, inside the tap
       const video = videoRef.current;
       if (video && video.paused && videoClockAllowed()) {
-        // Hero: Low Power Mode / Data Saver may have blocked the muted autoplay; a tap allows it.
-        // Score section: the tap is what starts the clip.
+        // Low Power Mode / Data Saver may have blocked the muted autoplay; a tap allows it.
         video.muted = true;
         video.play().catch(() => {});
       }
@@ -149,7 +166,6 @@ export function useScorePlayer(mode: "ambient" | "on-demand") {
     if (!video) return;
     video.muted = true;
     video.defaultMuted = true;
-    if (mode !== "ambient") return;
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (reducedRef.current || saveData) {
       video.pause();
@@ -157,7 +173,7 @@ export function useScorePlayer(mode: "ambient" | "on-demand") {
     }
     video.preload = "auto";
     video.play().catch(() => {});
-  }, [mode, reduced]);
+  }, [reduced]);
 
   // Visible: keep the progress bar + level bars moving; offscreen and silent: pause the ambient loop.
   useEffect(() => {
@@ -170,30 +186,30 @@ export function useScorePlayer(mode: "ambient" | "on-demand") {
       raf = requestAnimationFrame(frame);
       const engine = engineRef.current;
       const pos = engine?.position ?? video.currentTime;
-      if (progressRef.current) {
-        progressRef.current.style.transform = `scaleX(${Math.min(1, pos / HERO_LOOP_SECONDS).toFixed(4)})`;
-      }
+      const progress = `scaleX(${Math.min(1, pos / HERO_LOOP_SECONDS).toFixed(4)})`;
+      progressEls.current.forEach((el) => {
+        el.style.transform = progress;
+      });
       const whole = Math.floor(pos);
       if (whole !== shownSecond && timeRef.current) {
         shownSecond = whole;
         timeRef.current.textContent = formatTime(whole);
       }
       const freq = reducedRef.current ? null : engine?.levels() ?? null;
-      for (let i = 0; i < EQ_BARS; i++) {
-        const el = eqRefs.current[i];
-        if (!el) continue;
-        const level = freq ? Math.min(1, (freq[2 + i * 7] / 255) * 1.2) : [0.55, 0.9, 0.7, 0.45][i];
+      eqEls.current.forEach((el) => {
+        const i = Number(el.dataset.bar) || 0;
+        const level = freq ? Math.min(1, (freq[2 + i * 7] / 255) * 1.2) : IDLE_EQ[i % IDLE_EQ.length];
         el.style.transform = `scaleY(${(0.15 + level * 0.85).toFixed(3)})`;
-      }
+      });
     };
     const io = new IntersectionObserver(([entry]) => {
       cancelAnimationFrame(raf);
       if (entry.isIntersecting) {
         raf = requestAnimationFrame(frame);
-        if (mode === "ambient" && video.paused && video.preload === "auto" && !reducedRef.current) {
+        if (video.paused && video.preload === "auto" && !reducedRef.current) {
           video.play().catch(() => {});
         }
-      } else if (mode === "ambient" && !engineRef.current?.isPlaying) {
+      } else if (!engineRef.current?.isPlaying) {
         video.pause();
       }
     });
@@ -202,7 +218,7 @@ export function useScorePlayer(mode: "ambient" | "on-demand") {
       io.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [mode]);
+  }, []);
 
   // A plain <audio> player elsewhere on the page started: hand the speakers over.
   useEffect(() => {
@@ -226,9 +242,9 @@ export function useScorePlayer(mode: "ambient" | "on-demand") {
     reduced,
     rootRef,
     videoRef,
-    progressRef,
     timeRef,
-    eqRefs,
+    progressBar,
+    eqBar,
     status,
     selected,
     loadingId,
@@ -269,31 +285,18 @@ export function PlayIcon({ className }: { className?: string }) {
 }
 
 /** Murmur's Score screen in miniature: suggestion rows, a loop progress bar, one play/stop pill. */
-export function ScorePanel({
-  player,
-  header = true,
-  bare = false,
-  className,
-}: {
-  player: ScorePlayer;
-  header?: boolean;
-  /** No card chrome (when the panel sits inside another card). */
-  bare?: boolean;
-  className?: string;
-}) {
-  const { status, selected, loadingId, toggle, pick, progressRef, timeRef, eqRefs } = player;
+export function ScorePanel({ player, className }: { player: ScorePlayer; className?: string }) {
+  const { status, selected, loadingId, toggle, pick, progressBar, timeRef, eqBar } = player;
   const playing = status === "playing";
 
   return (
     <div
       className={clsx(
-        !bare &&
-          "rounded-3xl border border-white/10 bg-[rgba(16,12,28,0.78)] p-3.5 shadow-[0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(237,220,255,0.08),0_0_60px_rgba(173,99,255,0.12)] backdrop-blur-2xl sm:p-4",
+        "rounded-3xl border border-white/10 bg-[rgba(16,12,28,0.78)] p-3.5 shadow-[0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(237,220,255,0.08),0_0_60px_rgba(173,99,255,0.12)] backdrop-blur-2xl sm:p-4",
         className
       )}
     >
-      {header && (
-        <div className="mb-3 flex items-center justify-between gap-3 px-1">
+      <div className="mb-3 flex items-center justify-between gap-3 px-1">
           <div className="flex items-center gap-2.5">
             <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg bg-lilac/15 text-lilac shadow-[inset_0_0_0_1px_rgba(238,189,255,0.3)]">
               <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
@@ -306,7 +309,6 @@ export function ScorePanel({
             </span>
           </div>
         </div>
-      )}
 
       <ul aria-label="Soundtracks for this clip" className="flex flex-col gap-1.5 sm:gap-2">
         {HERO_TRACKS.map((track) => {
@@ -350,18 +352,7 @@ export function ScorePanel({
                   <span className="block truncate text-xs text-murmur-muted">{track.detail}</span>
                 </span>
                 {isOn && !isLoading && (
-                  <span aria-hidden="true" className="mr-1 flex h-5 shrink-0 items-center gap-[3px]">
-                    {Array.from({ length: EQ_BARS }, (_, i) => (
-                      <span
-                        key={i}
-                        ref={(el) => {
-                          eqRefs.current[i] = el;
-                        }}
-                        className="hero-level-bar h-full w-[3px] rounded-full"
-                        style={{ background: track.accent }}
-                      />
-                    ))}
-                  </span>
+                  <Equalizer accent={track.accent} barRef={eqBar} className="mr-1 h-5" />
                 )}
                 {isLoading && (
                   <span aria-hidden="true" className="mr-1 h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-white/25 border-t-white motion-reduce:animate-none" />
@@ -374,7 +365,7 @@ export function ScorePanel({
 
       <div className="mt-3.5 px-1" aria-hidden="true">
         <div className="relative h-[3px] overflow-hidden rounded-full bg-white/10">
-          <span ref={progressRef} className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-gen-start to-gen-end" style={{ transform: "scaleX(0)" }} />
+          <span ref={progressBar} className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-gen-start to-gen-end" style={{ transform: "scaleX(0)" }} />
         </div>
         <div className="mt-1.5 flex justify-between text-[10px] font-semibold tabular-nums text-murmur-muted">
           <span ref={timeRef}>0:00</span>
@@ -387,28 +378,123 @@ export function ScorePanel({
         onClick={toggle}
         className="btn-generate mt-2.5 flex w-full items-center justify-center gap-2.5 rounded-full py-3.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac"
       >
-        {status === "playing" ? (
-          <>
-            <span aria-hidden="true" className="h-3 w-3 rounded-[2px] bg-white" />
-            Stop
-          </>
-        ) : status === "loading" ? (
-          <>
-            <span aria-hidden="true" className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none" />
-            Loading… tap to cancel
-          </>
-        ) : (
-          <>
-            <PlayIcon className="h-4 w-4" />
-            Hear it scored
-          </>
-        )}
+        <PlayLabel status={status} />
       </button>
 
       <Caption className="mt-3 justify-center" />
-      <p className="sr-only" aria-live="polite" role="status">
-        {player.announcement}
-      </p>
+    </div>
+  );
+}
+
+function PlayLabel({ status }: { status: PlayerStatus }) {
+  if (status === "playing") {
+    return (
+      <>
+        <span aria-hidden="true" className="h-3 w-3 rounded-[2px] bg-white" />
+        Stop
+      </>
+    );
+  }
+  if (status === "loading") {
+    return (
+      <>
+        <span aria-hidden="true" className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none" />
+        Loading… tap to cancel
+      </>
+    );
+  }
+  return (
+    <>
+      <PlayIcon className="h-4 w-4" />
+      Hear it scored
+    </>
+  );
+}
+
+function Equalizer({
+  accent,
+  barRef,
+  className,
+}: {
+  accent: string;
+  barRef: (el: HTMLElement | null) => void;
+  className?: string;
+}) {
+  return (
+    <span aria-hidden="true" className={clsx("flex shrink-0 items-center gap-[3px]", className)}>
+      {Array.from({ length: EQ_BARS }, (_, i) => (
+        <span
+          key={i}
+          ref={barRef}
+          data-bar={i}
+          className="hero-level-bar h-full w-[3px] rounded-full"
+          style={{ background: accent }}
+        />
+      ))}
+    </span>
+  );
+}
+
+/**
+ * Phones: the same choice in one line. A horizontally scrolling row of chips (colour dot + name; the
+ * selected one gets its accent border, the playing one an equalizer), the play pill and a thin
+ * progress bar.
+ */
+export function CompactPicker({ player, className }: { player: ScorePlayer; className?: string }) {
+  const { status, selected, loadingId, toggle, pick, progressBar, eqBar } = player;
+  const playing = status === "playing";
+
+  return (
+    <div className={className}>
+      <div className="-mx-5 overflow-x-auto px-5 [scrollbar-width:none] sm:-mx-8 sm:px-8 [&::-webkit-scrollbar]:hidden">
+        <ul aria-label="Soundtracks for this clip" className="flex w-max gap-2 py-1">
+          {HERO_TRACKS.map((track) => {
+            const isLoading = loadingId === track.id;
+            const isSelected = selected === track.id;
+            const isOn = (playing || isLoading) && isSelected;
+            return (
+              <li key={track.id}>
+                <button
+                  type="button"
+                  aria-pressed={isOn}
+                  aria-busy={isLoading || undefined}
+                  onClick={() => pick(track.id)}
+                  className={clsx(
+                    "flex items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-bold text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac",
+                    !isSelected && "border-white/10 bg-white/[0.05] text-murmur-text-2"
+                  )}
+                  style={
+                    isSelected
+                      ? { borderColor: isOn ? `${track.accent}cc` : `${track.accent}80`, background: `${track.accent}${isOn ? "26" : "14"}` }
+                      : undefined
+                  }
+                >
+                  {isOn && !isLoading ? (
+                    <Equalizer accent={track.accent} barRef={eqBar} className="h-3.5" />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className={clsx("h-2 w-2 shrink-0 rounded-full", isLoading && "animate-pulse motion-reduce:animate-none")}
+                      style={{ background: track.accent, boxShadow: `0 0 8px ${track.accent}` }}
+                    />
+                  )}
+                  {track.name}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <button
+        type="button"
+        onClick={toggle}
+        className="btn-generate mt-3 flex w-full items-center justify-center gap-2.5 rounded-full py-3 text-[15px] font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac"
+      >
+        <PlayLabel status={status} />
+      </button>
+      <div aria-hidden="true" className="relative mt-3 h-[3px] overflow-hidden rounded-full bg-white/10">
+        <span ref={progressBar} className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-gen-start to-gen-end" style={{ transform: "scaleX(0)" }} />
+      </div>
     </div>
   );
 }

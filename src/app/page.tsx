@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ScoreHero } from "@/components/score-hero";
-import { ScoreDemo } from "@/components/score-demo";
 import { PlasmaOrb } from "@/components/plasma-orb";
 import { MurmurMark } from "@/components/murmur-mark";
 import { StyleCategoryGrid } from "@/components/style-category-grid";
@@ -395,38 +394,44 @@ export default function Home() {
       </nav>
 
       <main className="relative z-10">
-        {/* HERO: the lake clip scored in Murmur; tap to hear it, pick a feeling to switch the score */}
-        <ScoreHero>
-          {/* The h1 stays the keyword line (what the page is about); the big line is the visual headline. */}
-          <h1 className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 backdrop-blur-sm sm:text-[11px] sm:tracking-[0.24em]">
-            Royalty-free AI music for creators
-          </h1>
-          <p className="mt-5 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:mt-6 sm:text-6xl xl:text-7xl">
-            <span className="block">Your scene.</span>
-            <span className="hero-gradient-text block pb-1">Your sound.</span>
-          </p>
-          <p className="mt-5 max-w-xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-lg">
-            Original, royalty-free music composed right on your iPhone, for your photos and videos,
-            YouTube, TikTok, Reels, games and podcasts. No cloud, no subscription.
-          </p>
-          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
-            <a
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-generate flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90"
-            >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
-              Download on the App Store
-            </a>
-            <a
-              href="#how"
-              className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8"
-            >
-              See how it works
-            </a>
-          </div>
-        </ScoreHero>
+        {/* HERO: the lake clip scored in Murmur; tap to hear it, pick a soundtrack to switch the score */}
+        <ScoreHero
+          intro={
+            <>
+              {/* The h1 stays the keyword line (what the page is about); the big line is the visual headline. */}
+              <h1 className="inline-flex rounded-full border border-lilac/20 bg-lilac/8 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-lilac/85 backdrop-blur-sm sm:text-[11px] sm:tracking-[0.24em]">
+                Royalty-free AI music for creators
+              </h1>
+              <p className="mt-4 text-[2.75rem] font-black leading-[0.95] tracking-tight text-white sm:mt-6 sm:text-6xl xl:text-7xl">
+                <span className="block">Your scene.</span>
+                <span className="hero-gradient-text block pb-1">Your sound.</span>
+              </p>
+              <p className="mt-4 max-w-xl text-base font-medium leading-relaxed tracking-tight text-murmur-text-2 sm:mt-6 sm:text-lg">
+                Original, royalty-free music composed right on your iPhone, for your photos, videos,
+                Reels and games. No cloud, no subscription.
+              </p>
+            </>
+          }
+          actions={
+            <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-generate flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90"
+              >
+                <span className="h-2 w-2 animate-pulse rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
+                Download on the App Store
+              </a>
+              <a
+                href="#how"
+                className="glass-card rounded-xl px-8 py-4 text-center text-xs font-black uppercase tracking-[0.2em] text-murmur-text transition-all hover:bg-lilac/8"
+              >
+                See how it works
+              </a>
+            </div>
+          }
+        />
 
         {/* HOW IT WORKS */}
         <section id="how" className="page-shell scroll-mt-24 py-16 sm:py-24 lg:py-28">
@@ -488,7 +493,24 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <ScoreDemo />
+              <figure className="mx-auto w-full max-w-[300px] lg:max-w-none">
+                <picture>
+                  <source srcSet="/images/score-photo.webp" type="image/webp" />
+                  <img
+                    src="/images/score-photo.jpg"
+                    alt="Murmur's Score screen on iPhone: a photo of a small white dog in the grass, Feeling chips (Auto, Epic, Uplifting, Chill), and the suggested music below it, with Dog Park Zoomies as the best match and Acoustic pop as another idea"
+                    width={720}
+                    height={1296}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-auto w-full"
+                  />
+                </picture>
+                <figcaption className="mt-3 text-center text-sm leading-snug text-murmur-text-2">
+                  Photo in: ideas that fit the scene.{" "}
+                  <span className="text-murmur-muted">Scene ideas need Apple Intelligence.</span>
+                </figcaption>
+              </figure>
             </div>
 
             <div className="relative mt-10 grid grid-cols-1 gap-5 lg:mt-12 lg:grid-cols-2">
