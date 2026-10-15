@@ -253,7 +253,7 @@ const ICON_PATHS: Record<HeroIcon, string> = {
 
 export function Caption({ className }: { className?: string }) {
   return (
-    <p className={clsx("flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-murmur-muted", className)}>
+    <p className={clsx("flex items-center gap-2 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.12em] text-murmur-muted", className)}>
       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-lilac/80 shadow-[0_0_8px_rgba(197,154,255,0.8)]" aria-hidden="true" />
       Scored in Murmur on iPhone · royalty-free
     </p>
@@ -305,9 +305,6 @@ export function ScorePanel({
               <span className="block text-[15px] font-bold leading-tight text-white">Score this clip</span>
             </span>
           </div>
-          <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[11px] font-semibold text-murmur-text-2">
-            Video · {LOOP_LABEL}
-          </span>
         </div>
       )}
 

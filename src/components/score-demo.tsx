@@ -1,7 +1,7 @@
 "use client";
 
 import { HERO_VIDEO } from "@/components/score-hero-config";
-import { LOOP_LABEL, PlayIcon, ScorePanel, useScorePlayer } from "@/components/score-player";
+import { PlayIcon, ScorePanel, useScorePlayer } from "@/components/score-player";
 
 /**
  * Score section example: the same lake clip and soundtracks as the hero, but the clip waits on its
@@ -30,9 +30,6 @@ export function ScoreDemo() {
             <source src={HERO_VIDEO.mp4} type="video/mp4" />
             <source src={HERO_VIDEO.webm} type="video/webm" />
           </video>
-          <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-black/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
-            Video · {LOOP_LABEL}
-          </span>
           {idle && (
             <button
               type="button"
