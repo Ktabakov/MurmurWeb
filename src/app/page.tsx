@@ -394,7 +394,7 @@ export default function Home() {
       </nav>
 
       <main className="relative z-10">
-        {/* HERO: the lake clip scored in Murmur; tap to hear it, pick a soundtrack to switch the score */}
+        {/* HERO: the lake clip scored in Murmur; tap "Compose score" to hear it, pick a style to switch the score */}
         <ScoreHero
           intro={
             <>

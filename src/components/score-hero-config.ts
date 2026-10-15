@@ -1,6 +1,6 @@
 /**
  * The hero's soundtracks: four real Murmur presets / Story Worlds, rendered by Orpheus for the lake clip
- * from the app's own prompts. The first entry is what "Hear it scored" plays first.
+ * from the app's own prompts. The first entry is what "Compose score" plays first (and is the "Best match").
  */
 export type HeroTrackId =
   | "italian-golden-hour"
@@ -66,6 +66,9 @@ export const HERO_TRACKS: HeroTrack[] = [
     icon: "fire",
   },
 ];
+
+/** How long "Composing…" shows at least, in ms (longer only while the audio is really still loading). */
+export const COMPOSE_MS = 1600;
 
 export const HERO_DEFAULT_TRACK: HeroTrackId = HERO_TRACKS[0].id;
 

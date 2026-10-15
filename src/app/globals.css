@@ -276,6 +276,49 @@ body {
   will-change: transform;
 }
 
+/* "Composing…" orb: a soft pulse with an expanding ring (reduced motion hides it, the text stays) */
+.compose-orb {
+  position: relative;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.85);
+  animation: compose-orb 1s ease-in-out infinite;
+}
+
+.compose-orb::after {
+  content: "";
+  position: absolute;
+  inset: -0.25rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  animation: compose-ring 1s ease-out infinite;
+}
+
+@keyframes compose-orb {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes compose-ring {
+  from {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-rise {
     animation: none;

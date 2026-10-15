@@ -3,12 +3,12 @@
 import { clsx } from "clsx";
 import type { ReactNode } from "react";
 import { HERO_VIDEO } from "@/components/score-hero-config";
-import { Caption, CompactPicker, ScorePanel, useScorePlayer } from "@/components/score-player";
+import { CompactPicker, ScorePanel, useScorePlayer } from "@/components/score-player";
 
 /**
  * Home hero: the lake clip (scored in Murmur) runs muted full-bleed behind the headline.
  * - Wide screens: headline + buttons on the left, Murmur's Score panel docked bottom-right.
- * - Phones: video, then headline, then a one-line track picker with the play pill, then the buttons,
+ * - Phones: video, then headline, then the Compose pill (the track chips ease in after composing) with the note, then the buttons,
  *   so the App Store button stays on the first screen. DOM order = visual order (H1 first).
  */
 export function ScoreHero({ intro, actions }: { intro: ReactNode; actions: ReactNode }) {
@@ -54,7 +54,6 @@ export function ScoreHero({ intro, actions }: { intro: ReactNode; actions: React
             {intro}
             <CompactPicker player={player} className="mt-5 lg:hidden" />
             <div className="mt-5 lg:mt-8">{actions}</div>
-            <Caption className="mt-5 lg:hidden" />
           </div>
         </div>
       </div>
