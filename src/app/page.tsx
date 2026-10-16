@@ -467,7 +467,7 @@ export default function Home() {
                 </h2>
                 <p className="mt-4 max-w-2xl text-lg font-medium leading-snug text-murmur-text-2 sm:text-xl">
                   Pick a clip, get music made for it.{" "}
-                  <span className="text-murmur-muted">Looked at and composed on your iPhone.</span>
+                  <span className="text-murmur-muted">Analyzed and composed right on your iPhone.</span>
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-relaxed text-murmur-text-2">
                   Choose a photo or video and Murmur suggests music that fits it: three ideas for the
