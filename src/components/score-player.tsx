@@ -355,6 +355,7 @@ export function useScorePlayer() {
     revealed,
     composeSlow,
     primary,
+    composeTrack: compose,
     pick,
   };
 }
@@ -447,7 +448,7 @@ function PrimaryLabel({ phase, status, slow }: { phase: ComposePhase; status: Pl
     return (
       <>
         <SparkleIcon className="h-4 w-4" />
-        Compose score
+        Hear this scene scored
       </>
     );
   }
@@ -505,7 +506,7 @@ export function ScorePanel({ player, className }: { player: ScorePlayer; classNa
   return (
     <div
       className={clsx(
-        "rounded-3xl border border-white/10 bg-[rgba(16,12,28,0.78)] p-3.5 shadow-[0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(237,220,255,0.08),0_0_60px_rgba(173,99,255,0.12)] backdrop-blur-2xl sm:p-4",
+        "rounded-3xl border border-white/10 bg-[rgba(16,12,28,0.78)] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(237,220,255,0.08),0_0_60px_rgba(173,99,255,0.12)] backdrop-blur-2xl sm:p-5",
         className
       )}
     >
@@ -518,7 +519,7 @@ export function ScorePanel({ player, className }: { player: ScorePlayer; classNa
           </span>
           <span>
             <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-lilac">Score</span>
-            <span className="block text-[15px] font-bold leading-tight text-white">Score this clip</span>
+            <span className="block text-base font-bold leading-tight text-white">Score this clip</span>
           </span>
         </div>
       </div>
@@ -593,7 +594,7 @@ export function ScorePanel({ player, className }: { player: ScorePlayer; classNa
         type="button"
         onClick={primary}
         aria-busy={composing || undefined}
-        className="btn-generate flex w-full items-center justify-center gap-2.5 rounded-full py-3.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac"
+        className="btn-generate flex w-full items-center justify-center gap-2.5 rounded-full py-4 text-base font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac"
       >
         <PrimaryLabel phase={phase} status={status} slow={composeSlow} />
       </button>
@@ -633,12 +634,32 @@ function Equalizer({
  * border, the playing one an equalizer) eases in above the play pill,.
  */
 export function CompactPicker({ player, className }: { player: ScorePlayer; className?: string }) {
-  const { phase, revealed, composeSlow, status, selected, loadingId, primary, pick, progressBar, eqBar } = player;
+  const { phase, revealed, composeSlow, status, selected, loadingId, primary, composeTrack, pick, progressBar, eqBar } = player;
   const playing = status === "playing";
   const composing = phase === "composing";
 
   return (
     <div className={className}>
+      {!revealed && (
+        <div className="-mx-5 overflow-x-auto px-5 pb-3 [scrollbar-width:none] sm:-mx-8 sm:px-8 [&::-webkit-scrollbar]:hidden">
+          <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-lilac">Murmur's matches for this scene</p>
+          <ul className="flex w-max gap-2 py-1">
+            {HERO_TRACKS.map((track) => (
+              <li key={track.id}>
+                <button
+                  type="button"
+                  onClick={() => composeTrack(track.id)}
+                  className="flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.05] px-3.5 py-2 text-sm font-bold text-murmur-text-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac"
+                >
+                  <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full" style={{ background: track.accent, boxShadow: `0 0 8px ${track.accent}` }} />
+                  {track.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <Collapse open={revealed}>
         <div className="-mx-5 overflow-x-auto px-5 pb-3 [scrollbar-width:none] sm:-mx-8 sm:px-8 [&::-webkit-scrollbar]:hidden">
           <ul aria-label="Score ideas for this clip" className="flex w-max gap-2 py-1">

@@ -2,7 +2,7 @@
 
 import { clsx } from "clsx";
 import type { ReactNode } from "react";
-import { HERO_VIDEO } from "@/components/score-hero-config";
+import { HERO_TRACKS, HERO_VIDEO } from "@/components/score-hero-config";
 import { CompactPicker, ScorePanel, useScorePlayer } from "@/components/score-player";
 
 /**
@@ -58,10 +58,47 @@ export function ScoreHero({ intro, actions }: { intro: ReactNode; actions: React
         </div>
       </div>
 
+      {/* Wide screens: the matches float over the clip until the first compose, then hand over to the panel */}
+      <div
+        aria-hidden={player.revealed || player.phase !== "initial" || undefined}
+        className={clsx(
+          "pointer-events-none absolute inset-0 z-20 hidden transition-opacity duration-500 lg:block",
+          player.phase === "initial" && !player.revealed ? "opacity-100" : "opacity-0"
+        )}
+      >
+        <p className="absolute right-[10%] top-[27%] text-[10px] font-bold uppercase tracking-[0.22em] text-white/80 [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
+          Murmur's matches for this scene
+        </p>
+        {HERO_TRACKS.map((track, i) => {
+          const spots = ["right-[22%] top-[33%]", "right-[6%] top-[40%]", "right-[27%] top-[47%]", "right-[9%] top-[54%]"];
+          return (
+            <button
+              key={track.id}
+              type="button"
+              tabIndex={player.phase === "initial" && !player.revealed ? 0 : -1}
+              onClick={() => player.composeTrack(track.id)}
+              className={clsx(
+                "hero-chip-float pointer-events-auto absolute cursor-pointer flex items-center gap-2.5 rounded-full border border-white/15 bg-[rgba(16,12,28,0.6)] py-2 pl-3 pr-4 text-left shadow-[0_10px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-colors hover:border-white/35 focus-visible:outline-2 focus-visible:outline-lilac",
+                spots[i]
+              )}
+              style={{ animationDelay: `${i * -1.4}s` }}
+            >
+              <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: track.accent, boxShadow: `0 0 10px ${track.accent}` }} />
+              <span>
+                <span className="block text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: track.accent }}>
+                  {track.kind}
+                </span>
+                <span className="block text-sm font-bold leading-tight text-white">{track.name}</span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
       {/* Wide screens: Score panel docked bottom-right over the video */}
       <div className="pointer-events-none absolute inset-0 z-20 hidden lg:block">
-        <div className="page-shell flex h-full items-end justify-end pb-[4.5%]">
-          <ScorePanel player={player} className="hero-rise pointer-events-auto w-[21rem] xl:w-[23rem]" />
+        <div className="page-shell flex h-full items-end justify-end pb-[7%]">
+          <ScorePanel player={player} className="hero-rise pointer-events-auto w-[23rem] xl:w-[26rem]" />
         </div>
       </div>
 
