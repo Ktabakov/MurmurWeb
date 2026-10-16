@@ -319,7 +319,26 @@ body {
   }
 }
 
+/* Preview chips floating over the clip before "Compose" (they hand over to the panel's list afterwards) */
+@keyframes hero-chip-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.hero-chip-float {
+  animation: hero-chip-float 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-chip-float {
+    animation: none;
+  }
+
   .hero-rise {
     animation: none;
   }
