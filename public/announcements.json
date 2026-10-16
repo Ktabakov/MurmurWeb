@@ -36,6 +36,26 @@
         "ja": {
           "title": "新機能：写真や動画にBGMを",
           "body": "・「BGM」モード：写真か動画を選ぶだけで、映像の長さぴったりの音楽を作曲\n・Apple Intelligenceがあれば、Murmurがシーンを見て、合いそうな3つのアイデアを提案\n・音楽付きの動画を保存、共有、Instagramに投稿\n・新機能「シーン」：誕生日、結婚式、旅行など、31種類のシーン別プリセット\n・Story Worldsを場所、雰囲気、シーンで検索"
+        },
+        "it": {
+          "title": "Novità: sonorizza foto e video",
+          "body": "• Sonorizza: scegli una foto o un video e Murmur ne compone la colonna sonora, lunga quanto la tua clip\n• Con Apple Intelligence, Murmur guarda la scena e propone 3 idee adatte\n• Salva il video con la sua musica, condividilo o pubblicalo su Instagram\n• Novità: Momenti, 31 colonne sonore pronte per compleanni, matrimoni, viaggi e altro\n• Cerca negli Story Worlds per luogo, mood o scena"
+        },
+        "ko": {
+          "title": "새 기능: 사진과 동영상에 BGM을",
+          "body": "• BGM 모드: 사진이나 동영상을 고르면 Murmur가 클립 길이에 맞춰 음악을 작곡해요\n• Apple Intelligence가 있으면 Murmur가 장면을 보고 어울리는 아이디어 3가지를 제안해요\n• 음악을 입힌 영상을 저장하고, 공유하고, Instagram에 올리세요\n• 새 기능: 모먼트. 생일, 결혼식, 여행 등을 위한 사운드트랙 31가지\n• 장소, 분위기, 장면으로 Story Worlds 검색"
+        },
+        "pl": {
+          "title": "Nowość: podkład do zdjęć i filmów",
+          "body": "• Tryb Podkład: wybierz zdjęcie lub wideo, a Murmur skomponuje do niego muzykę, tak długą jak twój klip\n• Z Apple Intelligence Murmur ogląda scenę i proponuje 3 pasujące pomysły\n• Zapisz wideo z muzyką, udostępnij je lub opublikuj na Instagramie\n• Nowość: Chwile, 31 gotowych podkładów na urodziny, śluby, podróże i nie tylko\n• Szukaj w Story Worlds po miejscu, nastroju lub scenie"
+        },
+        "uk": {
+          "title": "Нове: саундтреки до фото й відео",
+          "body": "• Режим «Саундтрек»: виберіть фото чи відео, і Murmur створить до нього музику завдовжки з ваш кліп\n• З Apple Intelligence Murmur дивиться на сцену й пропонує 3 ідеї, що їй пасують\n• Збережіть відео з музикою, поширте його або викладіть в Instagram\n• Нове: Моменти — 31 готовий саундтрек для днів народження, весіль, подорожей і не тільки\n• Пошук у Story Worlds за місцем, настроєм чи сценою"
+        },
+        "zh-Hans": {
+          "title": "全新：为照片和视频配乐",
+          "body": "• 配乐模式：选一张照片或一段视频，Murmur 会为它创作与片段等长的配乐\n• 搭配 Apple 智能，Murmur 会查看画面并提出 3 个相配的创意\n• 保存配好音乐的视频、分享，或发布到社交平台\n• 新功能：场景，31 段现成的配乐，适合生日、婚礼、旅行等\n• 可按地点、氛围或场面搜索 Story Worlds"
         }
       }
     },
@@ -74,6 +94,26 @@
         "ja": {
           "title": "新機能：写真や動画にBGMを",
           "body": "・「BGM」モード：写真か動画を選ぶだけで、映像の長さぴったりの音楽を作曲\n・プリセット、シーン、Story Worlds、または自分の言葉から作曲\n・音楽付きの動画を保存、共有、Instagramに投稿\n・新機能「シーン」：誕生日、結婚式、旅行など、31種類のシーン別プリセット\n・Story Worldsを場所、雰囲気、シーンで検索"
+        },
+        "it": {
+          "title": "Novità: sonorizza foto e video",
+          "body": "• Sonorizza: scegli una foto o un video e Murmur ne compone la colonna sonora, lunga quanto la tua clip\n• Parti da un preset, un Momento, uno Story World o parole tue\n• Salva il video con la sua musica, condividilo o pubblicalo su Instagram\n• Novità: Momenti, 31 colonne sonore pronte per compleanni, matrimoni, viaggi e altro\n• Cerca negli Story Worlds per luogo, mood o scena"
+        },
+        "ko": {
+          "title": "새 기능: 사진과 동영상에 BGM을",
+          "body": "• BGM 모드: 사진이나 동영상을 고르면 Murmur가 클립 길이에 맞춰 음악을 작곡해요\n• 프리셋, 모먼트, Story World 또는 직접 쓴 설명으로 시작하세요\n• 음악을 입힌 영상을 저장하고, 공유하고, Instagram에 올리세요\n• 새 기능: 모먼트. 생일, 결혼식, 여행 등을 위한 사운드트랙 31가지\n• 장소, 분위기, 장면으로 Story Worlds 검색"
+        },
+        "pl": {
+          "title": "Nowość: podkład do zdjęć i filmów",
+          "body": "• Tryb Podkład: wybierz zdjęcie lub wideo, a Murmur skomponuje do niego muzykę, tak długą jak twój klip\n• Zacznij od presetu, Chwili, Story World lub własnych słów\n• Zapisz wideo z muzyką, udostępnij je lub opublikuj na Instagramie\n• Nowość: Chwile, 31 gotowych podkładów na urodziny, śluby, podróże i nie tylko\n• Szukaj w Story Worlds po miejscu, nastroju lub scenie"
+        },
+        "uk": {
+          "title": "Нове: саундтреки до фото й відео",
+          "body": "• Режим «Саундтрек»: виберіть фото чи відео, і Murmur створить до нього музику завдовжки з ваш кліп\n• Почніть із пресету, Моменту, Story World або власних слів\n• Збережіть відео з музикою, поширте його або викладіть в Instagram\n• Нове: Моменти — 31 готовий саундтрек для днів народження, весіль, подорожей і не тільки\n• Пошук у Story Worlds за місцем, настроєм чи сценою"
+        },
+        "zh-Hans": {
+          "title": "全新：为照片和视频配乐",
+          "body": "• 配乐模式：选一张照片或一段视频，Murmur 会为它创作与片段等长的配乐\n• 从预设、场景、Story World 或你自己的描述开始\n• 保存配好音乐的视频、分享，或发布到社交平台\n• 新功能：场景，31 段现成的配乐，适合生日、婚礼、旅行等\n• 可按地点、氛围或场面搜索 Story Worlds"
         }
       }
     },
@@ -122,6 +162,31 @@
           "title": "新機能：写真や動画にBGMを",
           "cta": "Orpheusを試す",
           "body": "写真か動画を選ぶだけで、MurmurがiPhoneの中でその映像のための音楽を作曲。\n\n「BGM」モードはMurmurの新エンジンOrpheusで動作します。新しいiPhoneではフル版(2.1 GB)、古いiPhoneでは軽量版のOrpheus Small(1.2 GB)を使います。作った曲とClassicエンジンはそのまま残ります。\n\nさらに新機能「シーン」：誕生日、結婚式、旅行など、31種類のシーン別プリセット。"
+        },
+        "it": {
+          "title": "Novità: sonorizza foto e video",
+          "body": "Scegli una foto o un video e Murmur ne compone la colonna sonora, direttamente sul tuo iPhone.\n\nSonorizza usa Orpheus, il motore più recente di Murmur: la versione completa sugli iPhone più recenti (2,1 GB), Orpheus Small su quelli meno recenti (1,2 GB). I tuoi brani e il motore Classic restano.\n\nAnche nuovo: Momenti, 31 colonne sonore pronte per compleanni, matrimoni, viaggi e altro.",
+          "cta": "Prova Orpheus"
+        },
+        "ko": {
+          "title": "새 기능: 사진과 동영상에 BGM을",
+          "body": "사진이나 동영상을 고르면 Murmur가 iPhone에서 바로 음악을 작곡해요.\n\nBGM 모드는 Murmur의 새 엔진 Orpheus로 작동해요. 최신 iPhone에서는 전체 버전(2.1GB), 이전 iPhone에서는 Orpheus Small(1.2GB)을 써요. 지금까지 만든 트랙과 Classic 엔진은 그대로 남아요.\n\n또 새로워진 점: 모먼트. 생일, 결혼식, 여행 등을 위한 사운드트랙 31가지.",
+          "cta": "Orpheus 써 보기"
+        },
+        "pl": {
+          "title": "Nowość: podkład do zdjęć i filmów",
+          "body": "Wybierz zdjęcie lub wideo, a Murmur skomponuje do niego muzykę, prosto na twoim iPhonie.\n\nTryb Podkład działa na Orpheus, nowszym silniku Murmur: pełna wersja na nowszych iPhone’ach (2,1 GB), Orpheus Small na starszych (1,2 GB). Twoje utwory i silnik Classic zostają.\n\nNowość: Chwile, 31 gotowych podkładów na urodziny, śluby, podróże i nie tylko.",
+          "cta": "Wypróbuj Orpheus"
+        },
+        "uk": {
+          "title": "Нове: саундтреки до фото й відео",
+          "body": "Виберіть фото чи відео, і Murmur створить до нього саундтрек прямо на вашому iPhone.\n\nРежим «Саундтрек» працює на Orpheus, новішому рушії Murmur: повна версія на новіших iPhone (2,1 ГБ), Orpheus Small на старіших (1,2 ГБ). Ваші треки й рушій Classic залишаються.\n\nТакож нове: Моменти — 31 готовий саундтрек для днів народження, весіль, подорожей і не тільки.",
+          "cta": "Спробувати Orpheus"
+        },
+        "zh-Hans": {
+          "title": "全新：为照片和视频配乐",
+          "body": "选一张照片或一段视频，Murmur 就会直接在你的 iPhone 上为它创作配乐。\n\n配乐模式使用 Murmur 较新的引擎 Orpheus：较新的 iPhone 使用完整版（2.1 GB），较旧的 iPhone 使用 Orpheus Small（1.2 GB）。你的曲目和 Classic 引擎都会保留。\n\n同样新增：场景，31 段现成的配乐，适合生日、婚礼、旅行等。",
+          "cta": "试试 Orpheus"
         }
       }
     },
@@ -159,6 +224,214 @@
         "ja": {
           "title": "新機能：シーン",
           "body": "誕生日、結婚式、ドッグラン、旅行、季節のイベントなど、よく撮るシーンのための31種類のプリセット。シーンを選ぶだけで、説明を書かなくてもMurmurが音楽を作ります。写真や動画を曲にする「BGM」モードには、iOS 26以降が必要です。"
+        },
+        "it": {
+          "title": "Novità: Momenti",
+          "body": "31 stili pronti per le scene che si filmano di più: compleanni, matrimoni, il cane al parco, viaggi, vacanze e altro. Scegli un momento e Murmur crea la musica, senza bisogno di descriverla. Sonorizza, che trasforma foto e video in canzoni, richiede iOS 26 o successivo."
+        },
+        "ko": {
+          "title": "새 기능: 모먼트",
+          "body": "생일, 결혼식, 강아지 공원, 여행, 휴가 등 사람들이 가장 많이 찍는 장면을 위한 스타일 31가지. 모먼트를 고르면 설명 없이도 Murmur가 음악을 만들어요. 사진과 동영상을 음악으로 바꾸는 BGM 모드는 iOS 26 이상이 필요해요."
+        },
+        "pl": {
+          "title": "Nowość: Chwile",
+          "body": "31 gotowych stylów do scen, które filmujemy najczęściej: urodziny, śluby, psi park, podróże, wakacje i nie tylko. Wybierz chwilę, a Murmur stworzy muzykę, bez żadnego opisu. Tryb Podkład, który zamienia zdjęcia i filmy w piosenki, wymaga iOS 26 lub nowszego."
+        },
+        "uk": {
+          "title": "Нове: Моменти",
+          "body": "31 готовий стиль для сцен, які знімають найчастіше: дні народження, весілля, прогулянки із собакою, подорожі, свята й не тільки. Виберіть момент, і Murmur створить музику без жодного опису. Режим «Саундтрек», що перетворює фото й відео на пісні, потребує iOS 26 або новішої."
+        },
+        "zh-Hans": {
+          "title": "全新：场景",
+          "body": "31 种现成风格，适合人们最常拍摄的场面：生日、婚礼、狗狗公园、旅行、假日等。选一个场景，Murmur 就会创作音乐，无需任何描述。把照片和视频变成歌曲的配乐模式需要 iOS 26 或更高版本。"
+        }
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-2-1",
+      "style": "modal",
+      "title": "New: share to Murmur",
+      "body": "• In Photos, tap Share on a photo or video and pick Murmur: it opens straight in Score\n• Murmur now speaks Italian, Korean, Polish, Ukrainian and Simplified Chinese",
+      "expires": "2027-04-30T23:59:59Z",
+      "match": {
+        "minApp": "2.2.1",
+        "minIos": "26.0",
+        "createEngine": "sa3"
+      },
+      "i18n": {
+        "de": {
+          "title": "Neu: Mit Murmur teilen",
+          "body": "• Tippe in Fotos bei einem Foto oder Video auf Teilen und wähle Murmur: Es öffnet sich direkt in Vertonen\n• Murmur gibt es jetzt auch auf Italienisch, Koreanisch, Polnisch, Ukrainisch und vereinfachtem Chinesisch"
+        },
+        "fr": {
+          "title": "Nouveau : partager vers Murmur",
+          "body": "• Dans Photos, touchez Partager sur une photo ou une vidéo et choisissez Murmur : elle s'ouvre directement dans le mode Illustrer\n• Murmur parle désormais italien, coréen, polonais, ukrainien et chinois simplifié"
+        },
+        "es": {
+          "title": "Nuevo: compartir con Murmur",
+          "body": "• En Fotos, toca Compartir en una foto o un video y elige Murmur: se abre directo en Musicalizar\n• Murmur ahora habla italiano, coreano, polaco, ucraniano y chino simplificado"
+        },
+        "es-ES": {
+          "title": "Nuevo: compartir con Murmur",
+          "body": "• En Fotos, toca Compartir en una foto o un vídeo y elige Murmur: se abre directamente en Musicalizar\n• Murmur ahora habla italiano, coreano, polaco, ucraniano y chino simplificado"
+        },
+        "pt-BR": {
+          "title": "Novo: compartilhar com o Murmur",
+          "body": "• No app Fotos, toque em Compartilhar em uma foto ou vídeo e escolha o Murmur: ele abre direto no modo Trilha\n• O Murmur agora fala italiano, coreano, polonês, ucraniano e chinês simplificado"
+        },
+        "ja": {
+          "title": "新機能：Murmurに共有",
+          "body": "• 写真アプリで写真や動画の共有ボタンをタップしてMurmurを選ぶと、そのまま「BGM」モードで開きます\n• イタリア語、韓国語、ポーランド語、ウクライナ語、簡体字中国語に対応しました"
+        },
+        "it": {
+          "title": "Novità: condividi su Murmur",
+          "body": "• In Foto, tocca Condividi su una foto o un video e scegli Murmur: si apre direttamente in Sonorizza\n• Murmur ora parla italiano, coreano, polacco, ucraino e cinese semplificato"
+        },
+        "ko": {
+          "title": "새 기능: Murmur로 공유",
+          "body": "• 사진 앱에서 사진이나 동영상의 공유 버튼을 누르고 Murmur를 고르면 바로 BGM 모드에서 열려요\n• Murmur가 이제 이탈리아어, 한국어, 폴란드어, 우크라이나어, 중국어(간체)를 지원해요"
+        },
+        "pl": {
+          "title": "Nowość: udostępnij do Murmur",
+          "body": "• W Zdjęciach stuknij Udostępnij przy zdjęciu lub wideo i wybierz Murmur: otworzy się od razu w trybie Podkład\n• Murmur mówi teraz po włosku, koreańsku, polsku, ukraińsku i chińsku (uproszczonym)"
+        },
+        "uk": {
+          "title": "Нове: поділитися в Murmur",
+          "body": "• У «Фото» торкніться «Поділитися» на фото чи відео й виберіть Murmur — воно одразу відкриється в режимі «Саундтрек»\n• Murmur тепер розмовляє італійською, корейською, польською, українською та китайською (спрощеною)"
+        },
+        "zh-Hans": {
+          "title": "新功能：共享到 Murmur",
+          "body": "• 在“照片”中点按照片或视频的共享按钮，选择 Murmur，即可直接在配乐模式中打开\n• Murmur 现已支持意大利语、韩语、波兰语、乌克兰语和简体中文"
+        }
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-2-1-classic",
+      "style": "modal",
+      "title": "New: share to Murmur",
+      "body": "In Photos, tap Share on a photo or video and pick Murmur: it opens straight in Score. Score runs on Orpheus, Murmur's newer engine.\n\nMurmur now speaks Italian, Korean, Polish, Ukrainian and Simplified Chinese.",
+      "cta": {
+        "label": "Try Orpheus",
+        "url": "murmur://settings/engine"
+      },
+      "expires": "2027-04-30T23:59:59Z",
+      "match": {
+        "minApp": "2.2.1",
+        "minIos": "26.0",
+        "createEngine": "classic"
+      },
+      "i18n": {
+        "de": {
+          "title": "Neu: Mit Murmur teilen",
+          "body": "Tippe in Fotos bei einem Foto oder Video auf Teilen und wähle Murmur: Es öffnet sich direkt in Vertonen. Vertonen läuft mit Orpheus, der neueren Engine von Murmur.\n\nMurmur gibt es jetzt auch auf Italienisch, Koreanisch, Polnisch, Ukrainisch und vereinfachtem Chinesisch.",
+          "cta": "Orpheus testen"
+        },
+        "fr": {
+          "title": "Nouveau : partager vers Murmur",
+          "body": "Dans Photos, touchez Partager sur une photo ou une vidéo et choisissez Murmur : elle s'ouvre directement dans le mode Illustrer. Le mode Illustrer utilise Orpheus, le moteur plus récent de Murmur.\n\nMurmur parle désormais italien, coréen, polonais, ukrainien et chinois simplifié.",
+          "cta": "Essayer Orpheus"
+        },
+        "es": {
+          "title": "Nuevo: compartir con Murmur",
+          "body": "En Fotos, toca Compartir en una foto o un video y elige Murmur: se abre directo en Musicalizar. Musicalizar usa Orpheus, el motor más nuevo de Murmur.\n\nMurmur ahora habla italiano, coreano, polaco, ucraniano y chino simplificado.",
+          "cta": "Probar Orpheus"
+        },
+        "es-ES": {
+          "title": "Nuevo: compartir con Murmur",
+          "body": "En Fotos, toca Compartir en una foto o un vídeo y elige Murmur: se abre directamente en Musicalizar. Musicalizar usa Orpheus, el motor más nuevo de Murmur.\n\nMurmur ahora habla italiano, coreano, polaco, ucraniano y chino simplificado.",
+          "cta": "Probar Orpheus"
+        },
+        "pt-BR": {
+          "title": "Novo: compartilhar com o Murmur",
+          "body": "No app Fotos, toque em Compartilhar em uma foto ou vídeo e escolha o Murmur: ele abre direto no modo Trilha. O modo Trilha usa o Orpheus, o motor mais novo do Murmur.\n\nO Murmur agora fala italiano, coreano, polonês, ucraniano e chinês simplificado.",
+          "cta": "Testar o Orpheus"
+        },
+        "ja": {
+          "title": "新機能：Murmurに共有",
+          "body": "写真アプリで写真や動画の共有ボタンをタップしてMurmurを選ぶと、そのまま「BGM」モードで開きます。「BGM」モードはMurmurの新しいエンジン、Orpheusで動きます。\n\nイタリア語、韓国語、ポーランド語、ウクライナ語、簡体字中国語に対応しました。",
+          "cta": "Orpheusを試す"
+        },
+        "it": {
+          "title": "Novità: condividi su Murmur",
+          "body": "In Foto, tocca Condividi su una foto o un video e scegli Murmur: si apre direttamente in Sonorizza. Sonorizza usa Orpheus, il motore più recente di Murmur.\n\nMurmur ora parla italiano, coreano, polacco, ucraino e cinese semplificato.",
+          "cta": "Prova Orpheus"
+        },
+        "ko": {
+          "title": "새 기능: Murmur로 공유",
+          "body": "사진 앱에서 사진이나 동영상의 공유 버튼을 누르고 Murmur를 고르면 바로 BGM 모드에서 열려요. BGM 모드는 Murmur의 새 엔진 Orpheus로 작동해요.\n\nMurmur가 이제 이탈리아어, 한국어, 폴란드어, 우크라이나어, 중국어(간체)를 지원해요.",
+          "cta": "Orpheus 써 보기"
+        },
+        "pl": {
+          "title": "Nowość: udostępnij do Murmur",
+          "body": "W Zdjęciach stuknij Udostępnij przy zdjęciu lub wideo i wybierz Murmur: otworzy się od razu w trybie Podkład. Tryb Podkład działa na Orpheus, nowszym silniku Murmur.\n\nMurmur mówi teraz po włosku, koreańsku, polsku, ukraińsku i chińsku (uproszczonym).",
+          "cta": "Wypróbuj Orpheus"
+        },
+        "uk": {
+          "title": "Нове: поділитися в Murmur",
+          "body": "У «Фото» торкніться «Поділитися» на фото чи відео й виберіть Murmur — воно одразу відкриється в режимі «Саундтрек». Режим «Саундтрек» працює на Orpheus, новішому рушії Murmur.\n\nMurmur тепер розмовляє італійською, корейською, польською, українською та китайською (спрощеною).",
+          "cta": "Спробувати Orpheus"
+        },
+        "zh-Hans": {
+          "title": "新功能：共享到 Murmur",
+          "body": "在“照片”中点按照片或视频的共享按钮，选择 Murmur，即可直接在配乐模式中打开。配乐模式使用 Murmur 较新的引擎 Orpheus。\n\nMurmur 现已支持意大利语、韩语、波兰语、乌克兰语和简体中文。",
+          "cta": "试试 Orpheus"
+        }
+      }
+    },
+    {
+      "id": "2026-10-release-notes-2-2-1-pre-ios26",
+      "style": "modal",
+      "title": "Murmur speaks more languages",
+      "body": "Murmur now speaks Italian, Korean, Polish, Ukrainian and Simplified Chinese. Change the language in iOS Settings › Murmur › Language.",
+      "expires": "2027-04-30T23:59:59Z",
+      "match": {
+        "minApp": "2.2.1",
+        "maxIos": "25.99"
+      },
+      "i18n": {
+        "de": {
+          "title": "Murmur spricht mehr Sprachen",
+          "body": "Murmur gibt es jetzt auch auf Italienisch, Koreanisch, Polnisch, Ukrainisch und vereinfachtem Chinesisch. Ändern kannst du die Sprache in den iOS-Einstellungen › Murmur › Sprache."
+        },
+        "fr": {
+          "title": "Murmur parle plus de langues",
+          "body": "Murmur parle désormais italien, coréen, polonais, ukrainien et chinois simplifié. Changez la langue dans Réglages › Murmur › Langue."
+        },
+        "es": {
+          "title": "Murmur habla más idiomas",
+          "body": "Murmur ahora habla italiano, coreano, polaco, ucraniano y chino simplificado. Cambia el idioma en Ajustes › Murmur › Idioma."
+        },
+        "es-ES": {
+          "title": "Murmur habla más idiomas",
+          "body": "Murmur ahora habla italiano, coreano, polaco, ucraniano y chino simplificado. Cambia el idioma en Ajustes › Murmur › Idioma."
+        },
+        "pt-BR": {
+          "title": "O Murmur fala mais idiomas",
+          "body": "O Murmur agora fala italiano, coreano, polonês, ucraniano e chinês simplificado. Mude o idioma em Ajustes › Murmur › Idioma."
+        },
+        "ja": {
+          "title": "対応言語が増えました",
+          "body": "イタリア語、韓国語、ポーランド語、ウクライナ語、簡体字中国語に対応しました。言語は「設定」›「Murmur」›「言語」で変更できます。"
+        },
+        "it": {
+          "title": "Murmur parla più lingue",
+          "body": "Murmur ora parla italiano, coreano, polacco, ucraino e cinese semplificato. Cambia lingua in Impostazioni › Murmur › Lingua."
+        },
+        "ko": {
+          "title": "더 많은 언어 지원",
+          "body": "Murmur가 이제 이탈리아어, 한국어, 폴란드어, 우크라이나어, 중국어(간체)를 지원해요. 언어는 설정 › Murmur › 언어에서 바꿀 수 있어요."
+        },
+        "pl": {
+          "title": "Murmur mówi w większej liczbie języków",
+          "body": "Murmur mówi teraz po włosku, koreańsku, polsku, ukraińsku i chińsku (uproszczonym). Język zmienisz w Ustawieniach › Murmur › Język."
+        },
+        "uk": {
+          "title": "Murmur розмовляє більшою кількістю мов",
+          "body": "Murmur тепер розмовляє італійською, корейською, польською, українською та китайською (спрощеною). Мову можна змінити в Параметрах › Murmur › Мова."
+        },
+        "zh-Hans": {
+          "title": "Murmur 支持更多语言",
+          "body": "Murmur 现已支持意大利语、韩语、波兰语、乌克兰语和简体中文。可在“设置” › Murmur › “语言”中更改。"
         }
       }
     },
