@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "October 13, 2026"; // set to the 2.2 release day when merging to main
+const LAST_UPDATED = "October 16, 2026";
 const CONTACT_EMAIL = "murmurapps@gmail.com";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
