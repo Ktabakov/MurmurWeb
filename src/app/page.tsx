@@ -910,6 +910,32 @@ export default function Home() {
                   Impressum
                 </a>
               </div>
+              <div className="mt-8 flex items-center justify-center gap-8">
+                <a
+                  className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac"
+                  href="https://www.tiktok.com/@murmur0827"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                    <path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2h-3.4v13.3a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .8.1V9.5a6.3 6.3 0 1 0 5.5 6.3V9.2a8.2 8.2 0 0 0 4.8 1.5V7.3a4.8 4.8 0 0 1-1-.6Z" />
+                  </svg>
+                  TikTok
+                </a>
+                <a
+                  className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac"
+                  href="https://www.instagram.com/murmurmusicai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+                  </svg>
+                  Instagram
+                </a>
+              </div>
             </div>
             <p className="text-center text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
               © 2026 Murmur. Original music for creators.
