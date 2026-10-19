@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { PerfOverlay } from "@/components/perf-overlay";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -113,7 +114,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <PerfOverlay />
+      </body>
     </html>
   );
 }
