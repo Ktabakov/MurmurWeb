@@ -505,8 +505,9 @@ export function ScorePanel({ player, className }: { player: ScorePlayer; classNa
 
   return (
     <div
+      data-perf="panel"
       className={clsx(
-        "rounded-3xl border border-white/10 bg-[rgba(16,12,28,0.78)] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(237,220,255,0.08),0_0_60px_rgba(173,99,255,0.12)] backdrop-blur-2xl sm:p-5",
+        "rounded-3xl border border-white/10 bg-[rgba(16,12,28,0.9)] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(237,220,255,0.08),0_0_60px_rgba(173,99,255,0.12)] sm:p-5",
         className
       )}
     >

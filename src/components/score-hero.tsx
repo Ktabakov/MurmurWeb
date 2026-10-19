@@ -24,6 +24,7 @@ export function ScoreHero({ intro, actions }: { intro: ReactNode; actions: React
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-murmur-top sm:aspect-video lg:absolute lg:inset-0 lg:aspect-auto">
         <video
           ref={videoRef}
+          data-perf="video"
           className={clsx(
             "absolute inset-0 h-full w-full object-cover",
             HERO_VIDEO.mirrorOnDesktop && "lg:-scale-x-100"
@@ -41,10 +42,10 @@ export function ScoreHero({ intro, actions }: { intro: ReactNode; actions: React
         </video>
 
         {/* Grade + blend into the page */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_110%,rgba(173,99,255,0.3),transparent_55%)] mix-blend-screen" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-murmur-base/75 to-transparent lg:h-40" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(10,7,18,0.96)_0%,rgba(10,7,18,0.86)_24%,rgba(10,7,18,0.45)_44%,rgba(10,7,18,0.08)_62%,rgba(10,7,18,0)_74%)] lg:block" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-murmur-base to-transparent lg:h-[38%] lg:via-murmur-base/50" />
+        <div aria-hidden="true" data-perf="glow" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_110%,rgba(173,99,255,0.3),transparent_55%)]" />
+        <div aria-hidden="true" data-perf="grade" className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-murmur-base/75 to-transparent lg:h-40" />
+        <div aria-hidden="true" data-perf="grade" className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(10,7,18,0.96)_0%,rgba(10,7,18,0.86)_24%,rgba(10,7,18,0.45)_44%,rgba(10,7,18,0.08)_62%,rgba(10,7,18,0)_74%)] lg:block" />
+        <div aria-hidden="true" data-perf="grade" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-murmur-base to-transparent lg:h-[38%] lg:via-murmur-base/50" />
       </div>
 
       {/* Copy (+ the phone picker): below the video on phones, over its left side on wide screens */}
@@ -74,11 +75,12 @@ export function ScoreHero({ intro, actions }: { intro: ReactNode; actions: React
           return (
             <button
               key={track.id}
+              data-perf="chip"
               type="button"
               tabIndex={player.phase === "initial" && !player.revealed ? 0 : -1}
               onClick={() => player.composeTrack(track.id)}
               className={clsx(
-                "hero-chip-float pointer-events-auto absolute cursor-pointer flex items-center gap-2.5 rounded-full border border-white/15 bg-[rgba(16,12,28,0.6)] py-2 pl-3 pr-4 text-left shadow-[0_10px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl transition-colors hover:border-white/35 focus-visible:outline-2 focus-visible:outline-lilac",
+                "hero-chip-float pointer-events-auto absolute cursor-pointer flex items-center gap-2.5 rounded-full border border-white/15 bg-[rgba(16,12,28,0.84)] py-2 pl-3 pr-4 text-left shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-colors hover:border-white/35 focus-visible:outline-2 focus-visible:outline-lilac",
                 spots[i]
               )}
               style={{ animationDelay: `${i * -1.4}s` }}
