@@ -2,6 +2,63 @@
   "version": 1,
   "announcements": [
     {
+      "id": "2026-10-release-notes-2-2-6",
+      "style": "banner",
+      "title": "Murmur Pro is a one-time purchase",
+      "body": "Pay once and keep the full Murmur forever. No subscription. Your free tracks every day stay free.",
+      "expires": "2027-01-31T23:59:59Z",
+      "match": {
+        "minApp": "2.2.6",
+        "pro": false
+      },
+      "i18n": {
+        "de": {
+          "title": "Murmur Pro ist ein Einmalkauf",
+          "body": "Einmal zahlen und das komplette Murmur für immer behalten. Kein Abo. Deine kostenlosen Tracks jeden Tag bleiben."
+        },
+        "fr": {
+          "title": "Murmur Pro est un achat unique",
+          "body": "Payez une fois et gardez Murmur complet pour toujours. Sans abonnement. Vos morceaux gratuits de chaque jour restent."
+        },
+        "es": {
+          "title": "Murmur Pro es un pago único",
+          "body": "Paga una vez y quédate con Murmur completo para siempre. Sin suscripción. Tus pistas gratis de cada día se quedan."
+        },
+        "es-ES": {
+          "title": "Murmur Pro es un pago único",
+          "body": "Paga una vez y quédate con Murmur completo para siempre. Sin suscripción. Tus pistas gratis de cada día se quedan."
+        },
+        "pt-BR": {
+          "title": "O Murmur Pro é uma compra única",
+          "body": "Pague uma vez e fique com o Murmur completo para sempre. Sem assinatura. Suas faixas grátis de todo dia continuam."
+        },
+        "ja": {
+          "title": "Murmur Proは買い切りです",
+          "body": "一度払えば、Murmurのすべてがずっと使えます。サブスクではありません。毎日の無料トラックもそのまま使えます。"
+        },
+        "it": {
+          "title": "Murmur Pro è un acquisto una tantum",
+          "body": "Paga una volta e tieni Murmur completo per sempre. Nessun abbonamento. Le tue tracce gratuite di ogni giorno restano."
+        },
+        "ko": {
+          "title": "Murmur Pro는 1회 결제예요",
+          "body": "한 번 결제로 Murmur의 모든 기능을 평생 사용하세요. 구독이 아니에요. 매일 받는 무료 트랙도 그대로예요."
+        },
+        "pl": {
+          "title": "Murmur Pro to jednorazowy zakup",
+          "body": "Zapłać raz i korzystaj z pełnego Murmur na zawsze. Bez subskrypcji. Codzienne darmowe utwory zostają."
+        },
+        "uk": {
+          "title": "Murmur Pro — разова покупка",
+          "body": "Заплатіть один раз і користуйтеся всім Murmur назавжди. Без підписки. Щоденні безкоштовні треки залишаються."
+        },
+        "zh-Hans": {
+          "title": "Murmur Pro 是一次性买断",
+          "body": "一次付费，永久使用 Murmur 全部功能。无需订阅。每天的免费曲目照常保留。"
+        }
+      }
+    },
+    {
       "id": "2026-10-release-notes-2-2-0-ai",
       "style": "modal",
       "title": "New: score your photos and videos",
