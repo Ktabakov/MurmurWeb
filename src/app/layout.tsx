@@ -15,72 +15,30 @@ const SITE_URL = "https://murmurapps.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Murmur — Compose Your Scene | Royalty-Free AI Music for Creators",
-    template: "%s | Murmur",
+    default: "Murmur Apps — On-device AI music apps for iPhone",
+    template: "%s | Murmur Apps",
   },
   description:
-    "Compose your scene on iPhone. Generate original, copyright-free soundtracks for YouTube, TikTok, Reels, indie games, and podcasts, score your own photos and videos, or go Live and stream music in real time. On-device, no subscription.",
-  category: "music",
-  keywords: [
-    "royalty-free AI music",
-    "copyright-free background music",
-    "AI soundtrack generator",
-    "AI music for videos",
-    "video soundtrack generator",
-    "add music to video iPhone",
-    "music for photos",
-    "background music for Reels",
-    "score video with AI",
-    "live AI music",
-    "real-time AI music generator",
-    "instrumental AI music",
-    "no vocals AI music",
-    "AI music for YouTube",
-    "AI music for TikTok",
-    "video editor background music",
-    "indie game music generator",
-    "content creator music app",
-    "WAV export music app",
-    "offline AI music iPhone",
-    "on-device AI music",
-    "no subscription AI music",
-    "one-time purchase music app",
-    "Magenta RT",
-    "Apple Neural Engine",
-  ],
-  authors: [{ name: "Murmur" }],
-  creator: "Murmur",
-  publisher: "Murmur",
-  alternates: {
-    canonical: SITE_URL,
-  },
+    "Murmur Apps is a one-person studio in Germany making iPhone apps that create music right on your phone: Murmur for royalty-free instrumentals, Lala for personal songs with vocals. No cloud, no subscription.",
+  authors: [{ name: "Murmur Apps" }],
+  creator: "Murmur Apps",
+  publisher: "Murmur Apps",
   openGraph: {
     type: "website",
-    siteName: "Murmur",
-    title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
-    description:
-      "Generate copyright-free soundtracks on iPhone — or go Live and DJ instrumental music in real time. Export WAV for YouTube, TikTok, games, and podcasts. On-device, no subscription.",
-    url: SITE_URL,
+    siteName: "Murmur Apps",
     locale: "en_US",
     images: [
       {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Murmur — royalty-free AI music app for creators",
+        alt: "Murmur Apps — music made on your iPhone",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Murmur — Compose Your Scene | Royalty-Free AI Music",
-    description:
-      "Original, copyright-free soundtracks on iPhone — plus Live mode for real-time instrumental music. For YouTube, TikTok, games, and podcasts. On-device, WAV export, no subscription.",
     images: [`${SITE_URL}/og-image.png`],
-  },
-  // Smart App Banner — Safari on iOS shows a native "open in App Store" banner.
-  itunes: {
-    appId: "6776807467",
   },
   robots: {
     index: true,
@@ -95,6 +53,7 @@ export const metadata: Metadata = {
   },
 };
 
+/** Default for the Murmur-styled pages (privacy, terms, impressum): dark. The studio home and Lala pages override it. */
 export const viewport: Viewport = {
   themeColor: "#0a0712",
   colorScheme: "dark",

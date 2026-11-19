@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MurmurMark } from "@/components/murmur-mark";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Impressum · Legal notice",
-  description: "Impressum (legal notice) for murmurapps.com and the Murmur app, according to § 5 DDG.",
+  description: "Impressum (legal notice) for murmurapps.com and the apps Murmur and Lala, according to § 5 DDG.",
   alternates: { canonical: "https://murmurapps.com/impressum/" },
   // Required to exist and be reachable, not to rank. Keeps the name/address out of search results.
   robots: { index: false, follow: true },
@@ -66,7 +67,7 @@ export default function ImpressumPage() {
         <div className="page-shell flex items-center justify-between py-4 sm:py-5">
           <Link href="/" className="flex items-center gap-3">
             <MurmurMark size={32} />
-            <span className="text-base font-black tracking-[0.3em] text-lilac">MURMUR</span>
+            <span className="text-base font-black tracking-[0.3em] text-lilac">MURMUR APPS</span>
           </Link>
           <Link
             href="/"
@@ -122,11 +123,15 @@ export default function ImpressumPage() {
             </p>
           </Block>
           <p className="mt-8 text-sm text-murmur-muted">
-            See also the{" "}
+            See also the privacy policies of{" "}
             <Link href="/privacy/" className="text-lilac underline-offset-2 hover:underline">
-              Privacy Policy
+              Murmur
             </Link>{" "}
             and{" "}
+            <Link href="/lala/privacy/" className="text-lilac underline-offset-2 hover:underline">
+              Lala
+            </Link>
+            , and Murmur&rsquo;s{" "}
             <Link href="/terms/" className="text-lilac underline-offset-2 hover:underline">
               Terms
             </Link>
@@ -135,17 +140,7 @@ export default function ImpressumPage() {
         </div>
       </main>
 
-      <footer className="border-t border-murmur-border bg-gradient-to-b from-transparent to-black/40">
-        <div className="page-shell flex items-center justify-between py-8">
-          <Link href="/" className="flex items-center gap-2">
-            <MurmurMark size={24} />
-            <span className="text-xs font-black tracking-[0.3em] text-lilac">MURMUR</span>
-          </Link>
-          <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
-            © 2026 Murmur
-          </p>
-        </div>
-      </footer>
+      <SiteFooter variant="murmur" />
     </div>
   );
 }

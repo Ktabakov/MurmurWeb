@@ -9,10 +9,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // deploy without content changes teaches crawlers to ignore it.
   return [
     {
-      url: SITE_URL,
-      lastModified: new Date("2026-10-07"),
+      url: `${SITE_URL}/`,
+      lastModified: new Date("2026-11-13"),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/murmur/`,
+      lastModified: new Date("2026-11-13"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/lala/`,
+      lastModified: new Date("2026-11-13"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/lala/privacy/`,
+      lastModified: new Date("2026-11-13"),
+      changeFrequency: "yearly",
+      priority: 0.5,
     },
     {
       url: `${SITE_URL}/privacy/`,

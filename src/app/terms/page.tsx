@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MurmurMark } from "@/components/murmur-mark";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: { absolute: "Terms of Service | Murmur" },
   description:
     "The terms that apply when you download or use Murmur, including how royalty-free generated music works and what Murmur Pro unlocks.",
   alternates: { canonical: "https://murmurapps.com/terms/" },
@@ -30,7 +31,7 @@ export default function TermsPage() {
       {/* Top bar */}
       <header className="border-b border-murmur-border">
         <div className="page-shell flex items-center justify-between py-4 sm:py-5">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/murmur/" className="flex items-center gap-3">
             <MurmurMark size={32} />
             <span className="text-base font-black tracking-[0.3em] text-lilac">MURMUR</span>
           </Link>
@@ -206,25 +207,7 @@ export default function TermsPage() {
         </Section>
       </main>
 
-      <footer className="border-t border-murmur-border bg-gradient-to-b from-transparent to-black/40">
-        <div className="page-shell flex items-center justify-between py-8">
-          <Link href="/" className="flex items-center gap-2">
-            <MurmurMark size={24} />
-            <span className="text-xs font-black tracking-[0.3em] text-lilac">MURMUR</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/impressum/"
-              className="text-[9px] font-bold uppercase tracking-[0.25em] text-murmur-muted transition-colors hover:text-lilac"
-            >
-              Impressum
-            </Link>
-            <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-murmur-muted/70">
-              © 2026 Murmur
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter variant="murmur" />
     </div>
   );
 }

@@ -31,12 +31,131 @@
 
   --color-success: #4ade80;
   --color-error: #ffb4ab;
+
+  /* Studio (home page): warm neutral, light + dark (values in .theme-studio below) */
+  --color-st-bg: var(--st-bg);
+  --color-st-surface: var(--st-surface);
+  --color-st-surface-2: var(--st-surface-2);
+  --color-st-ink: var(--st-ink);
+  --color-st-ink-2: var(--st-ink-2);
+  --color-st-muted: var(--st-muted);
+  --color-st-line: var(--st-line);
+  --color-st-accent: var(--st-accent);
+
+  /* Lala "Songbook" (planning/design/TOKENS.md), light + dark (values in .theme-serenada below) */
+  --color-sr-paper: var(--sr-paper);
+  --color-sr-card: var(--sr-card);
+  --color-sr-raised: var(--sr-raised);
+  --color-sr-ink: var(--sr-ink);
+  --color-sr-ink-soft: var(--sr-ink-soft);
+  --color-sr-line: var(--sr-line);
+  --color-sr-verm: var(--sr-verm);
+  --color-sr-on-verm: var(--sr-on-verm);
+  --color-sr-mari: var(--sr-mari);
+  --color-sr-teal: var(--sr-teal);
+  --color-sr-rose: var(--sr-rose);
+
+  /* New York on Apple devices (ui-serif), good serif fallbacks elsewhere — no web font download */
+  --font-serif: ui-serif, "New York", "Iowan Old Style", "Apple Garamond", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+}
+
+/* ── Light/dark themes for the studio home and Lala (the Murmur pages stay dark) ── */
+.theme-studio {
+  --st-bg: #f7f4ef;
+  --st-surface: #ffffff;
+  --st-surface-2: #efe9e0;
+  --st-ink: #17141b;
+  --st-ink-2: #3f3945;
+  --st-muted: #6a6370;
+  --st-line: rgba(23, 20, 27, 0.11);
+  --st-accent: #7a3fd1;
+  color-scheme: light;
+}
+
+.theme-serenada {
+  --sr-paper: #f6efe3;
+  --sr-card: #fffbf3;
+  --sr-raised: #ffffff;
+  --sr-ink: #1b1712;
+  --sr-ink-soft: #6b6156;
+  --sr-line: rgba(27, 23, 18, 0.12);
+  --sr-verm: #c8381f;
+  --sr-on-verm: #fff8ee;
+  --sr-mari: #f2b632;
+  --sr-teal: #1f6f6b;
+  --sr-rose: #e58fa0;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-studio {
+    --st-bg: #0e0c12;
+    --st-surface: #18151e;
+    --st-surface-2: #211d28;
+    --st-ink: #f2edf4;
+    --st-ink-2: #cfc7d5;
+    --st-muted: #9a91a1;
+    --st-line: rgba(242, 237, 244, 0.1);
+    --st-accent: #d7a9ff;
+    color-scheme: dark;
+  }
+
+  .theme-serenada {
+    --sr-paper: #15120f;
+    --sr-card: #211c17;
+    --sr-raised: #2a241e;
+    --sr-ink: #f3ebdd;
+    --sr-ink-soft: #b3a89a;
+    --sr-line: rgba(243, 235, 221, 0.14);
+    --sr-verm: #ff6b4a;
+    --sr-on-verm: #1b1712;
+    --sr-mari: #f6c453;
+    --sr-teal: #4fb3ac;
+    color-scheme: dark;
+  }
+}
+
+/* Page background behind the themed pages (overscroll, short pages) */
+html:has(.theme-studio),
+html:has(.theme-studio) body {
+  background: #f7f4ef;
+  color: #17141b;
+}
+
+html:has(.theme-serenada),
+html:has(.theme-serenada) body {
+  background: #f6efe3;
+  color: #1b1712;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:has(.theme-studio),
+  html:has(.theme-studio) body {
+    background: #0e0c12;
+    color: #f2edf4;
+  }
+
+  html:has(.theme-serenada),
+  html:has(.theme-serenada) body {
+    background: #15120f;
+    color: #f3ebdd;
+  }
+}
+
+/* Songbook "stamp" shadow: hard offset, no blur (cover art and selected chips in the app) */
+.sr-stamp {
+  box-shadow: 4px 4px 0 0 var(--sr-ink);
+}
+
+.sr-stamp-sm {
+  box-shadow: 3px 3px 0 0 var(--sr-ink);
 }
 
 /* Responsive page width — grows on large screens instead of staying at 1280px */
