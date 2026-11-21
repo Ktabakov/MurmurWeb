@@ -25,7 +25,7 @@ export const SERENADA = {
   name: "Lala",
   storeName: "Lala: Custom Song Maker",
   appId: "6834330111",
-  IS_RELEASED: false,
+  IS_RELEASED: true,
   appStoreUrl: "https://apps.apple.com/app/id6834330111",
   path: "/lala/",
   privacyPath: "/lala/privacy/",

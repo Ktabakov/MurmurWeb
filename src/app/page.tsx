@@ -10,7 +10,7 @@ import { CONTACT_EMAIL, MURMUR, SERENADA, SITE_URL, STUDIO_NAME } from "@/lib/si
 export const metadata: Metadata = {
   title: { absolute: "Murmur Apps — Music apps that run on your iPhone" },
   description:
-    "Murmur Apps is a one-person studio in Germany. Murmur composes royalty-free instrumental music on your iPhone; Lala (coming soon) sings a song about anyone or anything you type. No cloud, no account, pay once.",
+    "Murmur Apps is a one-person studio in Germany. Murmur composes royalty-free instrumental music on your iPhone; Lala sings a song about anyone or anything you type. No cloud, no account, pay once.",
   alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
     title: "Murmur Apps — Music apps that run on your iPhone",
